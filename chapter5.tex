@@ -1,0 +1,314 @@
+\chapter{Conclusion}\label{chp:chapter5}
+\section{Background}
+Incoming freshmen struggle deciding which field of study they should enter. There are many computing fields and this can confuse new students who are interested in computing, especially because the fields are so closely related. For example, many students don't know the difference between computer science (CS), information systems (IS), and information technology (IT). It would be wonderful to have a simple way to determine which of these computing fields would best suit each student. How do these differences help us determine the right fit for incoming computing students?
+
+One way to look at the differences among computing fields is to examine the students in each field~--- especially how they learn. CS, IS, and IT all focus on different areas of computing and each requires a different skill set. It seems like people in these fields have a preference for being taught differently. Is it possible to predict in which computing discipline an incoming freshman would succeed based on their learning style? Previous research has shown a correlation between learning preference and academic success, but does this correlation also exist for computing students?
+
+In the 1970s, David Kolb developed a model to represent cognitive learning preference. His model works on a two-axis system: concrete experience (CE) versus abstract conceptualization (AC), and reflective observation (RO) versus active experimentation (AE). The \textit{x}-axis, AE-RO, differentiates between students who learn by doing or by seeing results, and those who prefer to learn by watching, listening, and taking their time. The \textit{y}-axis, AC-CE, differentiates between students who learn by reasoning and being rational, and those who prefer to trust their feelings.
+
+The Association for Computing Machinery (ACM) has defined five disciplines in computing~\citep{shackelford2006}: computer engineering, computer science (CS), information systems (IS), information technology (IT), and software engineering (SE). Although there is overlap between disciplines, each discipline is distinct. Computer engineering is focused on designing and building hardware. CS is concerned with the theoretical principles of computing, particularly the software. SE is focused on creating highly reliable software systems. IT solves general computer problems and focuses on systems integration. And IS fulfills an organizational need, but mostly from the management side.
+
+\subsection{Research questions}
+\begin{itemize}
+  \item How strong is the correlation between AC-CE and AE-RO, and major GPA among CS, IS, and IT students?
+  \item How strong is the correlation between AC-CE and AE-RO, and student satisfaction among CS, IS, and IT students?
+  \item Is there a correlation between major GPA and student satisfaction?
+  \item What is the best multiple regression model to fit these correlations?
+\end{itemize}
+
+\subsection{Defining terms}
+Kolb created the Experiential Learning Theory (ELT)~\citep{kolb2005a} and used it as the basis for his Learning Style Inventory (LSI) assessment. According to this theory, learning is more about the journey than the outcome. This is important because the ELT focuses on how ``[l]earning is the process of creating knowledge''~\citep{kolb2005a}. This view is based on the Constructivist Theory of learning: that a learner must construct new knowledge: ``social knowledge is created and recreated in the personal knowledge of the learner''~\citep{kolb2005b}. It is contrasted with the Transmission Model whereby ``pre-existing fixed ideas are transmitted to the learner''~\citep{kolb2005a}. This might seem like a purely semantic difference, but there's an important distinction between constructivism and transmission which is important because the ELT and this research focus on learning as a process: it matters how students learn, not simply what they learn.
+
+Satisfaction is how pleased a student is with their decision on their major. In order to be quantified, satisfaction was rated by the Academic Major Satisfaction Scale, developed and validated by Nuata. It asks if students are happy with their major, if they think of switching majors, and how they feel about their choice.
+
+\subsection{Delimitations}
+Since IT is most closely related to CS and IS, and since BYU doesn't have an SE program, the study was limited to CS, IS, and IT.
+
+\section{Literature review}
+The purposes of the literature review were to determine if there were studies already done on this topic, how previous studies in computing had incorporated cognitive theory, and what surveys to use to study cognitive theory among computing students, including criticism of the chosen surveys.
+
+The initial literature review was to find studies related to cognitive or learning preference and how it bears on STEM students. Upon finding that there was bountiful research in the area, the literature review focused on finding studies on cognitive preference. Then, research was expanded to include studies on academic success.
+
+\subsection{Lunt's \textit{Predicting Academic Success in Electronics}}
+Barry Lunt's dissertation, \textit{Predicting Academic Success in Electronics}, was foundational. It performed the same research being performed here, but with an older version of the LSI, a focus on the electronics fields, and no focus on major satisfaction.
+
+The purpose of Lunt's research was to determine if there was a correlation between learning style preference and academic success in electronics technology, electronics engineering technology, and electrical engineering. If there was a statistically significant correlation, then the LSI could be used as an accurate discriminator to help students choose in which electronics program they should enroll.
+
+The students were randomly sampled and there was a participation rate of 45\%. Lunt asked: ``What are the best predictor variables for predicting academic success in electronics? Is abstract learning preference an effective discriminator between students in the three main types of electronics programs? What is the best multiple-regression model that can be derived for predicting success in each of the three types of electronics programs?''\citep{lunt1996}
+
+This rationale was persuasive because it focused on the difference between various majors in the same field and it was aimed at helping students determine which major to choose. Additionally, the Kolb LSI is a tested and validated tool for determining cognitive preference. Finally, the Experiential Learning Theory (ELT) on which the test is based fits right in line with the ideas behind this present research.
+
+The multiple regression model presented found correlations which helped justify the need to expand this line of research to computing students.
+
+\subsection{Other studies}
+There were several non-cognitive studies~\citep{thomas2007, elnagar2013, ridgell2004, ting2001} that were foundational in understanding the scope of research done in this field. Other studies focused on previous academic success~\citep{barlow2011, golding2005, ting2001, campbell1984}, programming or mathematics aptitude~\citep{nowaczyk1984, evans1989}, or other unrelated and non-cognitive models~\citep{barlow2011, elnagar2013}.
+
+The most common non-cognitive tool used is the Non-Cognitive Questionnaire (NCQ); however Thomas found that ``none of the scales of the NCQ are adequate predictors of GPA or persistence in college''~\citep{thomas2007}. Other non-cognitive tools included personality tests (e.g., Myers-Briggs Personality Type Indicator, 16 Personality Test), general knowledge tests (e.g., SAT, ACT), and work drive. In 2004, Ridgell studied these variables with great success ($p<0.01$) finding that the personality traits exam was found to statistically correlate with course grades and GPA. However, none of the tools Ridgell used were cognitively-based.
+
+In the same vein, \textit{Predicting Academic Performance in the School of Computing \& Information Technology (SCIT)}~\citep{golding2005} looked at students' performance in first-year courses. This was useful because it looked at all courses a first year student takes, not just programming courses (as most studies did). The study used demographic information and aptitude score, as well as a student's overall performance in the program, to predict their future performance. However, the study did not look at college entrance exam scores or high school GPA. This research found that none of the entrance exams used~--- including the SAT~--- were good predictors for academic success. It also found that high school success in math and science and previous IS and IT classes were not good indicators for academic success. Mostly, this paper found that the then-current indicators for admission were incorrect and not statistically significant.
+
+Historically, studies tried to determine academic success by a student's programming or math aptitude, using surveys like the Fennema-Sherman Mathematics Attitude Scale~\citep{nowaczyk1984} and the IBM Programmer Aptitude Test~\citep{hostetler1983}, or even COBOL~\citep{nowaczyk1984} or FORTRAN~\citep{campbell1984} proficiency. However, these surveys were found to not be the most effective tools to determine future academic success with ``R-squares of less than 24 percent''\citep{evans1989} used in the study.
+
+\subsection{Why cognition?}
+These studies take a non-cognitive approach to predicting academic success. Since previous studies have failed to look at cognition, it leaves a gaping hole in the literature that needs to be filled. Cognition might not be the right theory, but that needs to be addressed. Additionally, cognitive theory is a good candidate because it focuses on how students think and interpret information, which is key in understanding technical concepts.
+
+\subsection{Criticism of the LSI}
+In 1990, DeCoux surveyed cognitive research on nursing students that used the LSI. This was done in an effort to determine if the LSI was a trusted assessment tool. DeCoux's research showed ``a lack of significant relationships between learning style and other variables,'' adding further that ``studies undertaken specifically to investigate the measurement properties of the LSI reported major criticisms which seem to have been ignored.'' Throughout the survey, DeCoux found that the LSI was ``the most frequently used method of measuring learning styles'' even though there were ``numerous charges of serious instrument weakness,'' concluding that ``[c]ontinued use of the Kolb LSI... as an experiential technique is not recommended''~\citep{decoux2016}.
+
+More recent research has shown that ``[d]ifferent personality traits... and academic motivation... were found to be independently associated with student learning strategies''~\citep{donche2013}. This study, covering more than 1,100 undergraduate students, found that teaching strategy was hugely impactful because of ``the importance of students' personality and academic motivation'' which were found to ``partly explain''~\citep{donche2013} how students learn.
+
+Despite these criticisms, the LSI has been widely used in previous research in this area and is still generally considered to be a valid assessment tool. Most of the studies looked at as part of this literature review did not have negative things to say about the LSI, although they were not looking into the tool's validity. For these reasons, we have decided to adopt the LSI as the learning style assessment tool.
+
+\subsection{Criticism of cognition and learning styles}
+Wang and others looked into the correlation between Biggs' constructive alignment and how it affected students' learning approaches. This research went off the basis that ``university students' learning approaches... are highly correlated with students' achievement of learning outcomes''~\citep{wang2013}. However, it then noted that ``[s]uch a statement... was underpinned neither by qualitative nor quantitative empirical data.'' Their research showed that a more constructively-aligned teaching environment ``would lead students to adjust their learning approaches'' so they could learn more deeply ``despite their pre-existing individual differences
+in the preferred learning approaches.'' Their research is important because it showed that learning preference, while not insignificant, could be forgone in order to learn deeply.
+
+One of the main motivations fueling this research was the author's experience in IT and CS classes and how they so greatly differed. Because of the attitudes of the students in each major toward their courses and how the courses were taught, the author hypothesized that the cause of this schism was the learning styles of the students, so the author wished to pursue research in that realm.
+
+\subsection{Conclusion on literature review}
+The literature was severely lacking in cognitive studies in computing. Every study found took a non-cognitive approach, looked at programming aptitude, or tried to use previous academic success and aptitude tests to predict future academic success. Furthermore, the literature almost exclusively focused on CS with IT and IS being either completely overlooked or an afterthought. This study helps fill the gap in research by providing a look into the cognitive learning preferences of computing students. Since there is no clear way to successfully predict academic success in computing, this research will help fill that gap by exploring a new avenue to predict academic success in computing.
+
+\section{Research methodology}
+\subsection{Administration of tests}
+To distribute the surveys, the author gained permission from professors to enter the classrooms of seniors in CS, IS, and IT. Once in the classroom, the author read the announcement script and distributed packets to each student. The packets contained a consent form, the demographic survey, the Kolb LSI, and the AMSS.
+
+\subsection{Consent form}
+The consent form was approved by BYU's Institutional Review Board (IRB). It contained information about the research and a place for students to sign granting access to their college transcripts. Additionally, the consent form contained information about the risks and benefits of the research, confidentiality, and what to do if a research subject had questions about the research.
+
+\subsection{Kolb Learning Style Inventory (v3.1)}
+The LSI is a twelve-question survey that takes between five and ten minutes to complete. The LSI charts cognition on a two-axis scale: concrete experience (CE) versus abstract conceptualization (AC), and reflective observation (RO) versus active experimentation (AE).
+
+The LSI presents twelve, multiple-choice style questions. For instance, the question might start out: ``When I learn, I prefer to:'' and then gives four options, one from each quadrant (i.e., AC, AE, CE, RO). Students then mark the options one through four according to their personal preference. These scores and then added together to determine where the student's fall on each spectrum.
+
+The responses were then totaled according to the algorithm provided by the Hay Group. The data was programmatically checked for integrity, and the results were input into a spreadsheet.
+
+The LSI does not use the individual scores to plot the student's learning preference on the AC-CE and AE-RO axes so additional columns were added to compute these values. These values are best explained by example. Student 6 in the study scored CE=24, RO=33, AC=23, and AE=40 so the computed values are AE-RO=7 and AC-CE=-1. This student is pretty squarely in the middle of the graph. They don't lean heavily towards any of the cognitive preferences. By comparison, the author scored CE=48, RO=26, AC=21, and AE=25 so the computed values are AE-RO=-1 and AC-CE=-27. The author is moderate in the AE-RO axis~--- meaning he favors both active experimentation and reflective observation~--- but he is strongly in the abstract conceptualization camp. This might seem counter-intuitive because the author scored so high on CE, but is in the opposite (AC) end of the spectrum. This is because the individual scores aren't what matters: it is the calculated values (AE-RO and AC-CE) that define cognitive preference.
+
+\subsection{AMSS}
+The AMSS is composed of six questions rated on a 5-point Likert-type scale with 1 being ``strongly disagree'' and 5 being ``strongly agree.'' This scale has both positively and negatively worded statements, the negatively worded statements being reverse scored. These scores were input into their own columns on the respective student's row.
+
+\subsection{Demographic information}
+The demographic survey asked about the students' gender, age, ethnicity, marital status, and parents' highest education. The demographic information was added as columns to each student's existing scores with consistent spelling and punctuation. Each answer was input in separate columns.
+
+\subsection{Participation rate}
+In 2008, Nulty discussed the differences between online and paper surveys, including their response rates and how to improve them, and how to improve evaluation~\citep{nulty2008}. The relevant part of this research was a table listing the needed participation rate for various class sizes. Nulty's claims have been supported and validated; his article, at the time of writing, had been cited 594 times.
+
+From Nulty's research it was calculated that a participation rate of 35-48\% was necessary for a 10\% sampling error and 80\% confidence level. The CS and IS senior classes were estimated by their respective departments to be 100 students each, so participation from 21 students was necessary for each major. The IT senior class was estimated at 40 students, requiring participation from 16 students.
+
+\subsection{GPA}
+Each student's major GPA was received from the Registrar's Office and input into the spreadsheet.
+
+\section{Data analysis}
+\subsection{Survey responses}
+As discussed previously, a participation rate of 35-48\% was necessary for a 10\% sampling error and 80\% confidence level. This allows for inferences to be made on the population, not just the students sampled. The CS and IS senior classes were estimated by their respective departments to be one hundred students each, so participation from twenty-one students was necessary for each major. The IT senior class was estimated at forty students, requiring participation from sixteen students. Table~\ref{tab:c-response-rates} shows the amount of responses received compared to the total amounts needed.
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{llllll}
+    \toprule
+    Major & Total seniors in major & Surveys needed & Surveys received & Response rate\\
+    \midrule
+    CS    & 100                    & 21             & 40               & 40\%\\
+    IS    & 100                    & 21             & 2                & 2\%\\
+    IT    & 40                     & 16             & 22               & 55\%\\
+    \bottomrule
+  \end{tabular}
+  % set width
+  \ifdim\wd\tempbox<\TPTminimum\relax \tempwidth=\TPTminimum\relax
+  \else\tempwidth=\wd\tempbox
+  \fi
+  % format
+  \begin{minipage}{\tempwidth}\centering
+  \caption[Sample sizes]{Response Rates of Various Majors}
+  \label{tab:c-response-rates}
+  \usebox{\tempbox}
+  %\end{threeparttable}
+  \end{minipage}
+\end{table}
+
+There were many complications getting responses from IS students. IS seniors do not have a capstone or senior seminar class, so there was no common opportunity to reach them. Since the Learning Style Inventory (LSI) is copyrighted and licensed for hardcopy use, it couldn't be digitized for distribution. This made it difficult to get surveys into the hands of the IS students. After trying for a year to get surveys out and being stonewalled by significant distribution problems, only two surveys from IS students were completed, and those were only completed because those students were in an IT course in which the surveys were distributed. No additional surveys were returned from IS students. Because of the complications surrounding the IS responses, the IS results were not included in the analysis.
+
+\subsection{What the LSI responses mean}
+\subsubsection{Defining AC, CE, AE, and RO}
+The terms abstract conceptualization (AC), concrete experience (CE), active experimentation (AE), and reflective observation (RO) are not really intuitive. Before diving into the statistical analysis, it will be helpful to more clearly define these terms. The following list contains statements to help define each of these terms~\citep{kolb1993}:
+\begin{enumerate}
+  \item Abstract conceptualization
+  \begin{enumerate}
+    \item To learn, I'd rather think about ideas.
+    \item I like to reason things out.
+    \item I want to analyze things.
+    \item I'm rational.
+    \item I rely on my ideas.
+  \end{enumerate}
+  \item Concrete experience
+  \begin{enumerate}
+    \item Thinking about my feelings affects how I learn.
+    \item I trust my feelings and intuition.
+    \item I'm open to experiencing new things.
+    \item I like to learn from personal relationships.
+    \item I like being actively involved in the learning process.
+  \end{enumerate}
+  \item Active experimentation
+  \begin{enumerate}
+    \item I want to be doing.
+    \item I like to work hard.
+    \item I want to see results.
+    \item Just let me try it out myself.
+    \item I'm practical.
+  \end{enumerate}
+  \item Reflective observation
+  \begin{enumerate}
+    \item I prefer to watch and listen.
+    \item When I learn, I'm quiet.
+    \item I take my time when I learn.
+    \item I'm reserved.
+    \item I like to look at issues from different angles.
+    \item I'm observant.
+    \item I prefer to slow down and be careful.
+  \end{enumerate}
+\end{enumerate}
+
+\subsubsection{Answering the research questions}
+\paragraph{How strong is the correlation between AC-CE and AE-RO, and major GPA among CS, IS, and IT students?}
+The first basic test was to calculate the Pearson correlation coefficient between AC-CE and AE-RO by major in order to check for a general correlation between learning preferences. The data failed to show a meaningful relationship between the two (the coefficient is $0.05$, which with a \textit{p}-value of $0.73$ is not statistically significant). This is interesting because it goes against what the literature previously discussed about the relationship between learning styles, \textit{viz}.: CS and IT should be distinguishable~\citep{kolb2005}.
+
+The next step was to check the simple correlation between AE-RO and AC-CE by major GPA. The Pearson coefficients are $0.42$ ($p<0.01$) and $-0.01$ ($p>0.05$), respectively. Having high significance in the first Pearson coefficient says that there's a strong, positive relationship such that major GPA increases for students with higher AE-RO scores. However, there is no relationship between AC-CE score and major GPA. This means that students who have higher AE-RO scores will tend to perform better in either major; however, the AC-CE spectrum does not hold any statistically significant effect on student GPA in CS or IT. This is interesting because Lunt found that AC-CE was the significant axis among electronics students~\citep{lunt1996}.
+
+\paragraph{What is the best multiple regression model to fit these correlations?}
+In order to estimate the relationship that AC-CE and AE-RO have, I developed a few multiple regression models. The first two models can be seen in Table~\ref{tab:c-models12} and are explained below.
+
+\begin{table}[!htbp]
+  \centering
+  \caption[Models 1 and 2]{Models 1 and 2}
+  \label{tab:c-models12}
+  \begin{tabular}{@{\extracolsep{5pt}}lll}
+  \toprule
+   & \multicolumn{2}{c}{\textit{Dependent variable:}} \\
+  \cline{2-3}
+  \\[-1.8ex] & \multicolumn{2}{c}{Major GPA} \\
+  \\[-1.8ex] & (1) & (2)\\
+  \hline \\[-1.8ex]
+  CS dummy variable & 0.238$^{**}$ & 0.137 \\
+    & (0.112) & (0.107) \\
+    & & \\
+  AC-CE & $-$0.001 & 0.0002 \\
+    & (0.004) & (0.004) \\
+    & & \\
+  AE-RO & 0.007 & 0.007 \\
+    & (0.006) & (0.005) \\
+    & & \\
+  \midrule
+  Observations & 62 & 62 \\
+  R$^{2}$ & 0.088 & 0.389 \\
+  Adjusted R$^{2}$ & 0.040 & 0.269 \\
+  Residual Std. Error & 0.418 (df = 58) & 0.365 (df = 51) \\
+  F Statistic & 1.857 (df = 3; 58) & 3.250$^{***}$ (df = 10; 51) \\
+  \bottomrule
+  \textit{Note:}  & \multicolumn{2}{r}{$^{*}p<0.1$; $^{**}p<0.05$; $^{***}p<0.01$} \\
+  \end{tabular}
+\end{table}
+
+For model~1, I included the students' AC-CE and AE-RO scores, as well as a dummy variable that captured whether a student was a CS major. This model showed a significant correlation between AE-RO and GPA held even when controlling for the AC-CE value and the student's major with a very significant F statistic of $5.075$ ($p<0.01$). This F statistic showed that these factors were especially important in predicting a student's academic success, as measured by major GPA.
+
+In model~2, I used the same multiple regression analysis as model~1, but added the student's age and their parents' education level as covariates. This correlation held, even when controlling for other factors that may have a relationship with GPA. This model had a strong F statistic, which again showed that the same factors, except for AC-CE, were significant in predicting a student's academic success.
+
+In both models, AC-CE had a $p>0.05$ which helped suggest that AC-CE was not a significant contributor to a student's academic success. Because the AC-CE values do not have a significant correlation with major GPA, they were dropped in the subsequent models.
+
+In the next two models (see Table\ref{tab:c-models34}), AE-RO was decomposed into its two individual elements because it was not clear which element was driving the AE-RO correlation with GPA. Model~3, which has AE-RO decomposed, showed that RO had a negative relationship with major GPA. When control variables (age and parents' education level) were added in model~4, only the RO relationship remained statistically significant. These models are probably the best fit to estimate these correlations. The RO value and control terms have a high joint significance, so they should not be removed from the model. Model~4 had an adjusted R-squared of $0.4118$, meaning that the variables in the model can explain roughly 41\% of the variance in major GPA.
+
+\begin{table}[!htbp] \centering
+  \caption[Models 3 and 4]{Models 3 and 4}
+  \label{tab:c-models34}
+  \begin{tabular}{@{\extracolsep{5pt}}lll}
+    \toprule
+     & \multicolumn{2}{c}{\textit{Dependent variable:}} \\
+    \cline{2-3}
+    \\[-1.8ex] & \multicolumn{2}{c}{Major GPA} \\
+    \\[-1.8ex] & (1) & (2)\\
+    \midrule
+    csdum & 0.231$^{**}$ & 0.135 \\
+      & (0.109) & (0.103) \\
+      & & \\
+    RO.total & $-$0.018$^{**}$ & $-$0.021$^{**}$ \\
+      & (0.009) & (0.009) \\
+      & & \\
+    AE.total & $-$0.003 & $-$0.004 \\
+      & (0.008) & (0.008) \\
+      & & \\
+    \midrule
+    Observations & 62 & 62 \\
+    R$^{2}$ & 0.128 & 0.434 \\
+    Adjusted R$^{2}$ & 0.083 & 0.323 \\
+    Residual Std. Error & 0.409 (df = 58) & 0.351 (df = 51) \\
+    F Statistic & 2.844$^{**}$ (df = 3; 58) & 3.912$^{***}$ (df = 10; 51) \\
+    \bottomrule
+    \textit{Note:}  & \multicolumn{2}{r}{$^{*}p<0.1$; $^{**}p<0.05$; $^{***}p<0.01$} \\
+  \end{tabular}
+\end{table}
+
+The research question being examined here is: ``What is the best multiple regression model to fit these correlations?'' Models~3 and~4, with their high R-squared and F statistics, clearly show the best multiple regression models to find and fit these correlations. Model~4, with its adjusted R-squared, can explain over 41\% of the variance found in the models which helps show that the RO value is, statistically, the most important distinguisher between students' academic success in CS and IT.
+
+Regressions were then run to check for the RO effect by major (summarized in Table~\ref{tab:c-models567}). The first step was to include an interaction term (model~5) between the RO value and the CS dummy variable. This model captured whether the relationship between RO and major GPA was different between CS majors and IT majors. This term was statistically significant ($p<0.05$) with a negative relationship between RO and major GPA; however, it was unclear in which major that relationship occurs.
+
+\begin{table}[!htbp] \centering
+  \caption[Model 5 6 7]{Models 5, 6, and 7}
+  \label{tab:c-model567}
+  \begin{tabular}{@{\extracolsep{5pt}}llll}
+    \toprule
+     & \multicolumn{3}{c}{\textit{Dependent variable:}} \\
+    \cline{2-4}
+    \\[-1.8ex] & \multicolumn{3}{c}{Major.GPA} \\
+    \\[-1.8ex] & (1) & (2) & (3)\\
+    \hline \\[-1.8ex]
+    csdum & $-$0.633 &  &  \\
+      & (0.469) &  &  \\
+      & & & \\
+    RO.total & $-$0.038$^{***}$ & $-$0.005 & $-$0.043$^{***}$ \\
+      & (0.013) & (0.011) & (0.013) \\
+      & & & \\
+    \midrule
+    Observations & 62 & 40 & 22 \\
+    R$^{2}$ & 0.461 & 0.005 & 0.341 \\
+    Adjusted R$^{2}$ & 0.356 & $-$0.021 & 0.308 \\
+    Residual Std. Error & 0.342 (df = 51) & 0.405 (df = 38) & 0.369 (df = 20) \\
+    F Statistic & 4.369$^{***}$ (df = 10; 51) & 0.204 (df = 1; 38) & 10.337$^{***}$ (df = 1; 20) \\
+    \bottomrule
+    \textit{Note:}  & \multicolumn{3}{r}{$^{*}p<0.1$; $^{**}p<0.05$; $^{***}p<0.01$} \\
+  \end{tabular}
+\end{table}
+
+In order to test this relationship by major, I ran two additional regression models (models~6 and~7) that focused on each major independently. In model~5, I failed to find any statistical correlation between RO and major GPA among CS students, with the model on the whole failing joint significance, meaning that the variables are not statistically significant together.
+
+In model~7, focused solely on IT students, I found a significant, negative relationship between RO and major GPA. What this means is that moving from a low RO to a high RO (two standard deviations of RO scores) corresponds to a decrease of about $0.51$ in GPA. This is significant because it means that students who are more localized in RO will tend to have lower GPAs. Substantively, this is a lot. It's the difference between a 3.2~GPA (the median IT GPA) and a 3.7~GPA.
+
+But what does that mean in the real world? Is that enough to make a difference in getting a job or getting into graduate school? There are certainly other factors contributing to that, but a 0.51~GPA increase certainly has merit on its own. Looking deeper into it, the standard deviation of IT GPAs is 0.44. The IT GPAs are pretty normally distributed, so this means that moving higher on the RO scale relates to more than an entire standard deviation decrease in GPA!
+
+The fact that the RO low-to-high difference correlates to a little over one standard deviation means that the change is comparable to decreasing roughly 38 percentiles from the mean (given that 68\% are within one standard deviation of the mean in either direction). This seems like it could be substantive, at least for IT students, since IT GPA is lower when the student more strongly prefers Reflective learning. However, this doesn't seem to hold for CS, as shown in model~6.
+
+\paragraph{How strong is the correlation between AC-CE and AE-RO, and student satisfaction among CS, IS, and IT students?}
+Nuata's AMSS is graded on a five-point Likert-type scale with two of the responses being negatively scored. Two of the AMSS questions assume that students still have the option of changing their major, but once BYU students get beyond a certain credit threshold (well before their senior year), it becomes impossible for them to change majors. Because of this and the lack of variance among the responses, these questions were dropped from the analysis.
+
+I created a summary index of academic major satisfaction using the remaining AMSS variables and reverse coded the negatively-scored variables. In this summary index, the least satisfied value was a 4 and the most satisfied was a 20.
+
+Next, I checked the simple correlations between AE-RO and AC-CE with the satisfaction index. The Pearson coefficients are $-0.12$ ($p>0.05$) and $-0.06$ ($p>0.05$), respectively. It is possible that the relationship could only exist for the RO value, since this was the only value correlated with major GPA in the previous section. Checking for that, I found a Pearson correlation coefficient of $0.26$ ($p>0.05$). This means that even restricting to just RO and IT majors fails to find a statistically significant correlation ($0.24$, $p>0.05$).
+
+None of these correlations were statistically significant, suggesting that there is no relationship between learning style and major satisfaction.
+
+\paragraph{Is there a correlation between major GPA and student satisfaction?}
+The Pearson correlation coefficient of major GPA and the satisfaction index is $-0.12$ ($p>0.05$). This is statistically insignificant, so I am unable to say that there is a correlation between the two. The coefficient is negative, so if the correlation was significant it would indicate that students with higher major GPAs were generally less satisfied than students with lower GPAs.
+
+The dataset, with four questions used, had a minimum sum of 4 (meaning the student strongly disagreed to each statement) and maximum sum of 20 (meaning the student strongly agreed with everything). The mean response was 18, so students were generally overwhelmingly satisfied with their choice of major. This lack of diversity is believed to have led to the lack of correlations between student satisfaction and other factors.
+
+\subsubsection{Demographics}
+Unfortunately, I was unable to use the full set of demographic variables collected from students as covariates because there was not enough variance among the sample group. The students were almost entirely white and male (88\% for both). Looking at the relationship between marital status and its relationship on major GPA and satisfaction had a multiple R-squared of $0.07$, and the relationship between marital status and RO and major GPA (previously the best model) had a multiple R-squared of $0.14$. So, while students were roughly equally divided in marital status, there was no relationship between marital status and any other factor.
+
+\subsection{Future work}
+First and foremost, this research needs to be repeated for IS students. It was unfortunate that so little data was able to be gathered, and adding that dataset to this line of research is necessary, especially in light of the correlations that were found.
+
+This research did not independently evaluate the AC-CE and AE-RO environments for the individual courses. That would amount to a large amount of low-level work which was outside the scope of this study. However, it would be interesting to see how each of the classes stack up in their cognitive styles.
+
+The multiple regression models that I first developed were based on the calculated differences (i.e., AC-CE and AE-RO) and not on the decomposed variables. The rest of the multiple regression models were exploratory. Future research should be more explicit in the data analysis methods that will be used before beginning the data analysis.
+
+From the research, it seems like there are two main camps regarding teaching based on learning style: worry about it or don't worry about it. Some research has shown that when students are taught according to their preferred learning style, they learn better~\citep{vizeshfar2017, donche2013}. Others have shown that students adapt to how courses are taught regardless of learning style~\citep{wang2013}. This study examined if a student's cognitive learning preference was a factor in which computing discipline they should explore. However, this angle helps perpetuate the \textit{status quo} by advising students to only go into a field where a majority of their classmates will have similar cognitive preferences. Instead, research should be done into each field's cognitive approach and determining if that approach is the best way to instruct students in that field.
+
+There is a lot of noise surrounding the Kolb Learning Style Inventory (LSI). Many articles have used it and said that it's a tried and true method. However, DeCoux shows ``numerous charges of serious instrument weakness'' and states conclusively that ``[c]ontinued use of the Kolb LSI in nursing research or as an experiential technique is not recommended''~\citep{decoux2016}. This research was unable to map students in similar fashion as the LSI, lending credence to DeCoux's conclusion. There is a need for good research showing whether or not the LSI is a trusted method, and if it is not, its weaknesses should be explored. That research needs to be disseminated in order to persuade future researchers in their methodology.

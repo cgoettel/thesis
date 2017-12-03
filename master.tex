@@ -46,6 +46,7 @@
 \usepackage{textcomp}
 \usepackage{float}											%	improves the interface for defining floating objects
 \usepackage{rotating}
+\usepackage[round]{natbib}
 %\usepackage[figuresright]{rotfloat}
 %\usepackage{multirow}
 %These next two lines are for the citing with the IEEE style (leave commented for ASME)
@@ -60,12 +61,12 @@
 % http://www.tug.org/applications/hyperref/manual.html
 \usepackage[pdftex,backref=false,pagebackref=false,plainpages=false]{hyperref}
 \hypersetup{
-  breaklinks   = false, % Allow link text to break across lines (default=false).
-  linktocpage  = false, % make page number, not text, be link on TOC, LOF and LOT
-  colorlinks   = false, % Color the text of links (true) or put color frames over
+  breaklinks  = false, % Allow link text to break across lines (default=false).
+  linktocpage = false, % make page number, not text, be link on TOC, LOF and LOT
+  colorlinks  = false, % Color the text of links (true) or put color frames over
   %
-  linkbordercolor  = {1 1 1}, % The color of the box around normal links (white so they won't show up)
-  citebordercolor  = {1 1 1}, % The color of the box around citations (white so they won't show up)
+  linkbordercolor = {1 1 1}, % The color of the box around normal links (white so they won't show up)
+  citebordercolor = {1 1 1}, % The color of the box around citations (white so they won't show up)
                         % the links (false).
   pdfstartview = {FitV}, % Set the startup page view. Possible options are:
                          % FitH: Fit whole width of page
@@ -88,11 +89,9 @@
   pdfauthor   = {Colby Goettel},
   pdfcreator  = {Colby Goettel},
   pdfsubject  = {Colby Goettel's Master's Thesis},
-  pdfkeywords = {Master's Thesis, BYU, computing, academic success, lsi},
+  pdfkeywords = {Master's Thesis, BYU, computing, academic success, LSI},
   pdfborder		=	{0 0 0},
 }
-
-\usepackage[round]{natbib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Define macros here - You may use these, or delete them, as you see fit.
@@ -107,24 +106,24 @@
 \newcommand{\subscript}[1]{\ensuremath{_\textrm{#1}}}
 
 \DeclareCaptionJustification{InvertedPyramid}{\hsize=\linewidth
-                \parindent=0pt
-                \leftskip=0pt plus.5fil
-                \rightskip=0pt plus-0.5fil
-                \parfillskip=0pt plus1fil
-                \emergencystretch=1in
-                \parshape10
-                0.00in \linewidth
-                0.025\linewidth 0.95\linewidth
-                0.05\linewidth 0.9\linewidth
-                0.075\linewidth 0.85\linewidth
-                0.1\linewidth 0.8\linewidth
-                0.125\linewidth 0.75\linewidth
-	     0.15\linewidth 0.70\linewidth
-	     0.175\linewidth 0.65\linewidth
-	     0.2\linewidth 0.60\linewidth
-	     0.225\linewidth 0.55\linewidth
-                \strut
-	}
+  \parindent=0pt
+  \leftskip=0pt plus.5fil
+  \rightskip=0pt plus-0.5fil
+  \parfillskip=0pt plus1fil
+  \emergencystretch=1in
+  \parshape10
+  0.00in \linewidth
+  0.025\linewidth 0.95\linewidth
+  0.05\linewidth 0.9\linewidth
+  0.075\linewidth 0.85\linewidth
+  0.1\linewidth 0.8\linewidth
+  0.125\linewidth 0.75\linewidth
+  0.15\linewidth 0.70\linewidth
+  0.175\linewidth 0.65\linewidth
+  0.2\linewidth 0.60\linewidth
+  0.225\linewidth 0.55\linewidth
+  \strut
+}
 \renewcommand{\TPTminimum}{3in}
 \captionsetup[table]{justification=InvertedPyramid}
 
@@ -167,6 +166,9 @@
 % see some of the important notes about how to do your thesis!)
 \include{chapter1}
 \include{chapter2}
+\include{chapter3}
+\include{chapter4}
+\include{chapter5}
 
 % Bibliography
 \cleardoublepage

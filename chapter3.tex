@@ -1,0 +1,44 @@
+\chapter{Methodology}\label{chp:chapter3}
+\section{The computing disciplines}
+The Association for Computing Machinery has defined five disciplines in computing~\citep{shackelford2006}: computer engineering, computer science (CS), information systems (IS), information technology (IT), and software engineering (SE). Although there is overlap between disciplines, each discipline fills its own niche. Computer engineering is focused on designing and building hardware and its associated software. Computer science creates low-level software, but is also concerned with the theoretical principles of computing. Software engineering is primarily focused on creating reliable software. Information technology also creates software, but mostly fulfills the organizational need to integrate systems. Information systems also fulfills an organizational need, but mostly from the management side.
+
+Since IT is most closely related to CS and IS, and since BYU doesn't have an SE program, the study was limited to CS, IS, and IT.
+
+\section{Administration of tests}
+To distribute the surveys, the author gained permission from professors to enter the classrooms of predominantly senior-filled classes in CS, IS, and IT. Once in the classroom, he read the announcement script and distributed packets to each student. The packets contained a consent form, the demographic survey, the Kolb LSI, and the AMSS. It was necessary to distribute the surveys in class because the LSI is copyrighted.
+
+\subsection{Consent form}
+The consent form was approved by BYU's Institutional Review Board (IRB). It contained information about the research and a place for students to sign granting access to their college transcripts. Additionally, the consent form contained information about the risks and benefits of the research, confidentiality, and what to do if a research subject had questions about the research.
+
+\subsection{Kolb Learning Style Inventory}
+The two most recent revisions of the Kolb Learning Style Inventory (LSI), versions 3.1 and 4, differ mainly in their analysis. As Kolb stated, ``[r]ecent theoretical and empirical work is showing that the original four learning styles—assimilating, converging, accommodating, and diverging—can be expanded to show nine distinct styles''~\citep{kolb2005b}. Since this research was interested in how students differ in the ``original four learning styles,'' version 3.1 was used because it better focused on those differences.
+
+The LSI is a twelve-question survey that takes between five and ten minutes to complete. The purpose of this tool is to determine the research subject's cognitive preference. The LSI charts cognition on a two-axis scale: concrete experience (CE) versus abstract conceptualization (AC), and reflective observation (RO) versus active experimentation (AE). In order to do this, the questions focus on if a person prefers to think, feel, observe, or experiment when learning, or any combination of those attributes. These terms are defined more completely in chapter four.
+
+\subsection{Academic Major Satisfaction Scale}
+Nuata's Academic Major Satisfaction Scale (AMSS) was used to assess the students' satisfaction. It contained six questions rated on a 5-point Likert-type scale with 1 being ``strongly disagree'' and 5 being ``strongly agree.'' The questions dealt with how the students felt about their choice of major, if they thought about switching majors, and if they would have liked to talk with someone about switching majors.
+
+\subsection{Demographic information}
+The demographic survey asked about the students' gender, age, ethnicity, marital status, and parents' highest education.
+
+\section{Participation rate}
+In \textit{The adequacy of response rates to online and paper surveys: what can be done?}, Nulty discussed the differences between online and paper surveys, including their response rates and how to improve them, and how to improve evaluation~\citep{nulty2008}. The most important part of this study for this research was a table listing the needed participation rates for various class sizes. However, the paper stated that the table is ``only a guide as it is based on the application of a formula derived from a theory that has random sampling as a basic requirement''~\citep{nulty2008}. Nulty's claims have been supported and validated. His article, at the time of writing, had been cited 594 times.
+
+From Nulty's research it was found that a participation rate of 35-48\% was necessary for a 10\% sampling error and 80\% confidence level. The CS and IS senior classes were estimated by their respective departments to be one hundred students each, so participation from twenty-one students was necessary for each major. The IT senior class was estimated at forty students, requiring participation from sixteen students.
+
+\section{Scoring responses}
+\subsection{Major GPA}
+After the surveys were received, the author keyed each of the surveys. The unique number was marked on the consent form and on the LSI. The consent form was then torn off the packet and brought to the Registrar's Office. The registrar then took copies of each of the consent forms. The registrar then looked up the student's major and major GPA, and e-mailed the unique number, major, and major GPA to the author.
+
+\subsection{Kolb LSI (v3.1)}
+The LSI presents twelve, multiple-choice style questions. For instance, the question might start out: ``When I learn, I prefer to:'' and then gives four options, one from each quadrant (i.e., AC, AE, CE, RO). Students then mark the options one through four according to their personal preference. These scores were then added together according to a specific algorithm to determine where each student fell on the two axes. These responses were then input into a spreadsheet and programmatically checked for data entry errors by ensuring that each row did not have repeat numbers and that all of the values entered equaled 120, as dictated by the algorithm. Once the totals for each axis were found, they were entered into the respective student's row on the main spreadsheet. Since he LSI does not use the individual scores to plot the student's learning preference on the AC-CE and AE-RO axes, additional columns were added to compute these differences.
+
+These values are best explained by example. Student 6 in the study scored CE=24, RO=33, AC=23, and AE=40 so the computed values are AE-RO=7 and AC-CE=-1. This student is pretty squarely in the middle of the graph. They don't lean heavily towards any of the cognitive preferences, but instead prefer an equal mix of them all.
+
+By comparison, I scored CE=48, RO=26, AC=21, and AE=25 so the computed values are AE-RO=-1 and AC-CE=-27. I'm moderate in the AE-RO axis`--- meaning I favor both active experimentation and reflective observation`--- but I'm strongly in the abstract conceptualization camp. This might seem counter-intuitive because I scored so high on CE, but I'm in the opposite (AC) end of the spectrum. This is because the individual scores aren't what matters: it's only the calculated values (i.e., AE-RO and AC-CE) that define cognitive preference.
+
+\subsection{AMSS}
+The AMSS is rated on a 5-point Likert-type scale with 1 being ``strongly disagree'' and 5 being ``strongly agree.'' This scale has both positively and negatively worded statements, the negatively worded statements being reverse scored. These scores were input into their own columns on the respective student's row.
+
+\subsection{Demographic information}
+The demographic information was added as columns to each student's existing scores with consistent spelling and punctuation. Each answer was input in separate columns.

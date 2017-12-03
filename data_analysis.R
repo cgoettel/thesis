@@ -42,14 +42,14 @@ fit1 <- lm(Major.GPA ~ csdum + AC.CE + AE.RO, data = data.mis)
 
 ### Model 2: plus covariates
 fit2 <- lm(Major.GPA ~ csdum + AC.CE + AE.RO + Age + Parents.education, data = data.mis)
-stargazer(fit1, fit2, type = 'text')
+stargazer(fit1, fit2)
 
 ### Models 3 and 4
 #### Divided into just AE and RO
 fit3 <- lm(Major.GPA ~ csdum + RO.total + AE.total, data = data.mis)
 #### With age and parents' education as covariates
 fit4 <- lm(Major.GPA ~ csdum + RO.total + AE.total + Age + Parents.education, data = data.mis)
-stargazer(fit3, fit4, type = 'text')
+stargazer(fit3, fit4)
 
 #### Test of joint significance (lht = test linear hypothesis)
 xx <- lm(Major.GPA ~ csdum + RO.total + AE.total + Age + Parents.education, data = data.mis)
@@ -59,7 +59,7 @@ lht(xx, c("AE.total = 0","Parents.educationgraduate degree = 0", "Parents.educat
 fit5 <- lm(Major.GPA ~ csdum + RO.total + csdum*RO.total + Age + Parents.education, data =data.mis)
 fit6 <- lm(Major.GPA ~ RO.total, data = data.mis, subset = Major == "cs")
 fit7 <- lm(Major.GPA ~ RO.total, data = data.mis, subset = Major == "it")
-stargazer(fit5, fit6, fit7, type = 'text')
+stargazer(fit5, fit6, fit7)
 
 #### Substantive interpretation
 yy <- sd(data.mis$RO.total[data.mis$csdum == 0], na.rm = T)
