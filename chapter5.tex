@@ -168,13 +168,13 @@ The terms abstract conceptualization (AC), concrete experience (CE), active expe
   \end{enumerate}
 \end{enumerate}
 
-\subsubsection{Answering the research questions}
-\paragraph{How strong is the correlation between AC-CE and AE-RO, and major GPA among CS, IS, and IT students?}
+\subsection{Answering the research questions}
+\subsubsection{How strong is the correlation between AC-CE and AE-RO, and major GPA among CS, IS, and IT students?}
 The first basic test was to calculate the Pearson correlation coefficient between AC-CE and AE-RO by major in order to check for a general correlation between learning preferences. The data failed to show a meaningful relationship between the two (the coefficient is $0.05$, which with a \textit{p}-value of $0.73$ is not statistically significant). This is interesting because it goes against what the literature previously discussed about the relationship between learning styles, \textit{viz}.: CS and IT should be distinguishable~\citep{kolb2005}.
 
 The next step was to check the simple correlation between AE-RO and AC-CE by major GPA. The Pearson coefficients are $0.42$ ($p<0.01$) and $-0.01$ ($p>0.05$), respectively. Having high significance in the first Pearson coefficient says that there's a strong, positive relationship such that major GPA increases for students with higher AE-RO scores. However, there is no relationship between AC-CE score and major GPA. This means that students who have higher AE-RO scores will tend to perform better in either major; however, the AC-CE spectrum does not hold any statistically significant effect on student GPA in CS or IT. This is interesting because Lunt found that AC-CE was the significant axis among electronics students~\citep{lunt1996}.
 
-\paragraph{What is the best multiple regression model to fit these correlations?}
+\subsubsection{What is the best multiple regression model to fit these correlations?}
 In order to estimate the relationship that AC-CE and AE-RO have, I developed a few multiple regression models. The first two models can be seen in Table~\ref{tab:c-models12} and are explained below.
 
 \begin{table}[!htbp]
@@ -251,8 +251,8 @@ The research question being examined here is: ``What is the best multiple regres
 Regressions were then run to check for the RO effect by major (summarized in Table~\ref{tab:c-models567}). The first step was to include an interaction term (model~5) between the RO value and the CS dummy variable. This model captured whether the relationship between RO and major GPA was different between CS majors and IT majors. This term was statistically significant ($p<0.05$) with a negative relationship between RO and major GPA; however, it was unclear in which major that relationship occurs.
 
 \begin{table}[!htbp] \centering
-  \caption[Model 5 6 7]{Models 5, 6, and 7}
-  \label{tab:c-model567}
+  \caption[Models 5, 6, and 7]{Models 5, 6, and 7}
+  \label{tab:c-models567}
   \begin{tabular}{@{\extracolsep{5pt}}llll}
     \toprule
      & \multicolumn{3}{c}{\textit{Dependent variable:}} \\
@@ -285,7 +285,7 @@ But what does that mean in the real world? Is that enough to make a difference i
 
 The fact that the RO low-to-high difference correlates to a little over one standard deviation means that the change is comparable to decreasing roughly 38 percentiles from the mean (given that 68\% are within one standard deviation of the mean in either direction). This seems like it could be substantive, at least for IT students, since IT GPA is lower when the student more strongly prefers Reflective learning. However, this doesn't seem to hold for CS, as shown in model~6.
 
-\paragraph{How strong is the correlation between AC-CE and AE-RO, and student satisfaction among CS, IS, and IT students?}
+\subsubsection{How strong is the correlation between AC-CE and AE-RO, and student satisfaction among CS, IS, and IT students?}
 Nuata's AMSS is graded on a five-point Likert-type scale with two of the responses being negatively scored. Two of the AMSS questions assume that students still have the option of changing their major, but once BYU students get beyond a certain credit threshold (well before their senior year), it becomes impossible for them to change majors. Because of this and the lack of variance among the responses, these questions were dropped from the analysis.
 
 I created a summary index of academic major satisfaction using the remaining AMSS variables and reverse coded the negatively-scored variables. In this summary index, the least satisfied value was a 4 and the most satisfied was a 20.
@@ -294,7 +294,7 @@ Next, I checked the simple correlations between AE-RO and AC-CE with the satisfa
 
 None of these correlations were statistically significant, suggesting that there is no relationship between learning style and major satisfaction.
 
-\paragraph{Is there a correlation between major GPA and student satisfaction?}
+\subsubsection{Is there a correlation between major GPA and student satisfaction?}
 The Pearson correlation coefficient of major GPA and the satisfaction index is $-0.12$ ($p>0.05$). This is statistically insignificant, so I am unable to say that there is a correlation between the two. The coefficient is negative, so if the correlation was significant it would indicate that students with higher major GPAs were generally less satisfied than students with lower GPAs.
 
 The dataset, with four questions used, had a minimum sum of 4 (meaning the student strongly disagreed to each statement) and maximum sum of 20 (meaning the student strongly agreed with everything). The mean response was 18, so students were generally overwhelmingly satisfied with their choice of major. This lack of diversity is believed to have led to the lack of correlations between student satisfaction and other factors.
