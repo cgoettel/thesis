@@ -3,22 +3,11 @@
 
 \usepackage{byustyle}
 \byustylesetup{%
-  % Definitions of names needed in thesis/dissertation
   deptname          = School of Technology,
-  committeechairman = Barry Lunt,
-  committeemembera  = Derek L.\ Hansen,
-  committeememberb  = Richard Helps,
-  %graddate = April 2011,   % Final approval month (NOT graduation month!
-   %
-  %Uncomment to shorten for proofreading purposes
-  %noabstract = true,         % Don't show the abstract page
-  %nouniversitypages = true,  % Don't show any of the "university pages"
-  %noacknowledgements = true, % Don't show the Acknowledgements page
-  %notableofcontents = true,  % Don't show the Table of Contents
-  %nolistoffigures = true,    % Don't show the List of Figures
-  %nolistoftables = true,     % Don't show the List of Tables
-  nonomenclature = true,      % Don't show the Nomenclature section - note that this section is optional
-  %notocandlists = true,      % Don't show the Table of Contents, List of Figures, or the List of Tables
+  committeechairman = Barry M.\ Lunt, % Barry Mark Lunt
+  committeemembera  = Derek L.\ Hansen, % Derek Lloyd Hansen
+  committeememberb  = Richard G.\ Helps, % C Richard G Helps
+  nonomenclature = true,     % Don't show the Nomenclature section (optional)
   keywords = {learning preference, cognition, LSI, computing, academic success, AMSS}
 }
 
@@ -39,19 +28,18 @@
 \usepackage{subcaption}
 \usepackage{setspace} % change the spacing inside a document
 \usepackage{epstopdf} % converts a .eps to a .pdf
-\usepackage{cite}     % allows for citations
 \usepackage{mathptmx}
 \usepackage{textcomp}
 \usepackage{float}    % improves the interface for defining floating objects
 \usepackage{rotating}
 
-\usepackage[round]{natbib}
+\usepackage[notes, isbn=false]{biblatex-chicago}
+\renewcommand{\bibsetup}{\singlespacing}
+\renewcommand{\bibitemsep}{1\baselineskip}
+\renewcommand{\bibhang}{0.5in}
+
+% For inputting code
 \usepackage{listings}
-%\usepackage[figuresright]{rotfloat}
-%\usepackage{multirow}
-%These next two lines are for the citing with the IEEE style (leave commented for ASME)
-%\renewcommand\citepunct{], [}
-%\renewcommand\citedash{]--[}
 
 \usepackage[pdftex,backref,pagebackref=false,plainpages=false]{hyperref}
 \hypersetup{
@@ -85,9 +73,6 @@
   pdfborder = {0 0 0},
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Define macros here - You may use these, or delete them, as you see fit.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setcounter{tocdepth}{1}
 
 % To remove bold fonts in TOC. However, as this currently is, the vertical spacing gets thrown off.
@@ -127,40 +112,14 @@
 \newsavebox{\tempbox}
 \newlength{\tempwidth}
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% To only print a few chapters without changing the reference numbers,
-% uncomment the chapters you want
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\includeonly{chapter1}
-%\includeonly{chapter2}
-%\includeonly{chapter3}
-%\includeonly{chapter4}
-%\includeonly{chapter5}
-%\includeonly{chapter6}
-%\includeonly{chapter7}
-%\includeonly{appendixa}
-%\includeonly{appendixb}
-%\includeonly{appendixc}
-%\includeonly{appendixd}
+\addbibresource{\jobname.bib}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Start Document
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-
-% Define Title & Author
-% For a title of more than one line, use the \\ to break up the lines so they appear in an inverse pyramid shape.
-%Also, make sure you use title case (upper case for most of the first letters of words)
-\title{A Cognitive Approach to Predicting\\Academic Success in Computing} %Ira A. Fulton College\\ of Engineering and Technology}
+\title{A Cognitive Approach to Predicting\\Academic Success in Computing}
 \author{Colby Goettel}
-
-% For displaying the BYU Thesis header
-%  This command assumes that there are documents called abstract.tex and
-%  acknowledgements.tex that will be included in the header
 \showBYUHeader
 
-% Include chapters of the thesis here: (Note that you should open the files chapter1.tex and chapter2.tex to
-% see some of the important notes about how to do your thesis!)
 \include{chapter1}
 \include{chapter2}
 \include{chapter3}
@@ -169,13 +128,14 @@
 
 % Bibliography
 \cleardoublepage
-\bibliographystyle{chicago}%Change this to use a different bibliography style, such as ieeetr.
+% \bibliographystyle{chicago}
 \nocite{*}
-\bibliography{master}% Change this to use a different bibliography database file.
+% \bibliography{master}
+\renewcommand{\bibname}{References}
+\printbibliography
 
 % Appendices
 \appendix
 \include{appendixa}
-\include{appendixb}
 
 \end{document}
