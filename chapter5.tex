@@ -103,9 +103,9 @@ Each student's major GPA was received from the Registrar's Office and input into
 As discussed previously, a participation rate of 35-48\% was necessary for a 10\% sampling error and 80\% confidence level. This allows for inferences to be made on the population, not just the students sampled. The CS and IS senior classes were estimated by their respective departments to be one hundred students each, so participation from twenty-one students was necessary for each major. The IT senior class was estimated at forty students, requiring participation from sixteen students. Table~\ref{tab:c-response-rates} shows the amount of responses received compared to the total amounts needed.
 
 \begin{table}[h!]
-  \caption[Sample sizes]{Response Rates of Various Majors}
-  \label{tab:c-response-rates}
   \centering
+  \caption{Response Rates of Various Majors}
+  \label{tab:response-rates}
   \begin{tabular}{llllll}
     \toprule
     Major & Total seniors in major & Surveys needed & Surveys received & Response rate\\
@@ -170,15 +170,14 @@ In order to estimate the relationship that AC-CE and AE-RO have, I developed a f
 
 \begin{table}[!htbp]
   \centering
-  \caption[Models 1 and 2]{Models 1 and 2}
-  \label{tab:c-models12}
+  \caption{Models~1 and 2}
+  \label{tab:models12}
   \begin{tabular}{@{\extracolsep{5pt}}lll}
   \toprule
-   & \multicolumn{2}{c}{\textit{Dependent variable:}} \\
-  \cline{2-3}
-  \\[-1.8ex] & \multicolumn{2}{c}{Major GPA} \\
+   & \multicolumn{2}{c}{\textit{Dependent variable: Major GPA}} \\
+  \cmidrule{2-3}
   \\[-1.8ex] & (1) & (2)\\
-  \hline \\[-1.8ex]
+  \midrule
   CS dummy variable & 0.238$^{**}$ & 0.137 \\
     & (0.112) & (0.107) \\
     & & \\
@@ -208,13 +207,13 @@ In both models, AC-CE had a $p>0.05$ which helped suggest that AC-CE was not a s
 In the next two models (see Table~\ref{tab:c-models34}), AE-RO was decomposed into its two individual elements because it was not clear which element was driving the AE-RO correlation with GPA. Model~3, which has AE-RO decomposed, showed that RO had a negative relationship with major GPA. When control variables (age and parents' education level) were added in Model~4, only the RO relationship remained statistically significant. These models are probably the best fit to estimate these correlations. The RO value and control terms have a high joint significance, so they should not be removed from the model. Model~4 had an adjusted R-squared of $0.4118$, meaning that the variables in the model can explain roughly 41\% of the variance in major GPA.
 
 \begin{table}[!htbp] \centering
-  \caption[Models 3 and 4]{Models 3 and 4}
-  \label{tab:c-models34}
+  \centering
+  \caption{Models~3 and~4}
+  \label{tab:models34}
   \begin{tabular}{@{\extracolsep{5pt}}lll}
     \toprule
-     & \multicolumn{2}{c}{\textit{Dependent variable:}} \\
-    \cline{2-3}
-    \\[-1.8ex] & \multicolumn{2}{c}{Major GPA} \\
+     & \multicolumn{2}{c}{\textit{Dependent variable: Major GPA}} \\
+    \cmidrule{2-3}
     \\[-1.8ex] & (1) & (2)\\
     \midrule
     csdum & 0.231$^{**}$ & 0.135 \\
@@ -242,15 +241,14 @@ The research question being examined here is: ``What is the best multiple regres
 Regressions were then run to check for the RO effect by major (summarized in Table~\ref{tab:c-models567}). The first step was to include an interaction term (Model~5) between the RO value and the CS dummy variable. This model captured whether the relationship between RO and major GPA was different between CS majors and IT majors. This term was statistically significant ($p<0.05$) with a negative relationship between RO and major GPA; however, it was unclear in which major that relationship occurs.
 
 \begin{table}[!htbp] \centering
-  \caption[Models 5, 6, and 7]{Models 5, 6, and 7}
-  \label{tab:c-models567}
+  \caption{Models~5, 6, and 7}
+  \label{tab:models567}
   \begin{tabular}{@{\extracolsep{5pt}}llll}
     \toprule
-     & \multicolumn{3}{c}{\textit{Dependent variable:}} \\
-    \cline{2-4}
-    \\[-1.8ex] & \multicolumn{3}{c}{Major.GPA} \\
+     & \multicolumn{3}{c}{\textit{Dependent variable: Major GPA}} \\
+    \cmidrule{2-4}
     \\[-1.8ex] & (1) & (2) & (3)\\
-    \hline \\[-1.8ex]
+    \midrule
     csdum & $-$0.633 &  &  \\
       & (0.469) &  &  \\
       & & & \\
