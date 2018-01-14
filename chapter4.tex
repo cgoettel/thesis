@@ -154,7 +154,8 @@ Initial data analysis showed a significant correlation between RO and GPA, but I
 
 Regressions were then run to check for the RO effect by major (summarized in Table~\ref{tab:models567}). The first step was to include an interaction term (Model~5) between the RO value and the CS dummy variable. This model captured whether the relationship between RO and major GPA was different between CS majors and IT majors. This term was statistically significant ($p<0.05$) with a negative relationship between RO and major GPA; however, it was unclear in which major that relationship occurs.
 
-\begin{table}[!htbp] \centering
+\begin{table}[!htbp]
+  \centering
   \caption{Models~5, 6, and 7}
   \label{tab:models567}
   \begin{tabular}{@{\extracolsep{5pt}}llll}
@@ -189,9 +190,22 @@ But what does that mean in the real world? Is that enough to make a difference i
 The fact that the RO low-to-high difference correlates to a little over one standard deviation means that the change is roughly comparable to decreasing roughly 38 percentiles from the mean (given that 68\% are within one standard deviation of the mean in either direction). This seems like it could be substantive, at least for IT students, since IT GPA is lower when the student more strongly prefers Reflective learning. However, this doesn't seem to hold for CS, as shown in Model~6.
 
 \subsection{How strong is the correlation between AC-CE and AE-RO, and student satisfaction among CS, IS, and IT students?}
-Nuata's AMSS is graded on a five-point Likert-type scale with two of the responses being negatively scored. Two of the AMSS questions assume that students still have the option of changing their major, but once BYU students get beyond a certain credit threshold (well before their senior year), it becomes impossible for them to change majors. Because of this and the lack of variance among the responses, these questions were dropped from the analysis.
+Nuata's AMSS, as enumerated in chapter 1, is graded on a five-point Likert-type scale with two of the responses being negatively scored. Two of the AMSS questions assume that students still have the option of changing their major, but once BYU students get beyond a certain credit threshold (well before their senior year), it becomes impossible for them to change majors. Because of this and the lack of variance among the responses, these questions were dropped from the analysis.
 
-I created a summary index of academic major satisfaction using the remaining AMSS variables and reverse coded the negatively-scored variables. In this summary index, the least satisfied value was a 4 and the most satisfied was a 20.
+I created a summary index (Table~\ref{tab:nuata-summary-index}) of academic major satisfaction using the remaining AMSS variables and reverse coded the negatively-scored variables. In this summary index, the least satisfied value was a 4 and the most satisfied was a 20.
+
+\begin{table}[!htb]
+  \centering
+  \caption{Summary Index of AMSS}
+  \label{tab:nuata-summary-index}
+  \begin{tabular}{cccccc}
+    \toprule
+    Min.  & 1st Qu. & Median & Mean  & 3rd Qu. &Max. \\
+    \midrule
+    12.00 &  16.25  & 19.00  & 18.10 & 20.00   & 20.00 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 Next, I checked the simple correlations between AE-RO and AC-CE with the satisfaction index. The Pearson coefficients are $-0.1206$ ($p=0.4645$) and $-0.0622$ ($p=0.7064$), respectively. It is possible that the relationship could only exist for the RO value, since this was the only value correlated with major GPA in the previous section. Checking for that, I found a Pearson correlation coefficient of $0.2634$ ($p=0.1051$). This means that even restricting to just RO and IT majors fails to find a statistically significant correlation ($0.2483$, $p=0.2652$).
 

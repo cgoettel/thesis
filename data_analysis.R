@@ -84,6 +84,7 @@ yy * 2 * -0.04334
 ### Data cleaning: AMSS values index minus questions 3 and 6.
 data.mis$amss.ind <- (6- data.mis$amss1) +
  (6 - data.mis$amss2) + data.mis$amss4 + data.mis$amss5
+summary(data.mis$amss.ind)
 
 ### Pearson's correlation coefficient for AE-RO and AC-CE and
 ### satisfaction
