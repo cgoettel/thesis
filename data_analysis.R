@@ -2,10 +2,10 @@
 ## Packages.
 ## To install, run `install.packages("<package_name>")`.
 library(stargazer)
-library(car)
+library(ggplot2)
 
 ## Input data
-data <- read.csv("/path/to/data.csv")
+data <- read.csv("data.csv")
 
 ## Dummy variables
 ### Gender dummy variable
@@ -26,15 +26,49 @@ data.mis$csdum[data.mis$Major == "cs"] <- 1
 data.mis$csdum[data.mis$Major != "cs"] <- 0
 
 # Research questions
-## Question 1: How strong is the correlation between CE-AC and
-## RO-AE, and college GPA in CS, IS, and IT?
-# Pearson's correlation coefficient
+## Question 1: How strong is the correlation between AC-CE and
+## AE-RO, and college GPA in CS, IS, and IT?
+# Let's take a look at the data
+# Set up some variables
+cs_ac_ce<-data.mis$AC.CE[data.mis$Major=="cs"]
+cs_ae_ro<-data.mis$AE.RO[data.mis$Major=="cs"]
+it_ac_ce<-data.mis$AC.CE[data.mis$Major=="it"]
+it_ae_ro<-data.mis$AE.RO[data.mis$Major=="it"]
+cs_major_gpa<-data.mis$Major.GPA[data.mis$Major=="cs"]
+it_major_gpa<-data.mis$Major.GPA[data.mis$Major=="it"]
+
+# Plot cs vs it so we can visualize it
+cs_v_it_plot<-ggplot(df, aes(cs_ac_ce,cs_ae_ro))+geom_point(color="black")
+cs_v_it_plot<-cs_v_it_plot+geom_point(data=df2, x=it_ac_ce, y=it_ae_ro,
+  color="red")
+cs_v_it_plot<-labs(x="AC-CE", y="AE-RO")
+cs_v_it_plot<-scale_fill_manual(name="Majors", values =
+  c("CS" = "black", "IT" = "red"))
+
+# Save the plot
+jpeg('cs-v-it-plot.jpg')
+cs_v_it_plot
+dev.off()
+
+# Pearson's correlation coefficient for both majors
 cor.test(data$AC.CE, data$AE.RO)
+
+# Pearson's correlation coefficient by major
+# These don't work because they're of varying lengths
+cor.test(cs_ac_ce,it_ac_ce)
+cor.test(cs_ae_ro,it_ae_ro)
 
 ### Relationship to GPA
 #### Combined - not divided between CS and IT
 cor.test(data.mis$Major.GPA, data.mis$AE.RO)
 cor.test(data.mis$Major.GPA, data.mis$AC.CE)
+
+#### Split by major for each axis per
+cor.test(cs_major_gpa, cs_ac_ce)
+cor.test(cs_major_gpa, cs_ae_ro)
+cor.test(it_major_gpa, it_ac_ce)
+# This last one is the only significant one with p < 0.05.
+cor.test(it_major_gpa, it_ae_ro)
 
 ## Question 2: What is the best multiple regression model to fit
 ## these correlations?
