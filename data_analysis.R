@@ -73,6 +73,8 @@ cor.test(cs_major_gpa, cs_ae_ro)
 cor.test(it_major_gpa, it_ac_ce)
 # This last one is the only significant one with p < 0.05.
 cor.test(it_major_gpa, it_ae_ro)
+# However, the t test for this is p>0.05.
+t.test(it_major_gpa, it_ae_ro)
 
 # Let's see what that last one looks like
 df<-data.frame(it_major_gpa, it_ae_ro)
