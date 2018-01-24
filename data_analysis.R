@@ -28,7 +28,6 @@ data.mis$csdum[data.mis$Major != "cs"] <- 0
 # Research questions
 ## Question 1: How strong is the correlation between AC-CE and
 ## AE-RO, and college GPA in CS, IS, and IT?
-# Let's take a look at the data
 # Set up some variables
 cs_ac_ce<-data.mis$AC.CE[data.mis$Major=="cs"]
 cs_ae_ro<-data.mis$AE.RO[data.mis$Major=="cs"]
@@ -37,26 +36,31 @@ it_ae_ro<-data.mis$AE.RO[data.mis$Major=="it"]
 cs_major_gpa<-data.mis$Major.GPA[data.mis$Major=="cs"]
 it_major_gpa<-data.mis$Major.GPA[data.mis$Major=="it"]
 
+# Let's take a look at the data
 # Plot cs vs it so we can visualize it
+df<-data.frame(cs_ac_ce,cs_ae_ro)
+df2<-data.frame(it_ac_ce,it_ae_ro)
 cs_v_it_plot<-ggplot(df, aes(cs_ac_ce,cs_ae_ro))+geom_point(color="black")
 cs_v_it_plot<-cs_v_it_plot+geom_point(data=df2, x=it_ac_ce, y=it_ae_ro,
   color="red")
 cs_v_it_plot<-labs(x="AC-CE", y="AE-RO")
 cs_v_it_plot<-scale_fill_manual(name="Majors", values =
   c("CS" = "black", "IT" = "red"))
-
-# Save the plot
 jpeg('cs-v-it-plot.jpg')
 cs_v_it_plot
 dev.off()
 
 # Pearson's correlation coefficient for both majors
+# This doesn't make sense to look at. Do we really care if there's a correlation
+# between AC-CE and AE-RO?
 cor.test(data$AC.CE, data$AE.RO)
 
-# Pearson's correlation coefficient by major
+# Do the CS AC-CE and IT AC-CE have any correlation?
 # These don't work because they're of varying lengths
-cor.test(cs_ac_ce,it_ac_ce)
-cor.test(cs_ae_ro,it_ae_ro)
+t.test(cs_ac_ce,it_ac_ce)
+# What about AE-RO?
+t.test(cs_ae_ro,it_ae_ro)
+# Both are p>0.05.
 
 ### Relationship to GPA
 #### Combined - not divided between CS and IT
@@ -69,6 +73,14 @@ cor.test(cs_major_gpa, cs_ae_ro)
 cor.test(it_major_gpa, it_ac_ce)
 # This last one is the only significant one with p < 0.05.
 cor.test(it_major_gpa, it_ae_ro)
+
+# Let's see what that last one looks like
+df<-data.frame(it_major_gpa, it_ae_ro)
+it_major_ae_ro_plot<-ggplot(df, aes(x=it_major_gpa, y=it_ae_ro)) + geom_point()
+it_major_ae_ro_plot<-it_major_ae_ro_plot + geom_smooth(method=lm)
+jpeg('it_major_ae_ro_plot.jpg')
+it_major_ae_ro_plot
+dev.off()
 
 ## Question 2: What is the best multiple regression model to fit
 ## these correlations?
