@@ -3,6 +3,7 @@
 ## To install, run `install.packages("<package_name>")`.
 library(ggplot2)
 library(grid)
+library(Kendall)
 library(stargazer)
 
 ## Input data
@@ -33,8 +34,18 @@ it_ae_ro<-data.mis$AE.RO[data.mis$Major=="it"]
 cs_major_gpa<-data.mis$Major.GPA[data.mis$Major=="cs"]
 it_major_gpa<-data.mis$Major.GPA[data.mis$Major=="it"]
 
-# Let's take a look at the data
-# Plot cs vs it so we can visualize it
+# First, let's see if there's a correlation between CS and IT AC-CE and AE-RO.
+# "The t-test is used to test whether there is a difference between two groups
+# on a continuous dependent variable." That is appropriate for checking if
+# there's a difference between CS and IT majors with their AC-CE and AE-RO
+# values, but not for checking the significance between those values and the
+# relationship to GPA.
+t.test(cs_ac_ce, it_ac_ce) # p = 0.5411
+t.test(cs_ae_ro, it_ae_ro) # p = 0.3501
+# I don't know if I'm doing that right, so just to be safe:
+t.test(cs_ac_ce,cs_ae_ro) # p = 0.3756
+t.test(it_ac_ce,it_ae_ro) # p = 0.5674
+# So there's no relationship between them. And we can see that in the plot:
 df<-data.frame(cs_ac_ce,cs_ae_ro)
 df2<-data.frame(it_ac_ce,it_ae_ro)
 cs_v_it_plot<-ggplot(df, aes(cs_ac_ce,cs_ae_ro)) +
@@ -51,13 +62,47 @@ dev.off()
 # Research questions
 ## Question 1: How strong is the correlation between AC-CE and
 ## AE-RO, and college GPA in CS, IS, and IT?
-cor.test(cs_major_gpa, cs_ac_ce)
-cor.test(cs_major_gpa, cs_ae_ro)
-cor.test(it_major_gpa, it_ac_ce)
-# This last one is the only significant one with p < 0.05.
-cor.test(it_major_gpa, it_ae_ro)
-# However, the t test for this is p>0.05.
-t.test(it_major_gpa, it_ae_ro)
+# Before we know whether to use Pearson's or Spearman's, we have to know if the
+# data is normally distributed. If it is, we use Pearson's; if not, we use
+# Spearman's.
+shapiro.test(cs_major_gpa) # p = 0.148
+shapiro.test(it_major_gpa) # p = 0.8639
+shapiro.test(cs_ac_ce) # p = 0.02512
+shapiro.test(cs_ae_ro) # p = 0.7826
+shapiro.test(it_ac_ce) # p = 0.3601
+shapiro.test(it_ae_ro) # p = 0.4583
+
+cor.test(cs_major_gpa, cs_ac_ce) # p = 0.8177
+cor.test(cs_major_gpa, cs_ae_ro) # p = 0.6704
+cor.test(it_major_gpa, it_ac_ce) # p = 0.9727
+cor.test(it_major_gpa, it_ae_ro) # p = 0.02017, cor = 0.4914967
+# This means that as IT AE-RO increases, there's a 0.4914967 increase in GPA.
+# Let's get a summary of it_major_gpa so we can see just what that means.
+summary(it_major_gpa)
+#    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+#  2.340   2.868   3.200   3.204   3.480   3.970
+sd(it_major_gpa) # sd = 0.4439921
+# CHECK: If I'm reading this right, it's showing an increase of 0.44 GPA per sd.
+# This is huge when it comes to IT students being more AE-RO (meaning they're
+# stronger in the AE bit).
+
+cor.test(cs_major_gpa, cs_ac_ce, method = "spearman") # p = 0.8232
+cor.test(cs_major_gpa, cs_ae_ro, method = "spearman") # p = 0.8342
+cor.test(it_major_gpa, it_ac_ce, method = "spearman") # p = 0.9262
+cor.test(it_major_gpa, it_ae_ro, method = "spearman") # p = 0.0161, rho = 0.5066
+# Spearman's and Pearson's are showing the same thing which is great news. But,
+# Spearman's freaks out when there's ties, so let's use Kendall's tau-b to
+# check.
+Kendall(cs_major_gpa,cs_ac_ce) # p = 0.71763
+Kendall(cs_major_gpa,cs_ae_ro) # p = 0.82436
+Kendall(it_major_gpa,it_ac_ce) # p = 0.95484
+Kendall(it_major_gpa,it_ae_ro) # p = 0.02154, tau = 0.365
+# And again the same p-value being significant holds. I'm convinced. Well,
+# except for t-tests. Let's actually learn about those.
+# The average of the three correlations:
+#   ( 0.365 + 0.5066691 + 0.4439921 ) / 3
+# is 0.4385537 which is right around what I was writing about earlier on the
+# effect that an IT student's AE-RO has on their GPA.
 
 # Let's see what they look like
 # First plot
