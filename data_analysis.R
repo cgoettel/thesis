@@ -104,7 +104,6 @@ dev.off()
 
 ## Question 2: What is the best multiple regression model to fit
 ## these correlations?
-
 ### Model 1: with AC-CE and AE-RO and a CS dummy variable
 fit1 <- lm(Major.GPA ~ csdum + AC.CE + AE.RO, data = data.mis)
 
@@ -113,31 +112,22 @@ fit2 <- lm(Major.GPA ~ csdum + AC.CE + AE.RO + Age +
  Parents.education, data = data.mis)
 stargazer(fit1, fit2)
 
-### Models 3 and 4
-#### Divided into just AE and RO
-fit3 <- lm(Major.GPA ~ csdum + RO.total + AE.total, data =
- data.mis)
-#### With age and parents' education as covariates
-fit4 <- lm(Major.GPA ~ csdum + RO.total + AE.total + Age +
- Parents.education, data = data.mis)
-stargazer(fit3, fit4)
-
-#### Test of joint significance (lht = test linear hypothesis)
+#### Test of joint significance (lht = linear hypothesis test)
 xx <- lm(Major.GPA ~ csdum + RO.total + AE.total + Age +
- Parents.education, data = data.mis)
+  Parents.education, data = data.mis)
 lht(xx, c("AE.total = 0","Parents.educationgraduate degree = 0",
- "Parents.educationpost-graduate degree = 0",
- "Parents.educationsome college = 0",
- "Parents.educationundergraduate degree = 0", "Age21-24 = 0",
- "Age25-29 = 0", "Age30-34 = 0"), white.adjust = "hc1")
+  "Parents.educationpost-graduate degree = 0",
+  "Parents.educationsome college = 0",
+  "Parents.educationundergraduate degree = 0", "Age21-24 = 0",
+  "Age25-29 = 0", "Age30-34 = 0"), white.adjust = "hc1")
 
 ### Models 5, 6, and 7
 fit5 <- lm(Major.GPA ~ csdum + RO.total + csdum*RO.total + Age +
- Parents.education, data =data.mis)
+  Parents.education, data =data.mis)
 fit6 <- lm(Major.GPA ~ RO.total, data = data.mis, subset =
- Major == "cs")
+  Major == "cs")
 fit7 <- lm(Major.GPA ~ RO.total, data = data.mis, subset =
- Major == "it")
+  Major == "it")
 stargazer(fit5, fit6, fit7)
 
 #### Substantive interpretation
@@ -148,32 +138,57 @@ yy * 2 * -0.04334
 ## Question 3: How strong is the correlation between AC-CE and
 ## AE-RO, and student satisfaction in CS, IS, and IT?
 ### Data cleaning: AMSS values index minus questions 3 and 6.
-data.mis$amss.ind <- (6- data.mis$amss1) +
- (6 - data.mis$amss2) + data.mis$amss4 + data.mis$amss5
-summary(data.mis$amss.ind)
+amss_index <- (6 - data.mis$amss1) + (6 - data.mis$amss2) +
+  data.mis$amss4 + data.mis$amss5
+summary(amss_index)
 
 ### Pearson's correlation coefficient for AE-RO and AC-CE and
 ### satisfaction
-cor.test(data.mis$amss.ind, data.mis$AE.RO)
-cor.test(data.mis$amss.ind, data.mis$AC.CE)
-cor.test(data.mis$amss.ind, data.mis$RO.total)
-cor.test(data.mis$amss.ind, data.mis$AE.total)
-cor.test(data.mis$amss.ind, data.mis$AC.total)
-cor.test(data.mis$amss.ind, data.mis$CE.total)
+cor.test(amss_index, data.mis$AE.RO)
+cor.test(amss_index, data.mis$AC.CE)
 
-### Again for IT majors
-cor.test(data.mis$amss.ind[data.mis$Major == "it"],
+### For IT majors
+cor.test(amss_index[data.mis$Major == "it"],
  data.mis$RO.total[data.mis$Major == "it"])
 
 ### And again for CS majors
-cor.test(data.mis$amss.ind[data.mis$Major == "cs"],
+cor.test(amss_index[data.mis$Major == "cs"],
  data.mis$RO.total[data.mis$Major == "cs"])
 
 ## Question 4: Is there a correlation between college GPA and
 ## student satisfaction?
 ### Pearson's correlation coefficient between GPA and
-## satisfaction
-cor(data.mis$Major.GPA, data.mis$amss.ind)
+### satisfaction
+cs_amss <- amss_index[data.mis$Major == "cs"]
+it_amss <- amss_index[data.mis$Major == "it"]
+
+cor.test(cs_major_gpa, cs_amss)
+cor.test(it_major_gpa, it_amss)
+
+# Let's visualize that
+## CS AMSS plot
+df<-data.frame(cs_major_gpa, cs_amss)
+cs_major_amss_plot<-ggplot(df, aes(x=cs_major_gpa, y=cs_amss))+
+  geom_point()
+cs_major_amss_plot<-cs_major_amss_plot + geom_smooth(method=lm)
+cs_major_amss_plot<-cs_major_amss_plot + labs(x="CS Major GPA",
+  y="CS AMSS")
+## IT AMSS plot
+df<-data.frame(it_major_gpa, it_amss)
+it_major_amss_plot<-ggplot(df, aes(x=it_major_gpa, y=it_amss))+
+  geom_point()
+it_major_amss_plot<-it_major_amss_plot + geom_smooth(method=lm)
+it_major_amss_plot<-it_major_amss_plot + labs(x="IT Major GPA",
+  y="IT AMSS")
+
+# Print them side-by-side
+jpeg('major_gpa_amss_plots.jpg', width = 1000, height = 500)
+pushViewport(viewport(layout = grid.layout(1,2)))
+print(cs_major_amss_plot, vp = viewport(layout.pos.row = 1,
+  layout.pos.col = 1))
+print(it_major_amss_plot, vp = viewport(layout.pos.row = 1,
+  layout.pos.col = 2))
+dev.off()
 
 # Demographics
 summary(lm(amss.ind ~ Major.GPA + csdum + Age + Gender, data =
