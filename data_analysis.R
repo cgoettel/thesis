@@ -1,8 +1,9 @@
 # Initialization
 ## Packages.
 ## To install, run `install.packages("<package_name>")`.
-library(stargazer)
 library(ggplot2)
+library(grid)
+library(stargazer)
 
 ## Input data
 data <- read.csv("data.csv")
@@ -25,10 +26,6 @@ data.mis$maledum[data.mis$Gender == "f"] <- 0
 data.mis$csdum[data.mis$Major == "cs"] <- 1
 data.mis$csdum[data.mis$Major != "cs"] <- 0
 
-# Research questions
-## Question 1: How strong is the correlation between AC-CE and
-## AE-RO, and college GPA in CS, IS, and IT?
-# Set up some variables
 cs_ac_ce<-data.mis$AC.CE[data.mis$Major=="cs"]
 cs_ae_ro<-data.mis$AE.RO[data.mis$Major=="cs"]
 it_ac_ce<-data.mis$AC.CE[data.mis$Major=="it"]
@@ -40,34 +37,20 @@ it_major_gpa<-data.mis$Major.GPA[data.mis$Major=="it"]
 # Plot cs vs it so we can visualize it
 df<-data.frame(cs_ac_ce,cs_ae_ro)
 df2<-data.frame(it_ac_ce,it_ae_ro)
-cs_v_it_plot<-ggplot(df, aes(cs_ac_ce,cs_ae_ro))+geom_point(color="black")
-cs_v_it_plot<-cs_v_it_plot+geom_point(data=df2, x=it_ac_ce, y=it_ae_ro,
-  color="red")
-cs_v_it_plot<-labs(x="AC-CE", y="AE-RO")
-cs_v_it_plot<-scale_fill_manual(name="Majors", values =
-  c("CS" = "black", "IT" = "red"))
-jpeg('cs-v-it-plot.jpg')
+cs_v_it_plot<-ggplot(df, aes(cs_ac_ce,cs_ae_ro)) +
+  geom_point(color="black")
+cs_v_it_plot<-cs_v_it_plot + geom_point(data=df2, x=it_ac_ce,
+  y=it_ae_ro, color="red")
+cs_v_it_plot<-cs_v_it_plot + labs(x="AC-CE", y="AE-RO")
+cs_v_it_plot<-cs_v_it_plot + scale_fill_manual(name="Majors",
+  values = c("CS" = "black", "IT" = "red"))
+jpeg('cs-v-it-plot.jpg', width = 1000, height = 1000)
 cs_v_it_plot
 dev.off()
 
-# Pearson's correlation coefficient for both majors
-# This doesn't make sense to look at. Do we really care if there's a correlation
-# between AC-CE and AE-RO?
-cor.test(data$AC.CE, data$AE.RO)
-
-# Do the CS AC-CE and IT AC-CE have any correlation?
-# These don't work because they're of varying lengths
-t.test(cs_ac_ce,it_ac_ce)
-# What about AE-RO?
-t.test(cs_ae_ro,it_ae_ro)
-# Both are p>0.05.
-
-### Relationship to GPA
-#### Combined - not divided between CS and IT
-cor.test(data.mis$Major.GPA, data.mis$AE.RO)
-cor.test(data.mis$Major.GPA, data.mis$AC.CE)
-
-#### Split by major for each axis per
+# Research questions
+## Question 1: How strong is the correlation between AC-CE and
+## AE-RO, and college GPA in CS, IS, and IT?
 cor.test(cs_major_gpa, cs_ac_ce)
 cor.test(cs_major_gpa, cs_ae_ro)
 cor.test(it_major_gpa, it_ac_ce)
@@ -76,12 +59,47 @@ cor.test(it_major_gpa, it_ae_ro)
 # However, the t test for this is p>0.05.
 t.test(it_major_gpa, it_ae_ro)
 
-# Let's see what that last one looks like
+# Let's see what they look like
+# First plot
+df<-data.frame(cs_major_gpa, cs_ac_ce)
+cs_major_ac_ce_plot<-ggplot(df, aes(x=cs_major_gpa, y=cs_ac_ce))+
+  geom_point()
+cs_major_ac_ce_plot<-cs_major_ac_ce_plot + geom_smooth(method=lm)
+cs_major_ac_ce_plot<-cs_major_ac_ce_plot + labs(x="CS Major GPA",
+  y="CS AC-CE")
+# Second plot
+df<-data.frame(cs_major_gpa, cs_ae_ro)
+cs_major_ae_ro_plot<-ggplot(df, aes(x=cs_major_gpa, y=cs_ae_ro))+
+  geom_point()
+cs_major_ae_ro_plot<-cs_major_ae_ro_plot + geom_smooth(method=lm)
+cs_major_ae_ro_plot<-cs_major_ae_ro_plot + labs(x="CS Major GPA",
+  y="CS AE-RO")
+# Third plot
+df<-data.frame(it_major_gpa, it_ac_ce)
+it_major_ac_ce_plot<-ggplot(df, aes(x=it_major_gpa, y=it_ac_ce))+
+  geom_point()
+it_major_ac_ce_plot<-it_major_ac_ce_plot + geom_smooth(method=lm)
+it_major_ac_ce_plot<-it_major_ac_ce_plot + labs(x="IT Major GPA",
+  y="IT AC-CE")
+# Fourth plot
 df<-data.frame(it_major_gpa, it_ae_ro)
-it_major_ae_ro_plot<-ggplot(df, aes(x=it_major_gpa, y=it_ae_ro)) + geom_point()
+it_major_ae_ro_plot<-ggplot(df, aes(x=it_major_gpa, y=it_ae_ro))+
+  geom_point()
 it_major_ae_ro_plot<-it_major_ae_ro_plot + geom_smooth(method=lm)
-jpeg('it_major_ae_ro_plot.jpg')
-it_major_ae_ro_plot
+it_major_ae_ro_plot<-it_major_ae_ro_plot + labs(x="IT Major GPA",
+  y="IT AE-RO")
+
+# Print them side-by-side
+jpeg('major_gpa_lm_plots.jpg', width = 1000, height = 1000)
+pushViewport(viewport(layout = grid.layout(2,2)))
+print(cs_major_ac_ce_plot, vp = viewport(layout.pos.row = 1,
+  layout.pos.col = 1))
+print(cs_major_ae_ro_plot, vp = viewport(layout.pos.row = 1,
+  layout.pos.col = 2))
+print(it_major_ac_ce_plot, vp = viewport(layout.pos.row = 2,
+  layout.pos.col = 1))
+print(it_major_ae_ro_plot, vp = viewport(layout.pos.row = 2,
+  layout.pos.col = 2))
 dev.off()
 
 ## Question 2: What is the best multiple regression model to fit
