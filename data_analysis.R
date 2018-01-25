@@ -9,24 +9,16 @@ library(stargazer)
 ## Input data
 data <- read.csv("data.csv")
 
-## Dummy variables
-### Gender dummy variable
-data$maledum[data$Gender == "m"] <- 1
-data$maledum[data$Gender == "f"] <- 0
-
-### CS dummy variable
-data$csdum[data$Major == "cs"] <- 1
-data$csdum[data$Major != "cs"] <- 0
-
 ## Dataset without IS
-data.mis <- data[data$Major != "is",]
+data.mis <- data[data$Major != "is"]
+
+## Dummy variables
 data.mis$maledum[data.mis$Gender == "m"] <- 1
 data.mis$maledum[data.mis$Gender == "f"] <- 0
-
-### CS dummy variable
 data.mis$csdum[data.mis$Major == "cs"] <- 1
 data.mis$csdum[data.mis$Major != "cs"] <- 0
 
+## CS and IT specific variables
 cs_ac_ce<-data.mis$AC.CE[data.mis$Major=="cs"]
 cs_ae_ro<-data.mis$AE.RO[data.mis$Major=="cs"]
 it_ac_ce<-data.mis$AC.CE[data.mis$Major=="it"]
