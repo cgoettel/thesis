@@ -253,6 +253,15 @@ it_amss_index <- amss_index[data.mis$Major == "it"]
 
 summary(amss_index)
 sd(amss_index) # 2.259477
+df <- data.frame(amss_index)
+amss_plot <- ggplot(data = df, aes(amss_index)) +
+  geom_histogram()
+amss_plot <- amss_plot + labs(x = "AMSS Index", y = "Count")
+jpeg('amss_index_plot.jpg', width = 500, height = 500)
+amss_plot
+dev.off()
+
+# Just to be sure, let's look at each major
 summary(cs_amss_index)
 sd(cs_amss_index) # 2.362094
 summary(it_amss_index)
@@ -275,8 +284,8 @@ cor.test(it_amss_index, it_ae_ro) # p = 0.5147
 ## student satisfaction?
 ### Pearson's correlation coefficient between GPA and
 ### satisfaction
-cor.test(cs_major_gpa, cs_amss_index)
-cor.test(it_major_gpa, it_amss_index)
+cor.test(cs_major_gpa, cs_amss_index) # p = 0.3094
+cor.test(it_major_gpa, it_amss_index) # p = 0.4532
 
 # Let's visualize that
 ## CS AMSS plot
@@ -310,4 +319,6 @@ dev.off()
 # Demographics
 demogs <- lm(amss_index ~ major_gpa + csdum + Age + Gender,
   data = data.mis)
-stargazer(demogs)
+cov1 <- vcovHC(demogs, type = "HC1")
+robust_se_d <- sqrt(diag(cov1))
+stargazer(demogs, se = robust_se_d)
