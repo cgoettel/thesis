@@ -143,21 +143,36 @@ dev.off()
 ## Question 2: What is the best multiple regression model to fit
 ## these correlations?
 ### Model 1: with AC-CE and AE-RO and a CS dummy variable
-fit1 <- lm(Major.GPA ~ csdum + AC.CE + AE.RO, data = data.mis)
-
-# Let's visualize that
 fit1 <- lm(data = data.mis, Major.GPA ~ csdum + AC.CE + AE.RO)
-df$fit1 <- stats::predict(fit1, newdata=data.mis)
-err <- stats::predict(fit1, newdata=data.mis, se = TRUE)
-
-g <- ggplot(df)
-g <- g + geom_point(aes(x=major_gpa, y = fit1), size = 2, colour = "blue")
-g <- g + geom_smooth(data=df, aes(x=major_gpa, y=fit1), size = 1.5, colour = "red", se = TRUE, stat = "smooth")
 
 ### Model 2: plus covariates
 fit2 <- lm(Major.GPA ~ csdum + AC.CE + AE.RO + Age +
  Parents.education, data = data.mis)
+
+# Let's visualize that
 stargazer(fit1, fit2)
+
+# Plot fit1
+df$fit1 <- stats::predict(fit1, newdata=data.mis)
+err <- stats::predict(fit1, newdata=data.mis, se = TRUE)
+fit1_plot <- ggplot(df)
+fit1_plot <- fit1_plot + geom_point(aes(x=major_gpa, y = fit1), size = 2, colour = "blue")
+fit1_plot <- fit1_plot + geom_smooth(data=df, aes(x=major_gpa, y=fit1), size = 1.5, colour = "red", se = TRUE, stat = "smooth")
+fit1_plot <- fit1_plot + labs(x = "Major GPA", y = "CS dummy variable + AC-CE + AE-RO")
+
+# Plot fit2
+df$fit2 <- stats::predict(fit2, newdata=data.mis)
+err <- stats::predict(fit2, newdata=data.mis, se = TRUE)
+fit2_plot <- ggplot(df)
+fit2_plot <- fit2_plot + geom_point(aes(x=major_gpa, y = fit2), size = 2, colour = "blue")
+fit2_plot <- fit2_plot + geom_smooth(data=df, aes(x=major_gpa, y=fit2), size = 1.5, colour = "red", se = TRUE, stat = "smooth")
+fit2_plot <- fit2_plot + labs(x = "Major GPA", y = "CS dummy variable + AC-CE + AE-RO + Age + Parents' education")
+
+jpeg('mr_models_1_2.jpg', width = 1000, height = 500)
+pushViewport(viewport(layout = grid.layout(1,2)))
+print(fit1_plot, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
+print(fit2_plot, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
+dev.off()
 
 #### Test of joint significance (linear hypothesis test)
 cs_it_lht <- lm(Major.GPA ~ csdum + AE.RO + Age +
