@@ -156,74 +156,98 @@ stargazer(fit1, fit2)
 df$fit1 <- stats::predict(fit1, newdata=data.mis)
 err <- stats::predict(fit1, newdata=data.mis, se = TRUE)
 fit1_plot <- ggplot(df)
-fit1_plot <- fit1_plot + geom_point(aes(x=major_gpa, y = fit1), size = 2, colour = "blue")
-fit1_plot <- fit1_plot + geom_smooth(data=df, aes(x=major_gpa, y=fit1), size = 1.5, colour = "red", se = TRUE, stat = "smooth")
-fit1_plot <- fit1_plot + labs(x = "Major GPA", y = "CS dummy variable + AC-CE + AE-RO")
+fit1_plot <- fit1_plot + geom_point(aes(x=major_gpa, y = fit1),
+  size = 2)
+fit1_plot <- fit1_plot + geom_smooth(data=df, aes(x=major_gpa,
+  y=fit1), size = 1.5, colour = "blue", se = TRUE,
+  stat = "smooth", method = lm)
+fit1_plot <- fit1_plot + labs(x = "Major GPA", y =
+  "CS dummy variable + AC-CE + AE-RO")
 
 # Plot fit2
 df$fit2 <- stats::predict(fit2, newdata=data.mis)
 err <- stats::predict(fit2, newdata=data.mis, se = TRUE)
 fit2_plot <- ggplot(df)
-fit2_plot <- fit2_plot + geom_point(aes(x=major_gpa, y = fit2), size = 2, colour = "blue")
-fit2_plot <- fit2_plot + geom_smooth(data=df, aes(x=major_gpa, y=fit2), size = 1.5, colour = "red", se = TRUE, stat = "smooth")
-fit2_plot <- fit2_plot + labs(x = "Major GPA", y = "CS dummy variable + AC-CE + AE-RO + Age + Parents' education")
+fit2_plot <- fit2_plot + geom_point(aes(x=major_gpa, y = fit2),
+  size = 2)
+fit2_plot <- fit2_plot + geom_smooth(data=df, aes(x=major_gpa,
+  y=fit2), size = 1.5, colour = "blue", se = TRUE,
+  stat = "smooth", method = lm)
+fit2_plot <- fit2_plot + labs(x = "Major GPA", y =
+  "CS dummy variable + AC-CE + AE-RO + Age + Parents' education")
 
 jpeg('mr_models_1_2.jpg', width = 1000, height = 500)
 pushViewport(viewport(layout = grid.layout(1,2)))
-print(fit1_plot, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
-print(fit2_plot, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
+print(fit1_plot, vp = viewport(layout.pos.row = 1,
+  layout.pos.col = 1))
+print(fit2_plot, vp = viewport(layout.pos.row = 1,
+  layout.pos.col = 2))
 dev.off()
 
 #### Test of joint significance (linear hypothesis test)
 cs_it_lht <- lm(Major.GPA ~ csdum + AE.RO + Age +
   Parents.education, data = data.mis)
-lht(cs_it_lht, c("AE.RO = 0","Parents.educationgraduate degree = 0", "Parents.educationpost-graduate degree = 0", "Parents.educationsome college = 0",  "Parents.educationundergraduate degree = 0"), white.adjust = "hc1")
+lht(cs_it_lht, c("AE.RO = 0",
+  "Parents.educationgraduate degree = 0",
+  "Parents.educationpost-graduate degree = 0",
+  "Parents.educationsome college = 0",
+  "Parents.educationundergraduate degree = 0"),
+  white.adjust = "hc1")
 
 ## Question 3: How strong is the correlation between AC-CE and
 ## AE-RO, and student satisfaction in CS, IS, and IT?
 ### Data cleaning: AMSS values index minus questions 3 and 6.
 amss_index <- (6 - data.mis$amss1) + (6 - data.mis$amss2) +
   data.mis$amss4 + data.mis$amss5
+cs_amss_index <- amss_index[data.mis$Major == "cs"]
+it_amss_index <- amss_index[data.mis$Major == "it"]
+
 summary(amss_index)
+sd(amss_index) # 2.259477
+summary(cs_amss_index)
+sd(cs_amss_index) # 2.362094
+summary(it_amss_index)
+sd(it_amss_index) # 2.113654
 
-### Pearson's correlation coefficient for AE-RO and AC-CE and
-### satisfaction
-cor.test(amss_index, data.mis$AE.RO)
-cor.test(amss_index, data.mis$AC.CE)
+### Pearson's correlation coefficient for AC-CE/AE-RO and
+### satisfaction (not by major)
+cor.test(amss_index, data.mis$AE.RO) # p = 0.1059
+cor.test(amss_index, data.mis$AC.CE) # p = 0.8563
 
-### For IT majors
-cor.test(amss_index[data.mis$Major == "it"],
- data.mis$RO.total[data.mis$Major == "it"])
+### For CS majors
+cor.test(cs_amss_index, cs_ac_ce) # p = 0.8134
+cor.test(cs_amss_index, cs_ae_ro) # p = 0.1237
 
-### And again for CS majors
-cor.test(amss_index[data.mis$Major == "cs"],
- data.mis$RO.total[data.mis$Major == "cs"])
+### And again for IT majors
+cor.test(it_amss_index, it_ac_ce) # p = 0.9566
+cor.test(it_amss_index, it_ae_ro) # p = 0.5147
 
 ## Question 4: Is there a correlation between college GPA and
 ## student satisfaction?
 ### Pearson's correlation coefficient between GPA and
 ### satisfaction
-cs_amss <- amss_index[data.mis$Major == "cs"]
-it_amss <- amss_index[data.mis$Major == "it"]
-
-cor.test(cs_major_gpa, cs_amss)
-cor.test(it_major_gpa, it_amss)
+cor.test(cs_major_gpa, cs_amss_index)
+cor.test(it_major_gpa, it_amss_index)
 
 # Let's visualize that
 ## CS AMSS plot
-df<-data.frame(cs_major_gpa, cs_amss)
-cs_major_amss_plot<-ggplot(df, aes(x=cs_major_gpa, y=cs_amss))+
-  geom_point()
-cs_major_amss_plot<-cs_major_amss_plot + geom_smooth(method=lm)
-cs_major_amss_plot<-cs_major_amss_plot + labs(x="CS Major GPA",
-  y="CS AMSS")
+df <- data.frame(cs_major_gpa, cs_amss_index)
+cs_major_amss_plot <- ggplot(df, aes(x = cs_major_gpa,
+  y = cs_amss_index)) + geom_point()
+cs_major_amss_plot <- cs_major_amss_plot + geom_smooth(method=lm)
+cs_major_amss_plot <- cs_major_amss_plot + labs(x =
+  "CS Major GPA", y = "CS AMSS")
+cs_major_amss_plot <- cs_major_amss_plot + coord_cartesian(ylim =
+  c(12,20))
 ## IT AMSS plot
-df<-data.frame(it_major_gpa, it_amss)
-it_major_amss_plot<-ggplot(df, aes(x=it_major_gpa, y=it_amss))+
-  geom_point()
-it_major_amss_plot<-it_major_amss_plot + geom_smooth(method=lm)
-it_major_amss_plot<-it_major_amss_plot + labs(x="IT Major GPA",
+df <- data.frame(it_major_gpa, it_amss_index)
+it_major_amss_plot <- ggplot(df, aes(x = it_major_gpa,
+  y = it_amss_index)) + geom_point()
+it_major_amss_plot <- it_major_amss_plot + geom_smooth(method=lm)
+it_major_amss_plot <- it_major_amss_plot + labs(x="IT Major GPA",
   y="IT AMSS")
+it_major_amss_plot <- it_major_amss_plot + coord_cartesian(ylim =
+    c(12,20))
 
 # Print them side-by-side
 jpeg('major_gpa_amss_plots.jpg', width = 1000, height = 500)
@@ -235,5 +259,6 @@ print(it_major_amss_plot, vp = viewport(layout.pos.row = 1,
 dev.off()
 
 # Demographics
-summary(lm(amss.ind ~ Major.GPA + csdum + Age + Gender, data =
- data.mis))
+demogs <- lm(amss_index ~ major_gpa + csdum + Age + Gender,
+  data = data.mis)
+stargazer(demogs)
