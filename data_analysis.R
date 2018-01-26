@@ -73,7 +73,8 @@ cor.test(it_major_gpa, it_ae_ro) # p = 0.02017, cor = 0.4914967
 # This means that as IT AE-RO increases, there's a positively
 # related change in GPA which we can see in the Figure.
 
-# Let's get a summary of it_major_gpa so we can see just what that means.
+# Let's get a summary of it_major_gpa so we can see just what that
+# means.
 summary(it_major_gpa)
 #    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
 #  2.340   2.868   3.200   3.204   3.480   3.970
@@ -158,10 +159,6 @@ fit1 <- lm(data = data.mis, Major.GPA ~ csdum + AC.CE + AE.RO)
 fit2 <- lm(data = data.mis, Major.GPA ~ csdum + AC.CE + AE.RO +
   Age + Parents.education)
 
-# TODO: Run a few more lm just to make sure, but age and parents'
-# education seem like the reasonable ticket.
-# Also, run some with just AC-CE and just AE-RO.
-
 # Here's where we calculate the robust standard errors so we can
 # use them in the tables.
 cov1 <- vcovHC(fit1, type = "HC1")
@@ -170,7 +167,7 @@ cov2 <- vcovHC(fit1, type = "HC1")
 robust_se_2 <- sqrt(diag(cov2))
 
 # Let's visualize that
-stargazer(fit1, fit2, se = list(robust_se_1, robust_se_2), type = "text")
+stargazer(fit1, fit2, se = list(robust_se_1, robust_se_2))
 
 # Plot fit1
 df$fit1 <- stats::predict(fit1, newdata=data.mis)
@@ -205,7 +202,7 @@ print(fit2_plot, vp = viewport(layout.pos.row = 1,
 dev.off()
 
 #### Test of joint significance (linear hypothesis test)
-# We're not looking at the individual variables, so let's look
+# We haven't been looking at the individual variables, so let's look
 # at them individually and see if there's a joint significance.
 # The null hypothesis is that all of these are at 0 so let's see
 # if at least one of them isn't.
@@ -218,14 +215,14 @@ dev.off()
 # than when you don't include them.
 # In reality, having one that's significant at the single level
 # will generally make you fail the null hypothesis (meaning there
-# is a joint significance to they should be included in the
+# is a joint significance so they should be included in the
 # regression). If they fail the null hypothesis,
 # then you should keep them in the regression because they
 # somehow help contribute to the model because they help
-# explain the std error (explain the deviance in the model).
-# However, if they're all significant then we'll reject the joint
-# significance null hypothesis even though none of them have a
-# p < 0.05.
+# explain the std error (meaning, they help explain the deviance
+# in the model). Additionally, if they're all significant then we'll
+# reject the joint significance null hypothesis even though none of
+# them have a p < 0.05.
 # Removing unnecessary variables will give you more power with
 # this small of a dataset.
 cs_it_lht <- lm(data = data.mis, Major.GPA ~ csdum + AE.RO +
