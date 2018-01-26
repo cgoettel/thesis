@@ -202,10 +202,10 @@ print(fit2_plot, vp = viewport(layout.pos.row = 1,
 dev.off()
 
 #### Test of joint significance (linear hypothesis test)
-# We haven't been looking at the individual variables, so let's look
-# at them individually and see if there's a joint significance.
-# The null hypothesis is that all of these are at 0 so let's see
-# if at least one of them isn't.
+# We haven't been looking at the individual variables before, so
+# let's look at them individually and see if there's a joint
+# significance. The null hypothesis is that all of these are 0
+# so let's see if at least one of them isn't.
 # This is checking the residual (error) sum of squares to see
 # if we can explain the deviance in the model (by running two
 # models and comparing those error sum of squares values). So not
