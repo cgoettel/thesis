@@ -1,6 +1,7 @@
 # Initialization
 ## Packages.
 ## To install, run `install.packages("<package_name>")`.
+library(car)
 library(ggplot2)
 library(grid)
 library(Kendall)
@@ -10,7 +11,7 @@ library(stargazer)
 data <- read.csv("data.csv")
 
 ## Dataset without IS
-data.mis <- data[data$Major != "is"]
+data.mis <- data[data$Major != "is",]
 
 ## Dummy variables
 data.mis$maledum[data.mis$Gender == "m"] <- 1
@@ -144,33 +145,24 @@ dev.off()
 ### Model 1: with AC-CE and AE-RO and a CS dummy variable
 fit1 <- lm(Major.GPA ~ csdum + AC.CE + AE.RO, data = data.mis)
 
+# Let's visualize that
+fit1 <- lm(data = data.mis, Major.GPA ~ csdum + AC.CE + AE.RO)
+df$fit1 <- stats::predict(fit1, newdata=data.mis)
+err <- stats::predict(fit1, newdata=data.mis, se = TRUE)
+
+g <- ggplot(df)
+g <- g + geom_point(aes(x=major_gpa, y = fit1), size = 2, colour = "blue")
+g <- g + geom_smooth(data=df, aes(x=major_gpa, y=fit1), size = 1.5, colour = "red", se = TRUE, stat = "smooth")
+
 ### Model 2: plus covariates
 fit2 <- lm(Major.GPA ~ csdum + AC.CE + AE.RO + Age +
  Parents.education, data = data.mis)
 stargazer(fit1, fit2)
 
-#### Test of joint significance (lht = linear hypothesis test)
-xx <- lm(Major.GPA ~ csdum + RO.total + AE.total + Age +
+#### Test of joint significance (linear hypothesis test)
+cs_it_lht <- lm(Major.GPA ~ csdum + AE.RO + Age +
   Parents.education, data = data.mis)
-lht(xx, c("AE.total = 0","Parents.educationgraduate degree = 0",
-  "Parents.educationpost-graduate degree = 0",
-  "Parents.educationsome college = 0",
-  "Parents.educationundergraduate degree = 0", "Age21-24 = 0",
-  "Age25-29 = 0", "Age30-34 = 0"), white.adjust = "hc1")
-
-### Models 5, 6, and 7
-fit5 <- lm(Major.GPA ~ csdum + RO.total + csdum*RO.total + Age +
-  Parents.education, data =data.mis)
-fit6 <- lm(Major.GPA ~ RO.total, data = data.mis, subset =
-  Major == "cs")
-fit7 <- lm(Major.GPA ~ RO.total, data = data.mis, subset =
-  Major == "it")
-stargazer(fit5, fit6, fit7)
-
-#### Substantive interpretation
-yy <- sd(data.mis$RO.total[data.mis$csdum == 0], na.rm = T)
-##### IT standard deviation * 2 * Coeff
-yy * 2 * -0.04334
+lht(cs_it_lht, c("AE.RO = 0","Parents.educationgraduate degree = 0", "Parents.educationpost-graduate degree = 0", "Parents.educationsome college = 0",  "Parents.educationundergraduate degree = 0"), white.adjust = "hc1")
 
 ## Question 3: How strong is the correlation between AC-CE and
 ## AE-RO, and student satisfaction in CS, IS, and IT?
