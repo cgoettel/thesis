@@ -71,11 +71,93 @@ The terms abstract conceptualization, active experimentation, concrete experienc
   \end{enumerate}
 \end{enumerate}
 
+\section{Examining the data}
+Before answering the research questions, it's necessary to look at the data, get a feel for it, and visualize it. The first thing I did was run a $t$-test to see if there was a difference between CS and IT students' AC-CE and AE-RO scores. Each of these were statistically insignificant with $p>0.05$. This analysis is visualized in Figure~\ref{fig:cs-v-it-plot}. This is interesting because it goes against what the literature previously discussed about the relationship between learning styles, \textit{viz}.: CS and IT should be distinguishable~(Kolb, 2005b).
+
+% TO LUNT: Would you like to see a table here, too? I think the figure is sufficient, but I'm willing to add a table of bad p-values if you think it would help.
+
+\begin{figure}[!bhtb]
+  \centering
+  \includegraphics[width=0.7\textwidth]{figures/chapter4/cs-v-it-plot.jpg}
+  \caption[AC-CE and AE-RO for CS and IT Students]{AC-CE and AE-RO for CS and IT Students Where Black is CS and Red is IT}
+  \label{fig:cs-v-it-plot}
+\end{figure}
+
+Next, I needed to know if the data was normally distributed in order to determine which correlation model to run. To determine if the data was normally distributed, I ran the Shapiro-Wilk test, as noted in Table~\ref{tab:shapiro-wilk} (note that $p<0.05$ here means that the data is \emph{not} normally distributed). These findings will be discussed alongside the first research question.
+
+\begin{table}[!htbp]
+  \centering
+  \caption{Shapiro-Wilk Tests}
+  \label{tab:shapiro-wilk}
+  \begin{tabular}{lll}
+    \toprule
+    Data         & W       & $p$-value \\
+    \midrule
+    CS major GPA & 0.95843 & 0.148 \\
+    IT major GPA & 0.97703 & 0.8639 \\
+    CS AC-CE     & 0.93586 & 0.0251 \\
+    CS AE-RO     & 0.98255 & 0.7826 \\
+    IT AC-CE     & 0.9529  & 0.3601 \\
+    IT AE-RO     & 0.95844 & 0.4583 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
 \section{Answering the research questions}
 \subsection{How strong is the correlation between AC-CE and AE-RO, and major GPA among CS, IS, and IT students?}
-The first basic test was to calculate the Pearson correlation coefficient between AC-CE and AE-RO by major in order to check for a general correlation between learning preferences. The data failed to show a meaningful relationship between the two (the coefficient is $0.05496$, which with a \textit{p}-value of $0.733$ is not statistically significant). This is interesting because it goes against what the literature previously discussed about the relationship between learning styles, \textit{viz}.: CS and IT should be distinguishable~(Kolb, 2005b).
+Because all of these data points, except for CS AC-CE are normally distributed, I was justified in using Pearson's correlation coefficient (also known as Pearson's $r$) to calculate the correlations. This data is summarized in Table~\ref{tab:pearsons}.
 
-The next step was to check the simple correlation between AE-RO and AC-CE by major GPA. The Pearson coefficients are $0.4228$ ($p=0.0073$) and $-0.0101$ ($p=0.953$), respectively. This appears to show that the only significant relationship occurs in the AE-RO spectrum. Having high significance in the first Pearson coefficient says that there's a strong, positive relationship such that major GPA increases for students with higher AE-RO scores. However, there is no relationship between AC-CE score (the second Pearson coefficient) and major GPA. This means that students who have higher AE-RO scores will tend to perform better in either major; however, the AC-CE spectrum does not hold any statistically significant ($p>0.05$) effect on student GPA in CS or IT. This is interesting because Lunt found that AC-CE was the significant axis among electronics students~(Lunt, 1996).
+\begin{table}[!htbp]
+  \centering
+  \caption{Pearson's $r$}
+  \label{tab:pearsons}
+  \begin{tabular}{lll}
+    \toprule
+    Data                      & $p$-value & $r$ \\
+    \midrule
+    CS major GPA and CS AC-CE & 0.8177    & -0.0376 \\
+    CS major GPA and CS AE-RO & 0.6704    & -0.0694 \\
+    IT major GPA and IT AC-CE & 0.9727    & -0.0077 \\
+    IT major GPA and IT AE-RO & 0.0202    & 0.4915 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Since CS students' AC-CE results were not normally distributed, I also ran Spearman's correlation coefficient to determine if there was a correlation between CS major GPA and CS AC-CE results. This resulted in $p>0.05$, but gave a warning that Spearman's shouldn't be used for data with tied values. To account for the tied valued, I then ran the correlation using Kendall's $\tau_b$ which also had $p>0.05$.
+
+Because of these findings, I am unable to find a statistically significant correlation between any major GPA and a student's LSI results, except for IT major GPA and IT AE-RO (see Figure~\ref{fig:major_gpa_lm_plots}). In fact, IT AE-RO is so strongly correlated to IT major GPA that it has an $R^2=r^2=0.4915^2=0.2416$. This means that an IT student's AE-RO score is able to explain 24.16\% of their GPA.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=1.1\textwidth]{figures/chapter4/major_gpa_lm_plots.jpg}
+  \caption{Correlations Between Major GPA and LSI Results}
+  \label{fig:major_gpa_lm_plots}
+\end{figure}
+
+The other important finding here is that there is a strong correlation between IT major GPA and IT AE-RO scores, such that the higher a student scores in the AE-RO spectrum, the higher we can assume their GPA to be. However, the AC-CE spectrum did not hold any statistically significant ($p>0.05$) effect on student GPA in CS or IT. This is interesting because Lunt found that AC-CE was the significant axis among electronics students~(Lunt, 1996).
+
+% TO LUNT: I wrote this whole bit on looking at the IT major GPA data, but don't feel like it's necessary. I mean, it's a really pretty histogram, but it doesn't add to the overall argument. I wanted to make sure you were cool with me not including it before I just erased it.
+% Looking at the IT major GPA data (in Table~\ref{tab:it-major-gpa}), it's clear that this data is normally distributed (note the Shapiro-Wilk $p=0.86$ from Table~\ref{tab:shapiro-wilk}; see Table~\ref{fig:it-major-gpa-hist}) with an almost equal mean ($\sigma=0.444$) and median. With this in mind, as well as the
+%
+% \begin{table}[!htbp]
+%   \centering
+%   \caption{IT Major GPA}
+%   \label{tab:it-major-gpa}
+%   \begin{tabular}{llllll}
+%     \toprule
+%     Min.  & 1st Qu. & Median & Mean  & 3rd Qu. & Max. \\
+%     \midrule
+%     2.340 & 2.868   & 3.200  & 3.204 & 3.480    & 3.970 \\
+%     \bottomrule
+%   \end{tabular}
+% \end{table}
+%
+% \begin{figure}
+%   \centering
+%   \includegraphics[width=0.7\textwidth]{figures/chapter4/it-major-gpa-hist.jpg}
+%   \caption{IT Major GPA Histogram}
+%   \label{fig:it-major-gpa-hist}
+% \end{figure}
 
 \subsection{What is the best multiple regression model to fit these correlations?}
 In order to estimate the relationship that AC-CE and AE-RO each have simultaneously, I developed a few multiple regression models. The first two models can be seen in Table~\ref{tab:models12} and are explained below.

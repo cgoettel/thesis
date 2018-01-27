@@ -49,7 +49,8 @@ cs_v_it_plot<-cs_v_it_plot + geom_point(data=df2, x=it_ac_ce,
 cs_v_it_plot<-cs_v_it_plot + labs(x="AC-CE", y="AE-RO")
 cs_v_it_plot<-cs_v_it_plot + scale_fill_manual(name="Majors",
   values = c("CS" = "black", "IT" = "red"))
-jpeg('cs-v-it-plot.jpg', width = 500, height = 500)
+jpeg('figures/chapter4/cs-v-it-plot.jpg', width = 500,
+  height = 500)
 cs_v_it_plot
 dev.off()
 
@@ -73,13 +74,24 @@ cor.test(it_major_gpa, it_ae_ro) # p = 0.02017, cor = 0.4914967
 # This means that as IT AE-RO increases, there's a positively
 # related change in GPA which we can see in the Figure.
 
-# Let's get a summary of it_major_gpa so we can see just what that
-# means.
+# Let's get a summary of it_major_gpa so we can see just what
+# that means.
 summary(it_major_gpa)
 #    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
 #  2.340   2.868   3.200   3.204   3.480   3.970
 sd(it_major_gpa) # sd = 0.4439921
-hist(it_major_gpa) # Almost perfectly normal (p = 0.86)
+
+df <- data.frame(it_major_gpa)
+hist <- ggplot(data = df, aes(it_major_gpa)) +
+  geom_histogram(color="black", fill="white",
+  breaks=seq(2.34, 4, by=0.1))
+hist <- hist + labs(x = "IT major GPA", y = "Count")
+hist <- hist + geom_density(alpha=0.2, fill="red")
+hist <- hist + geom_vline(aes(xintercept=mean(it_major_gpa)),
+  color="blue", linetype="dashed")
+jpeg('figures/chapter4/it-major-gpa-hist.jpg')
+hist
+dev.off()
 
 # Should only be used on this first one.
 cor.test(cs_major_gpa, cs_ac_ce, method = "spearman") # p=0.8232
@@ -105,6 +117,9 @@ cs_major_ac_ce_plot<-ggplot(df, aes(x=cs_major_gpa, y=cs_ac_ce))+
 cs_major_ac_ce_plot<-cs_major_ac_ce_plot + geom_smooth(method=lm)
 cs_major_ac_ce_plot<-cs_major_ac_ce_plot + labs(x="CS Major GPA",
   y="CS AC-CE")
+cs_major_ac_ce_plot<-cs_major_ac_ce_plot +
+  coord_cartesian(xlim = c(2.2,4.1), ylim = c(-32,32),
+  expand = FALSE)
 # Second plot
 df<-data.frame(cs_major_gpa, cs_ae_ro)
 cs_major_ae_ro_plot<-ggplot(df, aes(x=cs_major_gpa, y=cs_ae_ro))+
@@ -112,6 +127,9 @@ cs_major_ae_ro_plot<-ggplot(df, aes(x=cs_major_gpa, y=cs_ae_ro))+
 cs_major_ae_ro_plot<-cs_major_ae_ro_plot + geom_smooth(method=lm)
 cs_major_ae_ro_plot<-cs_major_ae_ro_plot + labs(x="CS Major GPA",
   y="CS AE-RO")
+cs_major_ae_ro_plot<-cs_major_ae_ro_plot +
+  coord_cartesian(xlim = c(2.2,4.1), ylim = c(-32,32),
+  expand = FALSE)
 # Third plot
 df<-data.frame(it_major_gpa, it_ac_ce)
 it_major_ac_ce_plot<-ggplot(df, aes(x=it_major_gpa, y=it_ac_ce))+
@@ -119,6 +137,9 @@ it_major_ac_ce_plot<-ggplot(df, aes(x=it_major_gpa, y=it_ac_ce))+
 it_major_ac_ce_plot<-it_major_ac_ce_plot + geom_smooth(method=lm)
 it_major_ac_ce_plot<-it_major_ac_ce_plot + labs(x="IT Major GPA",
   y="IT AC-CE")
+it_major_ac_ce_plot<-it_major_ac_ce_plot +
+  coord_cartesian(xlim = c(2.2,4.1), ylim = c(-32,32),
+  expand = FALSE)
 # Fourth plot
 df<-data.frame(it_major_gpa, it_ae_ro)
 it_major_ae_ro_plot<-ggplot(df, aes(x=it_major_gpa, y=it_ae_ro))+
@@ -126,9 +147,13 @@ it_major_ae_ro_plot<-ggplot(df, aes(x=it_major_gpa, y=it_ae_ro))+
 it_major_ae_ro_plot<-it_major_ae_ro_plot + geom_smooth(method=lm)
 it_major_ae_ro_plot<-it_major_ae_ro_plot + labs(x="IT Major GPA",
   y="IT AE-RO")
+it_major_ae_ro_plot<-it_major_ae_ro_plot +
+  coord_cartesian(xlim = c(2.2,4.1), ylim = c(-32,32),
+  expand = FALSE)
 
 # Print them side-by-side
-jpeg('major_gpa_lm_plots.jpg', width = 1000, height = 1000)
+jpeg('figures/chapter4/major_gpa_lm_plots.jpg', width = 1000,
+  height = 1000)
 pushViewport(viewport(layout = grid.layout(2,2)))
 print(cs_major_ac_ce_plot, vp = viewport(layout.pos.row = 1,
   layout.pos.col = 1))
@@ -193,7 +218,7 @@ fit2_plot <- fit2_plot + geom_smooth(data=df, aes(x=major_gpa,
 fit2_plot <- fit2_plot + labs(x = "Major GPA", y =
   "CS dummy variable + AC-CE + AE-RO + Age + Parents' education")
 
-jpeg('mr_models_1_2.jpg', width = 1000, height = 500)
+jpeg('figures/chapter4/mr_models_1_2.jpg', width = 1000, height = 500)
 pushViewport(viewport(layout = grid.layout(1,2)))
 print(fit1_plot, vp = viewport(layout.pos.row = 1,
   layout.pos.col = 1))
@@ -254,7 +279,8 @@ df <- data.frame(amss_index)
 amss_plot <- ggplot(data = df, aes(amss_index)) +
   geom_histogram()
 amss_plot <- amss_plot + labs(x = "AMSS Index", y = "Count")
-jpeg('amss_index_plot.jpg', width = 500, height = 500)
+jpeg('figures/chapter4/amss_index_plot.jpg', width = 500,
+  height = 500)
 amss_plot
 dev.off()
 
@@ -305,7 +331,8 @@ it_major_amss_plot <- it_major_amss_plot + coord_cartesian(ylim =
     c(12,20))
 
 # Print them side-by-side
-jpeg('major_gpa_amss_plots.jpg', width = 1000, height = 500)
+jpeg('figures/chapter4/major_gpa_amss_plots.jpg', width = 1000,
+  height = 500)
 pushViewport(viewport(layout = grid.layout(1,2)))
 print(cs_major_amss_plot, vp = viewport(layout.pos.row = 1,
   layout.pos.col = 1))
