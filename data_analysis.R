@@ -321,6 +321,12 @@ cor.test(it_amss_index, it_ae_ro) # p = 0.5147
 ## student satisfaction?
 ### Pearson's correlation coefficient between GPA and
 ### satisfaction
+shapiro.test(cs_major_gpa)
+shapiro.test(amss_index)
+shapiro.test(cs_amss_index)
+shapiro.test(it_amss_index)
+
+cor.test(data.mis$Major.GPA, amss_index) # p = 0.2127
 cor.test(cs_major_gpa, cs_amss_index) # p = 0.3094
 cor.test(it_major_gpa, it_amss_index) # p = 0.4532
 

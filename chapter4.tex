@@ -227,7 +227,7 @@ Nuata's AMSS, as enumerated in chapter 1, is graded on a five-point Likert-type 
   \item I would like to talk to someone about changing my major.
 \end{enumerate}
 
-I created a summary index of academic major satisfaction using the remaining AMSS variables and reverse coded the negatively-scored variables. In this summary index, the least satisfied value was a 4 and the most satisfied was a 20, with a mean of $18.10$ ($\sigma=2.2595$). This data is heavily left-skewed (see Figure~\ref{fig:amss_index_plot}).
+I created a summary index of academic major satisfaction using the remaining AMSS variables and reverse coded the negatively-scored variables. In this summary index, the least satisfied value was a 4 and the most satisfied was a 20, with a mean of $18.10$ ($\sigma=2.2595$). This data is heavily left-skewed (see Figure~\ref{fig:amss_index_plot}). The lack of response diversity is believed to have led to the lack of correlations between student satisfaction and other factors.
 
 \begin{figure}[!hbtp]
   \centering
@@ -246,8 +246,8 @@ I then ran Pearson's $r$ for the data and found no statistically significant res
     \toprule
     $x$           & $y$        & $p$ \\
     \midrule
-    AMSS index    & AE$-$RO    & 0.1059 \\
     AMSS index    & AC$-$CE    & 0.8563 \\
+    AMSS index    & AE$-$RO    & 0.1059 \\
     CS AMSS index & CS AC$-$CE & 0.8134 \\
     CS AMSS index & CS AE$-$RO & 0.1237 \\
     IT AMSS index & IT AC$-$CE & 0.9566 \\
@@ -257,11 +257,69 @@ I then ran Pearson's $r$ for the data and found no statistically significant res
 \end{table}
 
 \subsection{Is there a correlation between major GPA and student satisfaction?}
-The Pearson correlation coefficient of major GPA and the satisfaction index is $-0.1198$ ($p=0.4677$). This is statistically insignificant, so I am unable to say that there is a correlation between the two. The coefficient is negative, so if the correlation was significant it would indicate that students with higher major GPAs were generally less satisfied than students with lower GPAs.
+To determine if there is a correlation between major GPA and student satisfaction, I ran Pearson's $r$ against the data (Table~\ref{tab:satisfaction} and Figure~\ref{fig:major_gpa_amss_plots}) because all of the AMSS indices are normally distributed (with Shapiro-Wilk $p<0.05$).
 
-% Add std dev
-% Differentiate by major as well
-The dataset, with four questions used, had a minimum sum of 4 (meaning the student strongly disagreed to each statement) and maximum sum of 20 (meaning the student strongly agreed with everything). The mean response was 18, so students were generally overwhelmingly satisfied with their choice of major. This lack of diversity is believed to have led to the lack of correlations between student satisfaction and other factors.
+\begin{table}[!htbp]
+  \centering
+  \caption{Major GPA and Student Satisfaction}
+  \label{tab:satisfaction}
+  \begin{tabular}{lll}
+    \toprule
+    $x$           & $y$          & $p$ \\
+    \midrule
+    AMSS index    & Major GPA    & 0.2127 \\
+    CS AMSS index & CS major GPA & 0.3094 \\
+    IT AMSS index & IT major GPA & 0.4532 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[!hbtp]
+  \centering
+  \includegraphics[width=1.05\textwidth]{figures/chapter4/major_gpa_amss_plots.jpg}
+  \caption{Major GPA and Student Satisfaction Correlations}
+  \label{fig:major_gpa_amss_plots}
+\end{figure}
+
+The Pearson correlation coefficient for each major GPA and the corresponding AMSS index are $p>0.05$ so I am unable to say that there is a correlation between the two.
 
 \section{Demographics}
-Unfortunately, I was unable to use the full set of demographic variables collected from students as covariates because there was not enough variance among the sample group. The students were almost entirely white and male (88\% for both). Looking at the relationship between marital status and its relationship on major GPA and satisfaction had a multiple R-squared of $0.07$, and the relationship between marital status and RO and major GPA (previously the best model) had a multiple R-squared of $0.14$. So, while students were roughly equally divided in marital status, there was no relationship between marital status and any other factor.
+Unfortunately, I was unable to use the full set of demographic variables collected from students as covariates because there was not enough variance among the sample group. The students were almost entirely white and male (88\% for both). Looking at the relationship between marital status and its effect on major GPA and satisfaction had a multiple $R^2$ of $0.07$, meaning that marital status was only able to explain 7\% of the variance in major GPA and satisfaction. While students were equally divided in marital status (31 single, 31 married), there was no relationship between marital status and any other factor. The multiple regression analysis for the demographic information, calculated with robust standard error, is summarized in Table~\ref{tab:demographics}.
+
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Sun, Jan 28, 2018 - 05:36:26 PM
+\begin{table}[!htbp] \centering
+  \caption{Demographic Regression Analysis}
+  \label{tab:demographics}
+  \begin{tabular}{@{\extracolsep{5pt}}lc}
+    \toprule
+     & \multicolumn{1}{c}{\textit{Dependent variable:}} \\
+    \cline{2-2}
+    \\[-1.8ex] & AMSS index \\
+    \midrule
+    Major GPA & 1.088 \\
+    &  \\
+    CS dummy variable & $-$0.276 \\
+    &  \\
+    Age 25-29 & $-$0.536 \\
+    &  \\
+    Age 30-34 & $-$0.034 \\
+    &  \\
+    Age 35+ & 0.723 \\
+    &  \\
+    Gender~--- female & $-$3.251 \\
+    &  \\
+    Gender~--- male & $-$3.275 \\
+    &  \\
+    Constant & 18.072$^{*}$ \\
+    & (2.230) \\
+    \midrule
+    Observations & 62 \\
+    $R^{2}$ & 0.070 \\
+    Adjusted $R^{2}$ & $-$0.051 \\
+    Residual Std. Error & 2.316 (df = 54) \\
+    F Statistic & 0.578 (df = 7; 54) \\
+    \bottomrule
+    \textit{Note:}  & \multicolumn{1}{r}{$^{*}p<0.05$} \\
+  \end{tabular}
+\end{table}
