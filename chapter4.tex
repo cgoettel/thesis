@@ -221,26 +221,40 @@ Up to this point, I've only examined variables in groups, not individually. The 
 The model I ran used major GPA as the dependent variable, and compared it to the CS dummy variable, AE$-$RO, age, and parents education. This model had $p=1.266\times 10^{-10}$, so I reject the null hypothesis that these variables are not significant in explaining the variance in the data. This model reinforces the earlier, multiple regression findings.
 
 \subsection{How strong is the correlation between AC$-$CE and AE$-$RO, and student satisfaction among CS, IS, and IT students?}
-Nuata's AMSS, as enumerated in chapter 1, is graded on a five-point Likert-type scale with two of the responses being negatively scored. Two of the AMSS questions assume that students still have the option of changing their major, but once BYU students get beyond a certain credit threshold (well before their senior year), it becomes impossible for them to change majors. Because of this and the lack of variance among the responses, these questions were dropped from the analysis.
+Nuata's AMSS, as enumerated in chapter 1, is graded on a five-point Likert-type scale with two of the responses being negatively scored. Two of the AMSS questions assume that students still have the option of changing their major, but once BYU students get beyond a certain credit threshold (well before their senior year), it becomes impossible for them to change majors. Because of this and the lack of variance among the responses, these questions were dropped from the analysis:
+\begin{enumerate}
+  \item I am strongly considering changing to another major.
+  \item I would like to talk to someone about changing my major.
+\end{enumerate}
 
-I created a summary index (Table~\ref{tab:nuata-summary-index}) of academic major satisfaction using the remaining AMSS variables and reverse coded the negatively-scored variables. In this summary index, the least satisfied value was a 4 and the most satisfied was a 20.
+I created a summary index of academic major satisfaction using the remaining AMSS variables and reverse coded the negatively-scored variables. In this summary index, the least satisfied value was a 4 and the most satisfied was a 20, with a mean of $18.10$ ($\sigma=2.2595$). This data is heavily left-skewed (see Figure~\ref{fig:amss_index_plot}).
 
-\begin{table}[!htb]
+\begin{figure}[!hbtp]
   \centering
-  \caption{Summary Index of AMSS}
-  \label{tab:nuata-summary-index}
-  \begin{tabular}{cccccc}
+  \includegraphics[width=0.5\textwidth]{figures/chapter4/amss_index_plot.jpg}
+  \caption{AMSS Index Histogram}
+  \label{fig:amss_index_plot}
+\end{figure}
+
+I then ran Pearson's $r$ for the data and found no statistically significant results (see Table~\ref{tab:amss_corr}), suggesting that there is no relationship between learning style and major satisfaction.
+
+\begin{table}[!hbtp]
+  \centering
+  \caption{AMSS Correlations}
+  \label{tab:amss_corr}
+  \begin{tabular}{lll}
     \toprule
-    Min.  & 1st Qu. & Median & Mean  & 3rd Qu. &Max. \\
+    $x$           & $y$        & $p$ \\
     \midrule
-    12.00 &  16.25  & 19.00  & 18.10 & 20.00   & 20.00 \\
+    AMSS index    & AE$-$RO    & 0.1059 \\
+    AMSS index    & AC$-$CE    & 0.8563 \\
+    CS AMSS index & CS AC$-$CE & 0.8134 \\
+    CS AMSS index & CS AE$-$RO & 0.1237 \\
+    IT AMSS index & IT AC$-$CE & 0.9566 \\
+    IT AMSS index & IT AE$-$RO & 0.5147 \\
     \bottomrule
   \end{tabular}
 \end{table}
-
-Next, I checked the simple correlations between AE$-$RO and AC$-$CE with the satisfaction index. The Pearson coefficients are $-0.1206$ ($p=0.4645$) and $-0.0622$ ($p=0.7064$), respectively. It is possible that the relationship could only exist for the RO value, since this was the only value correlated with major GPA in the previous section. Checking for that, I found a Pearson correlation coefficient of $0.2634$ ($p=0.1051$). This means that even restricting to just RO and IT majors fails to find a statistically significant correlation ($0.2483$, $p=0.2652$).
-
-None of these correlations were statistically significant, suggesting that there is no relationship between learning style and major satisfaction.
 
 \subsection{Is there a correlation between major GPA and student satisfaction?}
 The Pearson correlation coefficient of major GPA and the satisfaction index is $-0.1198$ ($p=0.4677$). This is statistically insignificant, so I am unable to say that there is a correlation between the two. The coefficient is negative, so if the correlation was significant it would indicate that students with higher major GPAs were generally less satisfied than students with lower GPAs.

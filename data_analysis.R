@@ -284,20 +284,25 @@ it_amss_index <- amss_index[data.mis$Major == "it"]
 
 summary(amss_index)
 sd(amss_index) # 2.259477
-df <- data.frame(amss_index)
-amss_plot <- ggplot(data = df, aes(amss_index)) +
-  geom_histogram()
-amss_plot <- amss_plot + labs(x = "AMSS Index", y = "Count")
-jpeg('figures/chapter4/amss_index_plot.jpg', width = 500,
-  height = 500)
-amss_plot
-dev.off()
 
 # Just to be sure, let's look at each major
 summary(cs_amss_index)
 sd(cs_amss_index) # 2.362094
 summary(it_amss_index)
 sd(it_amss_index) # 2.113654
+
+# Let's visualize how skewed this is
+df <- data.frame(amss_index)
+amss_plot <- ggplot(data = df, aes(amss_index)) +
+  geom_histogram(color="black", fill="white",
+  breaks = seq(12, 20, by = 1))
+amss_plot <- amss_plot + labs(x = "AMSS Index", y = "Count")
+amss_plot <- amss_plot + geom_vline(aes(xintercept =
+  mean(amss_index)), color="blue", linetype="dashed")
+jpeg('figures/chapter4/amss_index_plot.jpg', width = 400,
+  height = 400)
+amss_plot
+dev.off()
 
 ### Pearson's correlation coefficient for AC-CE/AE-RO and
 ### satisfaction (not by major)
