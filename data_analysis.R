@@ -177,26 +177,31 @@ dev.off()
 # Huber-White (HC1) robust standard error to account for the
 # heteroskedasticity of the data."
 
-### Model 1: with AC-CE and AE-RO and a CS dummy variable
-fit1 <- lm(data = data.mis, Major.GPA ~ csdum + AC.CE + AE.RO)
-
-### Model 2: plus covariates
-fit2 <- lm(data = data.mis, Major.GPA ~ csdum + AC.CE + AE.RO +
-  Age + Parents.education)
-
-# Here's where we calculate the robust standard errors so we can
-# use them in the tables.
+### Model 1
+fit1 <- lm(data = data.mis, Major.GPA ~ csdum + Age +
+  Parents.education)
 cov1 <- vcovHC(fit1, type = "HC1")
 robust_se_1 <- sqrt(diag(cov1))
-cov2 <- vcovHC(fit1, type = "HC1")
+
+### Model 2
+fit2 <- lm(data = data.mis, Major.GPA ~ csdum + Age +
+  Parents.education + AE.RO)
+cov2 <- vcovHC(fit2, type = "HC1")
 robust_se_2 <- sqrt(diag(cov2))
 
+### Model 3
+fit3 <- lm(data = data.mis, Major.GPA ~ csdum + Age +
+  Parents.education + AE.RO + AC.CE)
+cov3 <- vcovHC(fit3, type = "HC1")
+robust_se_3 <- sqrt(diag(cov3))
+
 # Let's visualize that
-stargazer(fit1, fit2, se = list(robust_se_1, robust_se_2))
+stargazer(fit1, fit2, fit3, se = c(robust_se_1, robust_se_2,
+  robust_se_3))
 
 # Plot fit1
+df <- data.frame(data.mis)
 df$fit1 <- stats::predict(fit1, newdata=data.mis)
-err <- stats::predict(fit1, newdata=data.mis, se = TRUE)
 fit1_plot <- ggplot(df)
 fit1_plot <- fit1_plot + geom_point(aes(x=major_gpa, y = fit1),
   size = 2)
@@ -204,11 +209,12 @@ fit1_plot <- fit1_plot + geom_smooth(data=df, aes(x = major_gpa,
   y = fit1), size = 1.5, colour = "blue", se = TRUE,
   stat = "smooth", method = lm)
 fit1_plot <- fit1_plot + labs(x = "Major GPA", y =
-  "CS dummy variable + AC-CE + AE-RO")
+  "CS dummy variable + Age + Parents Education")
+fit1_plot <- fit1_plot + coord_cartesian(xlim = c(2.3, 4.05),
+  ylim = c(2.75,4), expand = FALSE)
 
 # Plot fit2
 df$fit2 <- stats::predict(fit2, newdata=data.mis)
-err <- stats::predict(fit2, newdata=data.mis, se = TRUE)
 fit2_plot <- ggplot(df)
 fit2_plot <- fit2_plot + geom_point(aes(x=major_gpa, y = fit2),
   size = 2)
@@ -216,9 +222,12 @@ fit2_plot <- fit2_plot + geom_smooth(data=df, aes(x=major_gpa,
   y=fit2), size = 1.5, colour = "blue", se = TRUE,
   stat = "smooth", method = lm)
 fit2_plot <- fit2_plot + labs(x = "Major GPA", y =
-  "CS dummy variable + AC-CE + AE-RO + Age + Parents' education")
+  "CS dummy variable + Age + Parents Education + AE-RO")
+fit2_plot <- fit2_plot + coord_cartesian(xlim = c(2.3, 4.05),
+  ylim = c(2.75,4), expand = FALSE)
 
-jpeg('figures/chapter4/mr_models_1_2.jpg', width = 1000, height = 500)
+jpeg('figures/chapter4/mr_models_1_2.jpg', width = 1000,
+  height = 500)
 pushViewport(viewport(layout = grid.layout(1,2)))
 print(fit1_plot, vp = viewport(layout.pos.row = 1,
   layout.pos.col = 1))
@@ -245,9 +254,9 @@ dev.off()
 # then you should keep them in the regression because they
 # somehow help contribute to the model because they help
 # explain the std error (meaning, they help explain the deviance
-# in the model). Additionally, if they're all significant then we'll
-# reject the joint significance null hypothesis even though none of
-# them have a p < 0.05.
+# in the model). Additionally, if they're all significant then
+# we'll reject the joint significance null hypothesis even
+# though none of them have a p < 0.05.
 # Removing unnecessary variables will give you more power with
 # this small of a dataset.
 cs_it_lht <- lm(data = data.mis, Major.GPA ~ csdum + AE.RO +

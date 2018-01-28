@@ -22,7 +22,7 @@ There were many complications getting responses from IS students. IS seniors do 
 Because of the complications surrounding the IS responses, the IS results were not included in the analysis.
 
 \section{What the LSI responses mean}
-A student's strength on the two axes of the LSI can be seen in Figure~\ref{fig:learning-preferences} which defines the cognitive strengths throughout the LSI spectrum. These strengths can be either in abstract conceptualization (AC), active experimentation (AE), concrete experience (CE), reflective observation (RO), or along the AC-CE or AE-RO spectrums.
+A student's strength on the two axes of the LSI can be seen in Figure~\ref{fig:learning-preferences} which defines the cognitive strengths throughout the LSI spectrum. These strengths can be either in abstract conceptualization (AC), active experimentation (AE), concrete experience (CE), reflective observation (RO), or along the AC$-$CE or AE$-$RO spectrums.
 
 \begin{figure}
   \centering
@@ -72,14 +72,14 @@ The terms abstract conceptualization, active experimentation, concrete experienc
 \end{enumerate}
 
 \section{Examining the data}
-Before answering the research questions, it's necessary to look at the data, get a feel for it, and visualize it. The first thing I did was run a $t$-test to see if there was a difference between CS and IT students' AC-CE and AE-RO scores. Each of these were statistically insignificant with $p>0.05$. This analysis is visualized in Figure~\ref{fig:cs-v-it-plot}. This is interesting because it goes against what the literature previously discussed about the relationship between learning styles, \textit{viz}.: CS and IT should be distinguishable~(Kolb, 2005b).
+Before answering the research questions, it's necessary to look at the data, get a feel for it, and visualize it. The first thing I did was run a $t$-test to see if there was a difference between CS and IT students' AC$-$CE and AE$-$RO scores. Each of these were statistically insignificant with $p>0.05$. This analysis is visualized in Figure~\ref{fig:cs-v-it-plot}. This is interesting because it goes against what the literature previously discussed about the relationship between learning styles, \textit{viz}.: CS and IT should be distinguishable~(Kolb, 2005b).
 
 % TO LUNT: Would you like to see a table here, too? I think the figure is sufficient, but I'm willing to add a table of bad p-values if you think it would help.
 
 \begin{figure}[!bhtb]
   \centering
   \includegraphics[width=0.7\textwidth]{figures/chapter4/cs-v-it-plot.jpg}
-  \caption[AC-CE and AE-RO for CS and IT Students]{AC-CE and AE-RO for CS and IT Students Where Black is CS and Red is IT}
+  \caption[AC$-$CE and AE$-$RO for CS and IT Students]{AC$-$CE and AE$-$RO for CS and IT Students Where Black is CS and Red is IT}
   \label{fig:cs-v-it-plot}
 \end{figure}
 
@@ -95,17 +95,17 @@ Next, I needed to know if the data was normally distributed in order to determin
     \midrule
     CS major GPA & 0.95843 & 0.148 \\
     IT major GPA & 0.97703 & 0.8639 \\
-    CS AC-CE     & 0.93586 & 0.0251 \\
-    CS AE-RO     & 0.98255 & 0.7826 \\
-    IT AC-CE     & 0.9529  & 0.3601 \\
-    IT AE-RO     & 0.95844 & 0.4583 \\
+    CS AC$-$CE     & 0.93586 & 0.0251 \\
+    CS AE$-$RO     & 0.98255 & 0.7826 \\
+    IT AC$-$CE     & 0.9529  & 0.3601 \\
+    IT AE$-$RO     & 0.95844 & 0.4583 \\
     \bottomrule
   \end{tabular}
 \end{table}
 
 \section{Answering the research questions}
-\subsection{How strong is the correlation between AC-CE and AE-RO, and major GPA among CS, IS, and IT students?}
-Because all of these data points, except for CS AC-CE are normally distributed, I was justified in using Pearson's correlation coefficient (also known as Pearson's $r$) to calculate the correlations. This data is summarized in Table~\ref{tab:pearsons}.
+\subsection{How strong is the correlation between AC$-$CE and AE$-$RO, and major GPA among CS, IS, and IT students?}
+Because all of these data points, except for CS AC$-$CE are normally distributed, I was justified in using Pearson's correlation coefficient (also known as Pearson's $r$) to calculate the correlations. This data is summarized in Table~\ref{tab:pearsons}.
 
 \begin{table}[!htbp]
   \centering
@@ -115,17 +115,17 @@ Because all of these data points, except for CS AC-CE are normally distributed, 
     \toprule
     Data                      & $p$-value & $r$ \\
     \midrule
-    CS major GPA and CS AC-CE & 0.8177    & -0.0376 \\
-    CS major GPA and CS AE-RO & 0.6704    & -0.0694 \\
-    IT major GPA and IT AC-CE & 0.9727    & -0.0077 \\
-    IT major GPA and IT AE-RO & 0.0202    & 0.4915 \\
+    CS major GPA and CS AC$-$CE & 0.8177    & -0.0376 \\
+    CS major GPA and CS AE$-$RO & 0.6704    & -0.0694 \\
+    IT major GPA and IT AC$-$CE & 0.9727    & -0.0077 \\
+    IT major GPA and IT AE$-$RO & 0.0202    & 0.4915 \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-Since CS students' AC-CE results were not normally distributed, I also ran Spearman's correlation coefficient to determine if there was a correlation between CS major GPA and CS AC-CE results. This resulted in $p>0.05$, but gave a warning that Spearman's shouldn't be used for data with tied values. To account for the tied valued, I then ran the correlation using Kendall's $\tau_b$ which also had $p>0.05$.
+Since CS students' AC$-$CE results were not normally distributed, I also ran Spearman's correlation coefficient to determine if there was a correlation between CS major GPA and CS AC$-$CE results. This resulted in $p>0.05$, but gave a warning that Spearman's shouldn't be used for data with tied values. To account for the tied values, I then ran the correlation using Kendall's $\tau_b$ which also had $p>0.05$.
 
-Because of these findings, I am unable to find a statistically significant correlation between any major GPA and a student's LSI results, except for IT major GPA and IT AE-RO (see Figure~\ref{fig:major_gpa_lm_plots}). In fact, IT AE-RO is so strongly correlated to IT major GPA that it has an $R^2=r^2=0.4915^2=0.2416$. This means that an IT student's AE-RO score is able to explain 24.16\% of their GPA.
+Because of these findings, I am unable to find a statistically significant correlation between any major GPA and a student's LSI results, except for IT major GPA and IT AE$-$RO (see Figure~\ref{fig:major_gpa_lm_plots}). In fact, IT AE$-$RO is so strongly correlated to IT major GPA that it has an $R^2=r^2=0.4915^2=0.2416$. This means that an IT student's AE$-$RO score is able to explain 24.16\% of their GPA.
 
 \begin{figure}
   \centering
@@ -134,7 +134,7 @@ Because of these findings, I am unable to find a statistically significant corre
   \label{fig:major_gpa_lm_plots}
 \end{figure}
 
-The other important finding here is that there is a strong correlation between IT major GPA and IT AE-RO scores, such that the higher a student scores in the AE-RO spectrum, the higher we can assume their GPA to be. However, the AC-CE spectrum did not hold any statistically significant ($p>0.05$) effect on student GPA in CS or IT. This is interesting because Lunt found that AC-CE was the significant axis among electronics students~(Lunt, 1996).
+The other important finding here is that there is a strong correlation between IT major GPA and IT AE$-$RO scores, such that the higher a student scores in the AE$-$RO spectrum, the higher we can assume their GPA to be. However, the AC$-$CE spectrum did not hold any statistically significant ($p>0.05$) effect on student GPA in CS or IT. This is interesting because Lunt found that AC$-$CE was the significant axis among electronics students~(Lunt, 1996).
 
 % TO LUNT: I wrote this whole bit on looking at the IT major GPA data, but don't feel like it's necessary. I mean, it's a really pretty histogram, but it doesn't add to the overall argument. I wanted to make sure you were cool with me not including it before I just erased it.
 % Looking at the IT major GPA data (in Table~\ref{tab:it-major-gpa}), it's clear that this data is normally distributed (note the Shapiro-Wilk $p=0.86$ from Table~\ref{tab:shapiro-wilk}; see Table~\ref{fig:it-major-gpa-hist}) with an almost equal mean ($\sigma=0.444$) and median. With this in mind, as well as the
@@ -160,118 +160,67 @@ The other important finding here is that there is a strong correlation between I
 % \end{figure}
 
 \subsection{What is the best multiple regression model to fit these correlations?}
-In order to estimate the relationship that AC-CE and AE-RO each have simultaneously, I developed a few multiple regression models. The first two models can be seen in Table~\ref{tab:models12} and are explained below.
+In order to estimate the relationship that AC$-$CE and AE$-$RO each have simultaneously, I developed several multiple regression models. I ran these models with standard errors computed with the Huber-White (HC1) robust standard error to account for the heteroskedasticity of the data. The most significant models can be seen in Table~\ref{tab:mr-models}. All three models use major GPA as the dependent variable and compare that against the CS dummy variable (to determine is the student is a CS major), age, and parents education level. Model~2 adds AE$-$RO as a covariate, and Model~3 adds AC$-$CE as a covariate.
 
-\begin{table}[!htbp]
-  \centering
-  \caption{Models~1 and 2}
-  \label{tab:models12}
-  \begin{tabular}{@{\extracolsep{5pt}}lll}
-  \toprule
-   & \multicolumn{2}{c}{\textit{Dependent variable: Major GPA}} \\
-  \cmidrule{2-3}
-  \\[-1.8ex] & (1) & (2)\\
-  \midrule
-  CS dummy variable & 0.238$^{**}$ & 0.137 \\
-    & (0.112) & (0.107) \\
-    & & \\
-  AC-CE & $-$0.001 & 0.0002 \\
-    & (0.004) & (0.004) \\
-    & & \\
-  AE-RO & 0.007 & 0.007 \\
-    & (0.006) & (0.005) \\
-    & & \\
-  \midrule
-  Observations & 62 & 62 \\
-  R$^{2}$ & 0.088 & 0.389 \\
-  Adjusted R$^{2}$ & 0.040 & 0.269 \\
-  Residual Std. Error & 0.418 (df = 58) & 0.365 (df = 51) \\
-  F Statistic & 1.857 (df = 3; 58) & 3.250$^{***}$ (df = 10; 51) \\
-  \bottomrule
-  \textit{Note:}  & \multicolumn{2}{r}{$^{*}p<0.1$; $^{**}p<0.05$; $^{***}p<0.01$} \\
-  \end{tabular}
-\end{table}
-
-For Model~1, I included the students' AC-CE and AE-RO scores, as well as a dummy variable that captured whether a student was a CS major. This model showed a significant correlation between AE-RO and GPA held even when controlling for the AC-CE value and the student's major with a very significant F statistic of $5.075$ (df$=3$, $p<0.01$). This F statistic showed that these factors were especially important in predicting a student's academic success, as measured by major GPA.
-
-In Model~2, I used the same multiple regression analysis as Model~1, but added the student's age and their parents' education level as covariates. This correlation held, even when controlling for other factors that may have a relationship with GPA. This model had a strong F statistic, which again showed that the same factors, except for AC-CE, were significant in predicting a student's academic success.
-
-In both models, however, AC-CE had a \textit{p}-value greater than $0.05$ which helped suggest that AC-CE was not a significant contributor to a student's academic success. Because the AC-CE values do not have a significant correlation with major GPA ($p>0.05$), they were dropped in the subsequent models.
-
-In the next two models (see Table~\ref{tab:models34}), AE-RO was decomposed into its two individual elements because it was not clear which element was driving the AE-RO correlation with GPA. Model~3, which has AE-RO decomposed, showed that RO had a negative relationship with major GPA. When control variables (age and parents' education level) were added in Model~4, only the RO relationship remained statistically significant. These models are probably the best fit to estimate these correlations, with R-squared values of $0.304$ and $0.567$, respectively. The RO value and control terms have a high joint significance ($F=10.8$, $p<0.01$), so they should not be removed from the model. Model~4 had an adjusted R-squared of $0.4118$, meaning that the variables in the model can explain roughly 41\% of the variance in major GPA in this sample.
-
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Sun, Jan 28, 2018 - 01:49:51 PM
 \begin{table}[!htbp] \centering
-  \centering
-  \caption{Models~3 and~4}
-  \label{tab:models34}
-  \begin{tabular}{@{\extracolsep{5pt}}lll}
+  \caption{Multiple Regression Models}
+  \label{tab:mr-models}
+  \begin{tabular}{@{\extracolsep{5pt}}lccc}
     \toprule
-     & \multicolumn{2}{c}{\textit{Dependent variable: Major GPA}} \\
-    \cmidrule{2-3}
-    \\[-1.8ex] & (1) & (2)\\
-    \midrule
-    csdum & 0.231$^{**}$ & 0.135 \\
-      & (0.109) & (0.103) \\
-      & & \\
-    RO.total & $-$0.018$^{**}$ & $-$0.021$^{**}$ \\
-      & (0.009) & (0.009) \\
-      & & \\
-    AE.total & $-$0.003 & $-$0.004 \\
-      & (0.008) & (0.008) \\
-      & & \\
-    \midrule
-    Observations & 62 & 62 \\
-    R$^{2}$ & 0.128 & 0.434 \\
-    Adjusted R$^{2}$ & 0.083 & 0.323 \\
-    Residual Std. Error & 0.409 (df = 58) & 0.351 (df = 51) \\
-    F Statistic & 2.844$^{**}$ (df = 3; 58) & 3.912$^{***}$ (df = 10; 51) \\
-    \bottomrule
-    \textit{Note:}  & \multicolumn{2}{r}{$^{*}p<0.1$; $^{**}p<0.05$; $^{***}p<0.01$} \\
-  \end{tabular}
-\end{table}
-
-The research question being examined here is: ``What is the best multiple regression model to fit these correlations?'' Models~3 and~4, with their high R-squared and F statistics, clearly show the best multiple regression models to find and fit these correlations. Model~4, with its adjusted R-squared, can explain over 41\% of the variance found in the models which helps show that the RO value is, statistically, the most important distinguisher between students' academic success in CS and IT.
-
-Initial data analysis showed a significant correlation between RO and GPA, but I wanted to dig a bit deeper because it had the potential to show more information about whether the RO effect differed across majors. The following analysis is exploratory. Future research should be more explicit in the data analysis methods that will be used before this stage of the research.
-
-Regressions were then run to check for the RO effect by major (summarized in Table~\ref{tab:models567}). The first step was to include an interaction term (Model~5) between the RO value and the CS dummy variable. This model captured whether the relationship between RO and major GPA was different between CS majors and IT majors. This term was statistically significant ($p<0.05$) with a negative relationship between RO and major GPA; however, it was unclear in which major that relationship occurs.
-
-\begin{table}[!htbp]
-  \centering
-  \caption{Models~5, 6, and 7}
-  \label{tab:models567}
-  \begin{tabular}{@{\extracolsep{5pt}}llll}
-    \toprule
-     & \multicolumn{3}{c}{\textit{Dependent variable: Major GPA}} \\
-    \cmidrule{2-4}
+     & \multicolumn{3}{c}{\textit{Dependent variable:}} \\
+    \cline{2-4}
+    \\[-1.8ex] & \multicolumn{3}{c}{Major GPA} \\
     \\[-1.8ex] & (1) & (2) & (3)\\
     \midrule
-    csdum & $-$0.633 &  &  \\
-      & (0.469) &  &  \\
-      & & & \\
-    RO.total & $-$0.038$^{***}$ & $-$0.005 & $-$0.043$^{***}$ \\
-      & (0.013) & (0.011) & (0.013) \\
-      & & & \\
+    CS dummy variable & 0.110 & 0.137 & 0.137 \\
+    &  &  &  \\
+    Age 25-29 & $-$0.196 & $-$0.177 & $-$0.177 \\
+    &  &  &  \\
+    Age 30-34 & $-$0.443 & $-$0.425 & $-$0.426 \\
+    &  &  &  \\
+    Age 35+ & $-$0.096 & $-$0.077 & $-$0.082 \\
+    &  &  &  \\
+    Parents education --- & $-$0.661 & $-$0.667 & $-$0.667 \\
+    \hspace{2em}some college &  &  &  \\[+0.5em]
+    Parents education --- & $-$0.631 & $-$0.534 & $-$0.534 \\
+    \hspace{2em}undergraduate degree &  &  &  \\[+0.5em]
+    Parents education --- & $-$0.680 & $-$0.602 & $-$0.601 \\
+    \hspace{2em}graduate degree &  &  &  \\[+0.5em]
+    Parents education --- & $-$0.157 & $-$0.080 & $-$0.080 \\
+    \hspace{2em}post-graduate degree &  &  &  \\[+0.5em]
+    AE.RO &  & 0.007 & 0.007 \\
+    &  &  &  \\
+    AC.CE &  &  & 0.0002 \\
+    &  &  &  \\
+    Constant & 3.976$^{*}$ & 3.828$^{*}$ & 3.826$^{*}$ \\
+    & (0.159) & (0.110) & (0.103) \\
     \midrule
-    Observations & 62 & 40 & 22 \\
-    R$^{2}$ & 0.461 & 0.005 & 0.341 \\
-    Adjusted R$^{2}$ & 0.356 & $-$0.021 & 0.308 \\
-    Residual Std. Error & 0.342 (df = 51) & 0.405 (df = 38) & 0.369 (df = 20) \\
-    F Statistic & 4.369$^{***}$ (df = 10; 51) & 0.204 (df = 1; 38) & 10.337$^{***}$ (df = 1; 20) \\
+    Observations & 62 & 62 & 62 \\
+    $R^{2}$ & 0.367 & 0.389 & 0.389 \\
+    Adjusted $R^{2}$ & 0.272 & 0.283 & 0.269 \\
+    Residual Std. Error & 0.364 (df = 53) & 0.361 (df = 52) & 0.365 (df = 51) \\
+    F Statistic & 3.848$^{*}$ (df = 8; 53) & 3.681$^{*}$ (df = 9; 52) & 3.250$^{*}$ (df = 10; 51) \\
     \bottomrule
-    \textit{Note:}  & \multicolumn{3}{r}{$^{*}p<0.1$; $^{**}p<0.05$; $^{***}p<0.01$} \\
+    \textit{Note:}  & \multicolumn{3}{r}{$^{*}p<0.05$} \\
   \end{tabular}
 \end{table}
 
-In order to test this relationship by major, I ran two additional regression models (models~6 and~7) that focused on each major independently. In Model~5, I failed to find any statistical correlation between RO and major GPA among CS students, with the model on the whole failing joint significance, meaning that the variables are not statistically significant together.
+These models each have statistically significant ($p<0.05$) F statistics, so I reject the null hypothesis that that these groups of variables do not have a statistically significant joint effect. However, an interesting thing happens between models~2 and~3: adding the AC$-$CE covariate decreases the adjusted $R^2$. This means that while the model is still significant with that covariate, it doesn't explain the variance as well. Again, this goes against what Lunt found concerning AC$-$CE results~(Lunt, 1996). The first two models can be seen in Figure~\ref{fig:mr_models_1_2}
 
-In Model~7, focused solely on IT students, I found a significant, negative relationship between RO and major GPA. What this means is that moving from a low RO to a high RO (two standard deviations of RO scores) corresponds to a decrease of about $0.51$ in GPA. This is significant because it means that students who are more localized in RO will tend to have lower GPAs. Substantively, this is a lot. It's the difference between a $3.2$~GPA (the median IT GPA) and a $3.7$~GPA.
+\begin{figure}
+  \centering
+  \includegraphics[width=1.1\textwidth]{figures/chapter4/mr_models_1_2.jpg}
+  \caption{Multiple Regression Models 1 and 2}
+  \label{fig:mr_models_1_2}
+\end{figure}
 
-But what does that mean in the real world? Is that enough to make a difference in getting a job or getting into graduate school? There are certainly other factors contributing to that, but a $0.51$~GPA increase certainly has merit on its own. Looking deeper into it, the standard deviation of IT GPAs is $0.44$. The IT GPAs are pretty normally distributed, so this means that moving higher on the RO scale relates to more than an entire standard deviation decrease in GPA!
+Up to this point, I've only examined variables in groups, not individually. The linear hypothesis test compares the residual (error) sum of squares values against similar models. This way, I can check individual variables for a joint significance which will allow me to see if the variables can explain the deviance in the model. The null hypothesis is that each of these variables are 0. This test is important because removing unnecessary variables gives more power with this small of a dataset.
 
-The fact that the RO low-to-high difference correlates to a little over one standard deviation means that the change is roughly comparable to decreasing roughly 38 percentiles from the mean (given that 68\% are within one standard deviation of the mean in either direction). This seems like it could be substantive, at least for IT students, since IT GPA is lower when the student more strongly prefers Reflective learning. However, this doesn't seem to hold for CS, as shown in Model~6.
+The model I ran used major GPA as the dependent variable, and compared it to the CS dummy variable, AE$-$RO, age, and parents education. This model had $p=1.266\times 10^{-10}$, so I reject the null hypothesis that these variables are not significant in explaining the variance in the data. This model reinforces the earlier, multiple regression findings.
 
-\subsection{How strong is the correlation between AC-CE and AE-RO, and student satisfaction among CS, IS, and IT students?}
+\subsection{How strong is the correlation between AC$-$CE and AE$-$RO, and student satisfaction among CS, IS, and IT students?}
 Nuata's AMSS, as enumerated in chapter 1, is graded on a five-point Likert-type scale with two of the responses being negatively scored. Two of the AMSS questions assume that students still have the option of changing their major, but once BYU students get beyond a certain credit threshold (well before their senior year), it becomes impossible for them to change majors. Because of this and the lack of variance among the responses, these questions were dropped from the analysis.
 
 I created a summary index (Table~\ref{tab:nuata-summary-index}) of academic major satisfaction using the remaining AMSS variables and reverse coded the negatively-scored variables. In this summary index, the least satisfied value was a 4 and the most satisfied was a 20.
@@ -289,7 +238,7 @@ I created a summary index (Table~\ref{tab:nuata-summary-index}) of academic majo
   \end{tabular}
 \end{table}
 
-Next, I checked the simple correlations between AE-RO and AC-CE with the satisfaction index. The Pearson coefficients are $-0.1206$ ($p=0.4645$) and $-0.0622$ ($p=0.7064$), respectively. It is possible that the relationship could only exist for the RO value, since this was the only value correlated with major GPA in the previous section. Checking for that, I found a Pearson correlation coefficient of $0.2634$ ($p=0.1051$). This means that even restricting to just RO and IT majors fails to find a statistically significant correlation ($0.2483$, $p=0.2652$).
+Next, I checked the simple correlations between AE$-$RO and AC$-$CE with the satisfaction index. The Pearson coefficients are $-0.1206$ ($p=0.4645$) and $-0.0622$ ($p=0.7064$), respectively. It is possible that the relationship could only exist for the RO value, since this was the only value correlated with major GPA in the previous section. Checking for that, I found a Pearson correlation coefficient of $0.2634$ ($p=0.1051$). This means that even restricting to just RO and IT majors fails to find a statistically significant correlation ($0.2483$, $p=0.2652$).
 
 None of these correlations were statistically significant, suggesting that there is no relationship between learning style and major satisfaction.
 

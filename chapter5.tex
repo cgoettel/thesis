@@ -4,14 +4,14 @@ Incoming freshmen struggle deciding which field of study they should enter. Ther
 
 One way to look at the differences among computing fields is to examine the students in each field~--- especially how they learn. CS, IS, and IT all focus on different areas of computing and each requires a different skill set. It seems like people in these fields have a preference for being taught differently. Is it possible to predict in which computing discipline an incoming freshman would succeed based on their learning style? Previous research has shown a correlation between learning preference and academic success, but does this correlation also exist for computing students?
 
-In the 1970s, David Kolb developed a model to represent cognitive learning preference. His model works on a two-axis system: concrete experience (CE) versus abstract conceptualization (AC), and reflective observation (RO) versus active experimentation (AE). The \textit{x}-axis, AE-RO, differentiates between students who learn by doing or by seeing results, and those who prefer to learn by watching, listening, and taking their time. The \textit{y}-axis, AC-CE, differentiates between students who learn by reasoning and being rational, and those who prefer to trust their feelings.
+In the 1970s, David Kolb developed a model to represent cognitive learning preference. His model works on a two-axis system: concrete experience (CE) versus abstract conceptualization (AC), and reflective observation (RO) versus active experimentation (AE). The \textit{x}-axis, AE$-$RO, differentiates between students who learn by doing or by seeing results, and those who prefer to learn by watching, listening, and taking their time. The \textit{y}-axis, AC$-$CE, differentiates between students who learn by reasoning and being rational, and those who prefer to trust their feelings.
 
 The Association for Computing Machinery (ACM) has defined five disciplines in computing~(Shackelford, 2006): computer engineering, computer science (CS), information systems (IS), information technology (IT), and software engineering (SE). Although there is overlap between disciplines, each discipline is distinct. Computer engineering is focused on designing and building hardware. CS is concerned with the theoretical principles of computing, particularly the software. SE is focused on creating highly reliable software systems. IT solves general computer problems and focuses on systems integration. And IS fulfills an organizational need, but mostly from the management side.
 
 \subsection{Research questions}
 \begin{itemize}
-  \item How strong is the correlation between AC-CE and AE-RO, and major GPA among CS, IS, and IT students?
-  \item How strong is the correlation between AC-CE and AE-RO, and student satisfaction among CS, IS, and IT students?
+  \item How strong is the correlation between AC$-$CE and AE$-$RO, and major GPA among CS, IS, and IT students?
+  \item How strong is the correlation between AC$-$CE and AE$-$RO, and student satisfaction among CS, IS, and IT students?
   \item Is there a correlation between major GPA and student satisfaction?
   \item What is the best multiple regression model to fit these correlations?
 \end{itemize}
@@ -82,7 +82,7 @@ The LSI presents twelve, multiple-choice style questions. For instance, the ques
 
 The responses were then totaled according to the algorithm provided by the Hay Group. The data was programmatically checked for integrity, and the results were input into a spreadsheet.
 
-The LSI does not use the individual scores to plot the student's learning preference on the AC-CE and AE-RO axes so additional columns were added to compute these values. These values are best explained by example. Student 6 in the study scored CE=24, RO=33, AC=23, and AE=40 so the computed values are AE-RO=7 and AC-CE=-1. This student is pretty squarely in the middle of the graph. They don't lean heavily towards any of the cognitive preferences. By comparison, the author scored CE=48, RO=26, AC=21, and AE=25 so the computed values are AE-RO=-1 and AC-CE=-27. The author is moderate in the AE-RO axis~--- meaning he favors both active experimentation and reflective observation~--- but he is strongly in the abstract conceptualization camp. This might seem counter-intuitive because the author scored so high on CE, but is in the opposite (AC) end of the spectrum. This is because the individual scores aren't what matters: it is the calculated values (AE-RO and AC-CE) that define cognitive preference.
+The LSI does not use the individual scores to plot the student's learning preference on the AC$-$CE and AE$-$RO axes so additional columns were added to compute these values. These values are best explained by example. Student 6 in the study scored CE=24, RO=33, AC=23, and AE=40 so the computed values are AE$-$RO=7 and AC$-$CE=-1. This student is pretty squarely in the middle of the graph. They don't lean heavily towards any of the cognitive preferences. By comparison, the author scored CE=48, RO=26, AC=21, and AE=25 so the computed values are AE$-$RO=-1 and AC$-$CE=-27. The author is moderate in the AE$-$RO axis~--- meaning he favors both active experimentation and reflective observation~--- but he is strongly in the abstract conceptualization camp. This might seem counter-intuitive because the author scored so high on CE, but is in the opposite (AC) end of the spectrum. This is because the individual scores aren't what matters: it is the calculated values (AE$-$RO and AC$-$CE) that define cognitive preference.
 
 \subsection{AMSS}
 The AMSS is composed of six questions rated on a 5-point Likert-type scale with 1 being ``strongly disagree'' and 5 being ``strongly agree.'' This scale has both positively and negatively worded statements, the negatively worded statements being reverse scored. These scores were input into their own columns on the respective student's row.
@@ -160,13 +160,13 @@ The terms abstract conceptualization (AC), concrete experience (CE), active expe
 \end{enumerate}
 
 \subsection{Answering the research questions}
-\subsubsection{How strong is the correlation between AC-CE and AE-RO, and major GPA among CS, IS, and IT students?}
-The first basic test was to calculate the Pearson correlation coefficient between AC-CE and AE-RO by major in order to check for a general correlation between learning preferences. The data failed to show a meaningful relationship between the two (the coefficient is $0.05$, which with a \textit{p}-value of $0.73$ is not statistically significant). This is interesting because it goes against what the literature previously discussed about the relationship between learning styles, \textit{viz}.: CS and IT should be distinguishable~(Kolb, 2005b).
+\subsubsection{How strong is the correlation between AC$-$CE and AE$-$RO, and major GPA among CS, IS, and IT students?}
+The first basic test was to calculate the Pearson correlation coefficient between AC$-$CE and AE$-$RO by major in order to check for a general correlation between learning preferences. The data failed to show a meaningful relationship between the two (the coefficient is $0.05$, which with a \textit{p}-value of $0.73$ is not statistically significant). This is interesting because it goes against what the literature previously discussed about the relationship between learning styles, \textit{viz}.: CS and IT should be distinguishable~(Kolb, 2005b).
 
-The next step was to check the simple correlation between AE-RO and AC-CE by major GPA. The Pearson coefficients are $0.42$ ($p<0.01$) and $-0.01$ ($p>0.05$), respectively. Having high significance in the first Pearson coefficient says that there's a strong, positive relationship such that major GPA increases for students with higher AE-RO scores. However, there is no relationship between AC-CE score and major GPA. This means that students who have higher AE-RO scores will tend to perform better in either major; however, the AC-CE spectrum does not hold any statistically significant effect on student GPA in CS or IT. This is interesting because Lunt found that AC-CE was the significant axis among electronics students~(Lunt, 1996).
+The next step was to check the simple correlation between AE$-$RO and AC$-$CE by major GPA. The Pearson coefficients are $0.42$ ($p<0.01$) and $-0.01$ ($p>0.05$), respectively. Having high significance in the first Pearson coefficient says that there's a strong, positive relationship such that major GPA increases for students with higher AE$-$RO scores. However, there is no relationship between AC$-$CE score and major GPA. This means that students who have higher AE$-$RO scores will tend to perform better in either major; however, the AC$-$CE spectrum does not hold any statistically significant effect on student GPA in CS or IT. This is interesting because Lunt found that AC$-$CE was the significant axis among electronics students~(Lunt, 1996).
 
 \subsubsection{What is the best multiple regression model to fit these correlations?}
-In order to estimate the relationship that AC-CE and AE-RO have, I developed a few multiple regression models. The first two models can be seen in Table~\ref{tab:c-models12} and are explained below.
+In order to estimate the relationship that AC$-$CE and AE$-$RO have, I developed a few multiple regression models. The first two models can be seen in Table~\ref{tab:c-models12} and are explained below.
 
 \begin{table}[!htbp]
   \centering
@@ -181,10 +181,10 @@ In order to estimate the relationship that AC-CE and AE-RO have, I developed a f
   CS dummy variable & 0.238$^{**}$ & 0.137 \\
     & (0.112) & (0.107) \\
     & & \\
-  AC-CE & $-$0.001 & 0.0002 \\
+  AC$-$CE & $-$0.001 & 0.0002 \\
     & (0.004) & (0.004) \\
     & & \\
-  AE-RO & 0.007 & 0.007 \\
+  AE$-$RO & 0.007 & 0.007 \\
     & (0.006) & (0.005) \\
     & & \\
   \midrule
@@ -198,13 +198,13 @@ In order to estimate the relationship that AC-CE and AE-RO have, I developed a f
   \end{tabular}
 \end{table}
 
-For Model~1, I included the students' AC-CE and AE-RO scores, as well as a dummy variable that captured whether a student was a CS major. This model showed a significant correlation between AE-RO and GPA held even when controlling for the AC-CE value and the student's major with a very significant F statistic of $5.075$ ($p<0.01$). This F statistic showed that these factors were especially important in predicting a student's academic success, as measured by major GPA.
+For Model~1, I included the students' AC$-$CE and AE$-$RO scores, as well as a dummy variable that captured whether a student was a CS major. This model showed a significant correlation between AE$-$RO and GPA held even when controlling for the AC$-$CE value and the student's major with a very significant F statistic of $5.075$ ($p<0.01$). This F statistic showed that these factors were especially important in predicting a student's academic success, as measured by major GPA.
 
-In Model~2, I used the same multiple regression analysis as Model~1, but added the student's age and their parents' education level as covariates. This correlation held, even when controlling for other factors that may have a relationship with GPA. This model had a strong F statistic, which again showed that the same factors, except for AC-CE, were significant in predicting a student's academic success.
+In Model~2, I used the same multiple regression analysis as Model~1, but added the student's age and their parents' education level as covariates. This correlation held, even when controlling for other factors that may have a relationship with GPA. This model had a strong F statistic, which again showed that the same factors, except for AC$-$CE, were significant in predicting a student's academic success.
 
-In both models, AC-CE had a $p>0.05$ which helped suggest that AC-CE was not a significant contributor to a student's academic success. Because the AC-CE values do not have a significant correlation with major GPA, they were dropped in the subsequent models.
+In both models, AC$-$CE had a $p>0.05$ which helped suggest that AC$-$CE was not a significant contributor to a student's academic success. Because the AC$-$CE values do not have a significant correlation with major GPA, they were dropped in the subsequent models.
 
-In the next two models (see Table~\ref{tab:c-models34}), AE-RO was decomposed into its two individual elements because it was not clear which element was driving the AE-RO correlation with GPA. Model~3, which has AE-RO decomposed, showed that RO had a negative relationship with major GPA. When control variables (age and parents' education level) were added in Model~4, only the RO relationship remained statistically significant. These models are probably the best fit to estimate these correlations. The RO value and control terms have a high joint significance, so they should not be removed from the model. Model~4 had an adjusted R-squared of $0.4118$, meaning that the variables in the model can explain roughly 41\% of the variance in major GPA.
+In the next two models (see Table~\ref{tab:c-models34}), AE$-$RO was decomposed into its two individual elements because it was not clear which element was driving the AE$-$RO correlation with GPA. Model~3, which has AE$-$RO decomposed, showed that RO had a negative relationship with major GPA. When control variables (age and parents' education level) were added in Model~4, only the RO relationship remained statistically significant. These models are probably the best fit to estimate these correlations. The RO value and control terms have a high joint significance, so they should not be removed from the model. Model~4 had an adjusted R-squared of $0.4118$, meaning that the variables in the model can explain roughly 41\% of the variance in major GPA.
 
 \begin{table}[!htbp] \centering
   \centering
@@ -274,12 +274,12 @@ But what does that mean in the real world? Is that enough to make a difference i
 
 The fact that the RO low-to-high difference correlates to a little over one standard deviation means that the change is comparable to decreasing roughly 38 percentiles from the mean (given that 68\% are within one standard deviation of the mean in either direction). This seems like it could be substantive, at least for IT students, since IT GPA is lower when the student more strongly prefers Reflective learning. However, this doesn't seem to hold for CS, as shown in Model~6.
 
-\subsubsection{How strong is the correlation between AC-CE and AE-RO, and student satisfaction among CS, IS, and IT students?}
+\subsubsection{How strong is the correlation between AC$-$CE and AE$-$RO, and student satisfaction among CS, IS, and IT students?}
 Nuata's AMSS is graded on a five-point Likert-type scale with two of the responses being negatively scored. Two of the AMSS questions assume that students still have the option of changing their major, but once BYU students get beyond a certain credit threshold (well before their senior year), it becomes impossible for them to change majors. Because of this and the lack of variance among the responses, these questions were dropped from the analysis.
 
 I created a summary index of academic major satisfaction using the remaining AMSS variables and reverse coded the negatively-scored variables. In this summary index, the least satisfied value was a 4 and the most satisfied was a 20.
 
-Next, I checked the simple correlations between AE-RO and AC-CE with the satisfaction index. The Pearson coefficients are $-0.12$ ($p>0.05$) and $-0.06$ ($p>0.05$), respectively. It is possible that the relationship could only exist for the RO value, since this was the only value correlated with major GPA in the previous section. Checking for that, I found a Pearson correlation coefficient of $0.26$ ($p>0.05$). This means that even restricting to just RO and IT majors fails to find a statistically significant correlation ($0.24$, $p>0.05$).
+Next, I checked the simple correlations between AE$-$RO and AC$-$CE with the satisfaction index. The Pearson coefficients are $-0.12$ ($p>0.05$) and $-0.06$ ($p>0.05$), respectively. It is possible that the relationship could only exist for the RO value, since this was the only value correlated with major GPA in the previous section. Checking for that, I found a Pearson correlation coefficient of $0.26$ ($p>0.05$). This means that even restricting to just RO and IT majors fails to find a statistically significant correlation ($0.24$, $p>0.05$).
 
 None of these correlations were statistically significant, suggesting that there is no relationship between learning style and major satisfaction.
 
@@ -292,10 +292,10 @@ The dataset, with four questions used, had a minimum sum of 4 (meaning the stude
 Unfortunately, I was unable to use the full set of demographic variables collected from students as covariates because there was not enough variance among the sample group. The students were almost entirely white and male (88\% for both). Looking at the relationship between marital status and its relationship on major GPA and satisfaction had a multiple R-squared of $0.07$, and the relationship between marital status and RO and major GPA (previously the best model) had a multiple R-squared of $0.14$. So, while students were roughly equally divided in marital status, there was no relationship between marital status and any other factor.
 
 \subsection{Answers to research questions}
-\subsubsection{How strong is the correlation between AC-CE and AE-RO, and major GPA among CS, IS, and IT students?}
+\subsubsection{How strong is the correlation between AC$-$CE and AE$-$RO, and major GPA among CS, IS, and IT students?}
 
 
-\subsubsection{How strong is the correlation between AC-CE and AE-RO, and student satisfaction among CS, IS, and IT students?}
+\subsubsection{How strong is the correlation between AC$-$CE and AE$-$RO, and student satisfaction among CS, IS, and IT students?}
 
 
 \subsubsection{Is there a correlation between major GPA and student satisfaction?}
@@ -307,9 +307,11 @@ Unfortunately, I was unable to use the full set of demographic variables collect
 \subsection{Future work}
 First and foremost, this research needs to be repeated for IS students at BYU. It was unfortunate that so little data was able to be gathered, and adding that dataset to this line of research is necessary, especially in light of the correlations that were found.
 
-This research did not independently evaluate the AC-CE and AE-RO environments for the individual courses. That would amount to a large amount of low-level work which was outside the scope of this study. However, it would be interesting to see how each of the classes stack up in their cognitive styles.
+This research did not independently evaluate the AC$-$CE and AE$-$RO environments for the individual courses. That would amount to a large amount of low-level work which was outside the scope of this study. However, it would be interesting to see how each of the classes stack up in their cognitive styles.
 
-The multiple regression models that I first developed were based on the calculated differences (i.e., AC-CE and AE-RO) and not on the decomposed variables. The rest of the multiple regression models were exploratory. Future research should be more explicit in the data analysis methods that will be used before beginning the data analysis.
+Since IT students take so many CS classes and tend to do poorly in them, this research should be repeated to omit the CS classes from the IT major GPA and see if and how that affects correlations.
+
+The multiple regression models that I first developed were based on the calculated differences (i.e., AC$-$CE and AE$-$RO) and not on the decomposed variables. The rest of the multiple regression models were exploratory. Future research should be more explicit in the data analysis methods that will be used before beginning the data analysis.
 
 From the research, it seems like there are two main camps regarding teaching based on learning style: worry about it or don't worry about it. Some research has shown that when students are taught according to their preferred learning style, they learn better~(Vizeshfar, 2017; Donche, 2013). Others have shown that students adapt to how courses are taught regardless of learning style~(Wang, 2013). This study examined if a student's cognitive learning preference was a factor in which computing discipline they should explore. However, this angle helps perpetuate the \textit{status quo} by advising students to only go into a field where a majority of their classmates will have similar cognitive preferences. Instead, research should be done into each field's cognitive approach and determining if that approach is the best way to instruct students in that field.
 
