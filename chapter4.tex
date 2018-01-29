@@ -72,7 +72,7 @@ The terms abstract conceptualization, active experimentation, concrete experienc
 \end{enumerate}
 
 \section{Examining the data}
-Before answering the research questions, it's necessary to look at the data, get a feel for it, and visualize it. The first thing I did was run a $t$-test to see if there was a difference between CS and IT students' AC$-$CE and AE$-$RO scores. Each of these were statistically insignificant with $p>0.05$. This analysis is visualized in Figure~\ref{fig:cs-v-it-plot}. This is interesting because it goes against what the literature previously discussed about the relationship between learning styles, \textit{viz}.: CS and IT should be distinguishable~(Kolb, 2005b).
+Before answering the research questions, it's necessary to look at the data, get a feel for it, and visualize it. The first thing I did was run a $t$-test to see if there was a difference between CS and IT students' AC$-$CE and AE$-$RO scores. Each of these were statistically insignificant with $p>0.05$. CS and IT students' AC$-$CE and AE$-$RO results can be seen in Figure~\ref{fig:cs-v-it-plot}. This is interesting because it goes against what the literature previously discussed about the relationship between learning styles, \textit{viz}.: CS and IT should be distinguishable~(Kolb, 2005b).
 
 % TO LUNT: Would you like to see a table here, too? I think the figure is sufficient, but I'm willing to add a table of bad p-values if you think it would help.
 
@@ -135,29 +135,6 @@ Because of these findings, I am unable to find a statistically significant corre
 \end{figure}
 
 The other important finding here is that there is a strong correlation between IT major GPA and IT AE$-$RO scores, such that the higher a student scores in the AE$-$RO spectrum, the higher we can assume their GPA to be. However, the AC$-$CE spectrum did not hold any statistically significant ($p>0.05$) effect on student GPA in CS or IT. This is interesting because Lunt found that AC$-$CE was the significant axis among electronics students~(Lunt, 1996).
-
-% TO LUNT: I wrote this whole bit on looking at the IT major GPA data, but don't feel like it's necessary. I mean, it's a really pretty histogram, but it doesn't add to the overall argument. I wanted to make sure you were cool with me not including it before I just erased it.
-% Looking at the IT major GPA data (in Table~\ref{tab:it-major-gpa}), it's clear that this data is normally distributed (note the Shapiro-Wilk $p=0.86$ from Table~\ref{tab:shapiro-wilk}; see Table~\ref{fig:it-major-gpa-hist}) with an almost equal mean ($\sigma=0.444$) and median. With this in mind, as well as the
-%
-% \begin{table}[!htbp]
-%   \centering
-%   \caption{IT Major GPA}
-%   \label{tab:it-major-gpa}
-%   \begin{tabular}{llllll}
-%     \toprule
-%     Min.  & 1st Qu. & Median & Mean  & 3rd Qu. & Max. \\
-%     \midrule
-%     2.340 & 2.868   & 3.200  & 3.204 & 3.480    & 3.970 \\
-%     \bottomrule
-%   \end{tabular}
-% \end{table}
-%
-% \begin{figure}
-%   \centering
-%   \includegraphics[width=0.7\textwidth]{figures/chapter4/it-major-gpa-hist.jpg}
-%   \caption{IT Major GPA Histogram}
-%   \label{fig:it-major-gpa-hist}
-% \end{figure}
 
 \subsection{What is the best multiple regression model to fit these correlations?}
 In order to estimate the relationship that AC$-$CE and AE$-$RO each have simultaneously, I developed several multiple regression models. I ran these models with standard errors computed with the Huber-White (HC1) robust standard error to account for the heteroskedasticity of the data. The most significant models can be seen in Table~\ref{tab:mr-models}. All three models use major GPA as the dependent variable and compare that against the CS dummy variable (to determine is the student is a CS major), age, and parents education level. Model~2 adds AE$-$RO as a covariate, and Model~3 adds AC$-$CE as a covariate.
