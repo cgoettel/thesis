@@ -74,8 +74,6 @@ The terms abstract conceptualization, active experimentation, concrete experienc
 \section{Examining the data}
 Before answering the research questions, it's necessary to look at the data, get a feel for it, and visualize it. The first thing I did was run a $t$-test to see if there was a difference between CS and IT students' AC$-$CE and AE$-$RO scores. Each of these were statistically insignificant with $p>0.05$. CS and IT students' AC$-$CE and AE$-$RO results can be seen in Figure~\ref{fig:cs-v-it-plot}. This is interesting because it goes against what the literature previously discussed about the relationship between learning styles, \textit{viz}.: CS and IT should be distinguishable~(Kolb, 2005b).
 
-% TO LUNT: Would you like to see a table here, too? I think the figure is sufficient, but I'm willing to add a table of bad p-values if you think it would help.
-
 \begin{figure}[!bhtb]
   \centering
   \includegraphics[width=0.7\textwidth]{figures/chapter4/cs-v-it-plot.jpg}
@@ -83,7 +81,7 @@ Before answering the research questions, it's necessary to look at the data, get
   \label{fig:cs-v-it-plot}
 \end{figure}
 
-Next, I needed to know if the data was normally distributed in order to determine which correlation model to run. To determine if the data was normally distributed, I ran the Shapiro-Wilk test, as noted in Table~\ref{tab:shapiro-wilk} (note that $p<0.05$ here means that the data is \emph{not} normally distributed). These findings will be discussed alongside the first research question.
+Next, I needed to know if the data was normally distributed in order to determine which correlation model to run. To determine if the data was normally distributed, I ran the Shapiro-Wilk test (see Table~\ref{tab:shapiro-wilk} (note that $p<0.05$ here means that the data is \emph{not} normally distributed)). From this analysis, I can see that CS AC$-$CE was the only non-normal data. These findings will be discussed alongside the first research question.
 
 \begin{table}[!htbp]
   \centering
@@ -105,7 +103,7 @@ Next, I needed to know if the data was normally distributed in order to determin
 
 \section{Answering the research questions}
 \subsection{How strong is the correlation between AC$-$CE and AE$-$RO, and major GPA among CS, IS, and IT students?}
-Because all of these data points, except for CS AC$-$CE are normally distributed, I was justified in using Pearson's correlation coefficient (also known as Pearson's $r$) to calculate the correlations. This data is summarized in Table~\ref{tab:pearsons}.
+Because all of these data points, except for CS AC$-$CE, are normally distributed, I was justified in using Pearson's correlation coefficient (also known as Pearson's $r$) to calculate the correlations. This data is summarized in Table~\ref{tab:pearsons}.
 
 \begin{table}[!htbp]
   \centering
@@ -137,7 +135,7 @@ Because of these findings, I am unable to find a statistically significant corre
 The other important finding here is that there is a strong correlation between IT major GPA and IT AE$-$RO scores, such that the higher a student scores in the AE$-$RO spectrum, the higher we can assume their GPA to be. However, the AC$-$CE spectrum did not hold any statistically significant ($p>0.05$) effect on student GPA in CS or IT. This is interesting because Lunt found that AC$-$CE was the significant axis among electronics students~(Lunt, 1996).
 
 \subsection{What is the best multiple regression model to fit these correlations?}
-In order to estimate the relationship that AC$-$CE and AE$-$RO each have simultaneously, I developed several multiple regression models. I ran these models with standard errors computed with the Huber-White (HC1) robust standard error to account for the heteroskedasticity of the data. The most significant models can be seen in Table~\ref{tab:mr-models}. All three models use major GPA as the dependent variable and compare that against the CS dummy variable (to determine is the student is a CS major), age, and parents education level. Model~2 adds AE$-$RO as a covariate, and Model~3 adds AC$-$CE as a covariate.
+In order to estimate the relationship that AC$-$CE and AE$-$RO each have simultaneously, I developed several multiple regression models. I ran these models with standard errors computed with the Huber-White (HC1) robust standard error to account for the heteroskedasticity of the data. The most significant models can be seen in Table~\ref{tab:mr-models}. All three models use major GPA as the dependent variable and compare that against the CS dummy variable (to determine if the student is a CS major), age, and parents' education level. Model~2 adds AE$-$RO as a covariate, and Model~3 adds AC$-$CE as a covariate.
 
 % Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
 % Date and time: Sun, Jan 28, 2018 - 01:49:51 PM
@@ -258,7 +256,7 @@ To determine if there is a correlation between major GPA and student satisfactio
   \label{fig:major_gpa_amss_plots}
 \end{figure}
 
-The Pearson correlation coefficient for each major GPA and the corresponding AMSS index are $p>0.05$ so I am unable to say that there is a correlation between the two.
+The Pearson correlation coefficient for each major GPA and the corresponding AMSS index are $p>0.05$ so I am unable to say that there is a significant correlation between the two.
 
 \section{Demographics}
 Unfortunately, I was unable to use the full set of demographic variables collected from students as covariates because there was not enough variance among the sample group. The students were almost entirely white and male (88\% for both). Looking at the relationship between marital status and its effect on major GPA and satisfaction had a multiple $R^2$ of $0.07$, meaning that marital status was only able to explain 7\% of the variance in major GPA and satisfaction. While students were equally divided in marital status (31 single, 31 married), there was no relationship between marital status and any other factor. The multiple regression analysis for the demographic information, calculated with robust standard error, is summarized in Table~\ref{tab:demographics}.
