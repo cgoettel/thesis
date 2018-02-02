@@ -40,18 +40,20 @@ t.test(cs_ac_ce, it_ac_ce) # p = 0.5411
 t.test(cs_ae_ro, it_ae_ro) # p = 0.3501
 # So there's no relationship between them. And we can see that
 # in the plot:
-df<-data.frame(cs_ac_ce,cs_ae_ro)
-df2<-data.frame(it_ac_ce,it_ae_ro)
-cs_v_it_plot<-ggplot(df, aes(cs_ac_ce,cs_ae_ro)) +
-  geom_point(color="black")
-cs_v_it_plot<-cs_v_it_plot + geom_point(data=df2, x=it_ac_ce,
-  y=it_ae_ro, color="red")
-cs_v_it_plot<-cs_v_it_plot + labs(x="AC-CE", y="AE-RO")
-cs_v_it_plot<-cs_v_it_plot + scale_fill_manual(name="Majors",
-  values = c("CS" = "black", "IT" = "red"))
+df <- data.frame("black", cs_ac_ce, cs_ae_ro)
+colnames(df) <- c("major","ac_ce","ae_ro")
+df2 <- data.frame("red", it_ac_ce, it_ae_ro)
+colnames(df2) <- c("major","ac_ce","ae_ro")
+
+bound <- rbind(df,df2)
+
+plot <- ggplot(bound, aes(bound$ac_ce, bound$ae_ro, color =
+  major)) + geom_point()
+plot <- plot + scale_color_manual(name = "Major", values = unique(bound$major), labels = c("CS", "IT"))
+plot <- plot + labs(x="AC-CE", y="AE-RO")
 jpeg('figures/chapter4/cs-v-it-plot.jpg', width = 500,
   height = 500)
-cs_v_it_plot
+plot
 dev.off()
 
 # Research questions
