@@ -1,6 +1,5 @@
-thesis.pdf: *.tex Makefile
+master.pdf: *.tex Makefile
 	pdflatex -halt-on-error master
-	# bibtex master
 	biber master
 	pdflatex master
 	pdflatex master
