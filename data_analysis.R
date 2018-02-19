@@ -306,18 +306,14 @@ jpeg('figures/chapter4/amss_index_plot.jpg', width = 400,
 amss_plot
 dev.off()
 
-### Pearson's correlation coefficient for AC-CE/AE-RO and
-### satisfaction (not by major)
-cor.test(amss_index, data.mis$AE.RO) # p = 0.1059
-cor.test(amss_index, data.mis$AC.CE) # p = 0.8563
+### Regression analysis
+fit1 <- lm(data = data.mis, cs_amss_index ~ cs_ac_ce + cs_ae_ro )
+cov1 <- vcovHC(fit1, type = "HC1")
+robust_se_1 <- sqrt(diag(cov1))
 
-### For CS majors
-cor.test(cs_amss_index, cs_ac_ce) # p = 0.8134
-cor.test(cs_amss_index, cs_ae_ro) # p = 0.1237
-
-### And again for IT majors
-cor.test(it_amss_index, it_ac_ce) # p = 0.9566
-cor.test(it_amss_index, it_ae_ro) # p = 0.5147
+fit2 <- lm(data = data.mis, it_amss_index ~ it_ac_ce + it_ae_ro )
+cov2 <- vcovHC(fit2, type = "HC1")
+robust_se_2 <- sqrt(diag(cov2))
 
 ## Question 4: Is there a correlation between college GPA and
 ## student satisfaction?
@@ -327,6 +323,14 @@ shapiro.test(cs_major_gpa)
 shapiro.test(amss_index)
 shapiro.test(cs_amss_index)
 shapiro.test(it_amss_index)
+
+fit1 <- lm(data = data.mis, cs_major_gpa ~ cs_amss_index )
+cov1 <- vcovHC(fit1, type = "HC1")
+robust_se_1 <- sqrt(diag(cov1))
+
+fit2 <- lm(data = data.mis, it_major_gpa ~ it_amss_index )
+cov2 <- vcovHC(fit2, type = "HC1")
+robust_se_2 <- sqrt(diag(cov2))
 
 cor.test(data.mis$Major.GPA, amss_index) # p = 0.2127
 cor.test(cs_major_gpa, cs_amss_index) # p = 0.3094
