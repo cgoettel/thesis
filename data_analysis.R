@@ -47,9 +47,10 @@ colnames(df2) <- c("major","ac_ce","ae_ro")
 
 bound <- rbind(df,df2)
 
-plot <- ggplot(bound, aes(bound$ac_ce, bound$ae_ro, color =
-  major)) + geom_point()
-plot <- plot + scale_color_manual(name = "Major", values = unique(bound$major), labels = c("CS", "IT"))
+plot <- ggplot(bound, aes(bound$ac_ce, bound$ae_ro,
+  color = major)) + geom_point()
+plot <- plot + scale_color_manual(name = "Major",
+  values = unique(bound$major), labels = c("CS", "IT"))
 plot <- plot + labs(x="AC-CE", y="AE-RO")
 jpeg('figures/chapter4/cs-v-it-plot.jpg', width = 500,
   height = 500)
@@ -315,15 +316,12 @@ fit2 <- lm(data = data.mis, it_amss_index ~ it_ac_ce + it_ae_ro )
 cov2 <- vcovHC(fit2, type = "HC1")
 robust_se_2 <- sqrt(diag(cov2))
 
+stargazer(fit1, fit2, se = c(robust_se_1, robust_se_2))
+
 ## Question 4: Is there a correlation between college GPA and
 ## student satisfaction?
 ### Pearson's correlation coefficient between GPA and
 ### satisfaction
-shapiro.test(cs_major_gpa)
-shapiro.test(amss_index)
-shapiro.test(cs_amss_index)
-shapiro.test(it_amss_index)
-
 fit1 <- lm(data = data.mis, cs_major_gpa ~ cs_amss_index )
 cov1 <- vcovHC(fit1, type = "HC1")
 robust_se_1 <- sqrt(diag(cov1))
@@ -332,9 +330,7 @@ fit2 <- lm(data = data.mis, it_major_gpa ~ it_amss_index )
 cov2 <- vcovHC(fit2, type = "HC1")
 robust_se_2 <- sqrt(diag(cov2))
 
-cor.test(data.mis$Major.GPA, amss_index) # p = 0.2127
-cor.test(cs_major_gpa, cs_amss_index) # p = 0.3094
-cor.test(it_major_gpa, it_amss_index) # p = 0.4532
+stargazer(fit1, fit2, se = c(robust_se_1, robust_se_2))
 
 # Let's visualize that
 ## CS AMSS plot

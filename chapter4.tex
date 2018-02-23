@@ -91,12 +91,12 @@ Next, I needed to know if the data was normally distributed in order to determin
     \toprule
     Data         & W       & $p$-value \\
     \midrule
-    CS major GPA & 0.95843 & 0.148 \\
+    CS major GPA & 0.95843 & 0.148  \\
     IT major GPA & 0.97703 & 0.8639 \\
-    CS AC$-$CE     & 0.93586 & 0.0251 \\
-    CS AE$-$RO     & 0.98255 & 0.7826 \\
-    IT AC$-$CE     & 0.9529  & 0.3601 \\
-    IT AE$-$RO     & 0.95844 & 0.4583 \\
+    CS AC$-$CE   & 0.93586 & 0.0251 \\
+    CS AE$-$RO   & 0.98255 & 0.7826 \\
+    IT AC$-$CE   & 0.9529  & 0.3601 \\
+    IT AE$-$RO   & 0.95844 & 0.4583 \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -111,12 +111,12 @@ Because all of these data points, except for CS AC$-$CE, are normally distribute
   \label{tab:pearsons}
   \begin{tabular}{lll}
     \toprule
-    Data                      & $p$-value & $r$ \\
+    Data                        & $p$-value & $r$ \\
     \midrule
     CS major GPA and CS AC$-$CE & 0.8177    & -0.0376 \\
     CS major GPA and CS AE$-$RO & 0.6704    & -0.0694 \\
     IT major GPA and IT AC$-$CE & 0.9727    & -0.0077 \\
-    IT major GPA and IT AE$-$RO & 0.0202    & 0.4915 \\
+    IT major GPA and IT AE$-$RO & 0.0202    & 0.4915  \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -209,7 +209,7 @@ I created a summary index of academic major satisfaction using the remaining AMS
   \label{fig:amss_index_plot}
 \end{figure}
 
-I then ran a linear regression model for the data and found no statistically significant results (see Table~\ref{tab:amss_corr}), suggesting that there is no relationship between learning style and major satisfaction. I believe the lack of response diversity led, at least in part, to the lack of correlations between student satisfaction and other factors.
+I then ran a linear regression model for the data and found no statistically significant results (see Table~\ref{tab:amss_corr}), suggesting that there is no relationship between learning style and major satisfaction. I believe the lack of response diversity led, at least in part, to the lack of correlations between student satisfaction.
 
 % Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
 % Date and time: Sat, Feb 17, 2018 - 05:00:22 PM
@@ -245,20 +245,35 @@ I then ran a linear regression model for the data and found no statistically sig
 \end{table}
 
 \subsection{Is there a correlation between major GPA and student satisfaction?}
-To determine if there was a correlation between major GPA and student satisfaction, I ran a linear regression model against the data (Table~\ref{tab:satisfaction} and Figure~\ref{fig:major_gpa_amss_plots}) because all of the AMSS indices are normally distributed (with Shapiro-Wilk $p<0.05$).
+To determine if there was a correlation between major GPA and student satisfaction, I ran a linear regression model against the data (Table~\ref{tab:satisfaction} and Figure~\ref{fig:major_gpa_amss_plots}), with major GPA being the dependent variable and each major's AMSS index as the independent variables.
 
-\begin{table}[!htbp]
-  \centering
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Tue, Feb 20, 2018 - 08:41:03
+\begin{table}[!htbp] \centering
   \caption{Major GPA and Student Satisfaction}
   \label{tab:satisfaction}
-  \begin{tabular}{lll}
+  \begin{tabular}{@{\extracolsep{5pt}}lcc}
     \toprule
-    $x$           & $y$          & $p$ \\
+     & \multicolumn{2}{c}{\textit{Dependent variable:}} \\
+    \cline{2-3}
+    \\[-1.8ex] & CS Major GPA & IT Major GPA \\
+    \\[-1.8ex] & (1) & (2)\\
     \midrule
-    AMSS index    & Major GPA    & 0.2127 \\
-    CS AMSS index & CS major GPA & 0.3094 \\
-    IT AMSS index & IT major GPA & 0.4532 \\
+     CS AMSS index & 0.028 &  \\
+      & & \\
+     IT AMSS index &  & 0.035 \\
+      & & \\
+     Constant & 2.919$^{*}$ & 2.563$^{*}$ \\
+      & (0.513) & (0.028) \\
+      & & \\
+    \midrule
+    Observations & 40 & 22 \\
+    $R^{2}$ & 0.027 & 0.028 \\
+    Adjusted $R^{2}$ & 0.002 & $-$0.020 \\
+    Residual Std. Error & 0.401 (df = 38) & 0.448 (df = 20) \\
+    F Statistic & 1.062 (df = 1; 38) & 0.585 (df = 1; 20) \\
     \bottomrule
+    \textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.05} \\
   \end{tabular}
 \end{table}
 
@@ -269,7 +284,7 @@ To determine if there was a correlation between major GPA and student satisfacti
   \label{fig:major_gpa_amss_plots}
 \end{figure}
 
-The Pearson correlation coefficient for each major GPA and the corresponding AMSS index are $p>0.05$, so I am unable to say that there is a significant correlation between the two.
+This regression model had $p>0.05$, so I am unable to say that there is a significant correlation between the major GPA and student satisfaction.
 
 \section{Demographics}
 Unfortunately, I was unable to use the full set of demographic variables collected from students as covariates because there was not enough variance among the sample group. The students were almost entirely white and male (88\% for both). Looking at the relationship between marital status and its effect on major GPA and satisfaction had a multiple $R^2$ of $0.07$, meaning that marital status was only able to explain 7\% of the variance in major GPA and satisfaction. While students were equally divided in marital status (31 single, 31 married), there was no relationship between marital status and any other factor. The multiple regression analysis for the demographic information, calculated with robust standard error, is summarized in Table~\ref{tab:demographics}.
