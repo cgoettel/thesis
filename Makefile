@@ -1,4 +1,4 @@
-master.pdf: *.tex Makefile
+master.pdf: *.tex Makefile *.sty
 	pdflatex -halt-on-error master
 	biber master
 	pdflatex master
