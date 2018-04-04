@@ -72,16 +72,15 @@
 \setlength{\topmargin}{0in}
 \setlength{\textheight}{9in}
 
-%\setlength{\textfloatsep}{36pt}
-\setlength{\textfloatsep}{.375in plus .05in minus .05in}
-\setlength{\intextsep}{.375in plus .05in minus .05in}
+\setlength{\textfloatsep}{.5in}
+\setlength{\intextsep}{.5in}
 
 % Make it so that it doesn't stick figures on their own page so easily
 \renewcommand{\topfraction}{0.85}
 \renewcommand{\textfraction}{0.1}
 % Make it so that float pages will include text more easily
 \renewcommand{\floatpagefraction}{0.75}
-\setlength{\floatsep}{.375in plus .05in minus .05in}
+\setlength{\floatsep}{.5in}
 
 %For formatting table captions in the desired way
 \newif\if@istable
@@ -156,7 +155,6 @@
   \cmdBYUs@names@committeechairman, Chair\\
   \cmdBYUs@names@committeemembera\\
   \cmdBYUs@names@committeememberb\\
-  \cmdBYUs@names@committeememberc\\
   \ifBYUs@formatting@isdissertation
   	\cmdBYUs@names@committeememberc\\
 	\cmdBYUs@names@committeememberd
@@ -325,31 +323,40 @@
 }
 
 % Format the bibliography correctly
-\renewenvironment{thebibliography}[1]
-     {\phantomsection
-     \addcontentsline{toc}{chapter}{\bibname}
-     \chapter*{\vspace*{0.7in}\protect\bf{\bibname}}%
-      \@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}%
-      \singlespacing%
-      \list{\@biblabel{\@arabic\c@enumiv}}%
-           {\settowidth\labelwidth{\@biblabel{#1}}%
-            \leftmargin\labelwidth
-            \advance\leftmargin\labelsep
-            \@openbib@code
-            \usecounter{enumiv}%
-            \let\p@enumiv\@empty
-            \renewcommand\theenumiv{\@arabic\c@enumiv}%
-            \setlength{\itemsep}{0.25\baselineskip}}%
-      \sloppy
-      \clubpenalty4000
-      \@clubpenalty \clubpenalty
-      \widowpenalty4000%
-      \sfcode`\.\@m}
-    {\def\@noitemerr
-       {\@latex@warning{Empty `thebibliography' environment}}%
-      \endlist%
-      \doublespacing}
-
+\renewenvironment{thebibliography}[1]%
+  {%
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\bibname}
+    \chapter*{%
+      \protect\bibname%
+    }%
+    \@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}%
+    \singlespacing%
+    \list{\@biblabel{\@arabic\c@enumiv}}%
+    {%
+      \settowidth\labelwidth{\@biblabel{#1}}%
+      \leftmargin\labelwidth
+      \advance\leftmargin\labelsep
+      \@openbib@code
+      \usecounter{enumiv}%
+      \let\p@enumiv\@empty
+      \renewcommand\theenumiv{\@arabic\c@enumiv}%
+      \setlength{\itemsep}{0.25\baselineskip}%
+    }%
+    \sloppy
+    \clubpenalty4000
+    \@clubpenalty \clubpenalty
+    \widowpenalty4000%
+    \sfcode`\.\@m%
+  }
+  {%
+    \def\@noitemerr
+    {%
+      \@latex@warning{Empty `thebibliography' environment}%
+    }%
+  \endlist%
+  \doublespacing%
+}%
 
 %The next five commands allow the table of contents page to be assigned any arbitrary number, to work around BYU's strange requirement that the first pages are single-sided and the subsequent pages are double-sided.
 \newcommand\chapteroneside{\clearpage
@@ -495,7 +502,7 @@
     % Set the parskip so that the Table of Contents and Lists will be spaced properly
     %\setlength{\parskip}{0.5\baselineskip}
     % Make individual entries single spaced
-    \singlespacing
+    % \singlespacing
     \ifBYUs@sections@notableofcontents
     \else
     \if@twoside
@@ -513,6 +520,7 @@
         	\setlength{\oddsidemargin}{0.0in}
   			\setlength{\evensidemargin}{0.0in}
   			\setlength{\textwidth}{6in}
+      \doublespacing
       \tableofcontents
       \cleardoubleevenpage
     \fi

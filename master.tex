@@ -6,12 +6,12 @@
   deptname          = School of Technology,
   committeechairman = Barry M.\ Lunt, % Barry Mark Lunt
   committeemembera  = Derek L.\ Hansen, % Derek Lloyd Hansen
-  committeememberb  = Richard G.\ Helps, % C Richard G Helps
-  committeememberc  = Justin S.\ Giboney, % Justin Scott Giboney
+  committeememberb  = Justin S.\ Giboney, % Justin Scott Giboney
   nonomenclature    = true,     % Don't show the Nomenclature section (optional)
   keywords          = {learning preference, cognition, LSI, computing, academic success, AMSS}
 }
 
+\usepackage[margin=1in]{geometry}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{caption}
@@ -23,6 +23,7 @@
 \usepackage{mathptmx}
 \usepackage{textcomp} % Copyright symbol
 \usepackage{float}    % improves the interface for defining floating objects
+\usepackage{titlesec}
 
 \usepackage[notes, isbn=false]{biblatex-chicago}
 \renewcommand{\bibsetup}{\singlespacing}
@@ -61,6 +62,13 @@
 % Set ToC depth to chapter and section
 \setcounter{tocdepth}{1}
 
+% Only allow one float/tabular per page
+\renewcommand{\textfraction}{0.01}
+\renewcommand{\topfraction}{0.01}
+\renewcommand{\bottomfraction}{0.01}
+\renewcommand{\floatpagefraction}{0.01}
+\setcounter{totalnumber}{1}
+
 % Add bibliography
 \addbibresource{\jobname.bib}
 
@@ -77,10 +85,18 @@
 \include{chapter5}
 
 % Bibliography
-\cleardoublepage
 \nocite{*}
-\renewcommand{\bibname}{References}
-\printbibliography
+% \renewcommand{\bibname}{\textbf{References}}
+\defbibheading{bibliography}[\refname]{}
+% \titlespacing*{\chapter}{0in}{2in}{0in}
+{%
+  ~
+  \vspace{0.5in}
+  \begin{center}
+    \textbf{REFERENCES}
+  \end{center}
+  \printbibliography
+}
 
 % Appendices
 \appendix

@@ -1,5 +1,5 @@
 \chapter{Results}\label{chp:chapter4}
-\section{Survey responses}
+\section{Survey Responses}
 As discussed previously, a participation rate of 35-48\% was necessary for a 10\% sampling error and 80\% confidence level. This allowed for inferences to be made on the population, not just the students sampled. The CS and IS senior classes were estimated by their respective departments to be one hundred students each, so participation from twenty-one students was necessary for each major. The IT senior class was estimated at forty students, requiring participation from sixteen students. Table~\ref{tab:response-rates} shows the amount of responses received compared to the total amounts needed.
 
 \begin{table}[h!]
@@ -21,7 +21,7 @@ There were many complications getting responses from IS students. IS seniors do 
 
 Because of the complications surrounding the IS responses, the IS results were not included in the analysis.
 
-\section{What the LSI responses mean}
+\section{What the LSI Responses Mean}
 A student's learning preference on the two axes of the LSI can be seen in Figure~\ref{fig:learning-preferences} which shows the cognitive preferences throughout the LSI spectrum. These preferences can be either in abstract conceptualization (AC), active experimentation (AE), concrete experience (CE), reflective observation (RO), or along the AC$-$CE or AE$-$RO spectrums.
 
 \begin{figure}[h!]
@@ -71,7 +71,7 @@ The terms abstract conceptualization, active experimentation, concrete experienc
   \end{enumerate}
 \end{enumerate}
 
-\section{Examining the data}
+\section{Examining the Data}
 Before answering the research questions, it's necessary to look at the data, get a feel for it, and visualize it. To this end, I ran $t$-tests to see if there was a significant difference between CS and IT students in their AC$-$CE and AE$-$RO scores. Each of these were not statistically significant, with $p>0.05$. The AC$-$CE and AE$-$RO scores for CS and IT students are shown in a scatter plot in Figure~\ref{fig:cs-v-it-plot} where it can be seen that there does not appear to be any visible distinction between CS and IT for these results. This is interesting because it goes against what the literature previously discussed about the relationship between learning style preferences, \textit{viz}.: CS and IT should be distinct~(Kolb, 2005b).
 
 \begin{figure}[!bhtb]
@@ -83,7 +83,7 @@ Before answering the research questions, it's necessary to look at the data, get
 
 Next, I needed to know if the data was normally distributed in order to determine which correlation model to run. To determine if the data was normally distributed, I ran the Shapiro-Wilk test (see Table~\ref{tab:shapiro-wilk} (note that $p<0.05$ here means that the data is \emph{not} normally distributed)). From this analysis, I can see that CS AC$-$CE was the only non-normal data with $p=0.0251$. These findings will be discussed alongside the first research question.
 
-\begin{table}[!htbp]
+\begin{table}[!htb]
   \centering
   \caption{Shapiro-Wilk Tests}
   \label{tab:shapiro-wilk}
@@ -101,11 +101,11 @@ Next, I needed to know if the data was normally distributed in order to determin
   \end{tabular}
 \end{table}
 
-\section{Answering the research questions}
-\subsection{How strong is the correlation between AC$-$CE and AE$-$RO, and major GPA among CS, IS, and IT students?}
+\section{Answering the Research Questions}
+\subsection{How Strong is the Correlation Between AC$-$CE and AE$-$RO, and Major GPA Among CS, IS, and IT Students?}
 Because all of these data points, except for CS AC$-$CE, are normally distributed, I was justified in using Pearson's correlation coefficient (also known as Pearson's $r$) to calculate the correlations. This data is summarized in Table~\ref{tab:pearsons} in which it can be seen that three of the four table entries were not statistically significant, while the IT major GPA and IT AE$-$RO, with $p=0.0202$, was statistically significant.
 
-\begin{table}[!htbp]
+\begin{table}[!htb]
   \centering
   \caption{Pearson's $r$}
   \label{tab:pearsons}
@@ -132,7 +132,7 @@ So, how strong is the correlation between AC$-$CE and AE$-$RO, and major GPA amo
   \label{fig:major_gpa_lm_plots}
 \end{figure}
 
-\subsection{What is the best multiple regression model to fit these correlations?}
+\subsection{What is the Best Multiple Regression Model to Fit These Correlations?}
 In order to estimate the relationship that AC$-$CE and AE$-$RO each have simultaneously, I developed several multiple regression models. I ran these models with standard errors computed with the Huber-White (HC1) robust standard error to account for the heteroskedasticity of the data. The most significant models can be seen in Table~\ref{tab:mr-models}. All three models used major GPA as the dependent variable, and compared that against the CS dummy variable (to determine if the student is a CS major), age, and parents' education level. Model~2 added AE$-$RO as a covariate, and Model~3 added AC$-$CE as a covariate.
 
 % Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
@@ -182,7 +182,7 @@ In order to estimate the relationship that AC$-$CE and AE$-$RO each have simulta
 
 These models each have statistically significant ($p<0.05$) F statistics, so I reject the null hypothesis that that these groups of variables do not have a statistically significant joint effect. However, an interesting thing happens between models~2 and~3: adding the AC$-$CE covariate decreases the adjusted $R^2$. This means that while the model is still significant with that covariate, it doesn't explain the variance as well. Again, this goes against what Lunt found concerning AC$-$CE results~(Lunt, 1996). Because models~1 and~2 represent the best multiple regression models for this data, I chose to only plot those two (Figure~\ref{fig:mr_models_1_2}).
 
-\begin{figure}[h!]
+\begin{figure}[p!]
   \centering
   \includegraphics[width=1.1\textwidth]{figures/chapter4/mr_models_1_2.jpg}
   \caption{Multiple Regression Models 1 and 2}
@@ -193,7 +193,7 @@ Up to this point, I've only examined individual variables, not groups of variabl
 
 The model I ran used major GPA as the dependent variable, and compared it to the CS dummy variable, AE$-$RO, age, and parents education. This model had $p=1.266\times 10^{-10}$, so I reject the null hypothesis that at least one of these variables is not significant in explaining the variance in the data. This model reinforces the earlier, multiple regression findings.
 
-\subsection{How strong is the correlation between AC$-$CE and AE$-$RO, and student satisfaction among CS, IS, and IT students?}
+\subsection{How Strong is the Correlation Between AC$-$CE and AE$-$RO, and Student Satisfaction Among CS, IS, and IT Students?}
 Nuata's AMSS, as enumerated in chapter 1, is graded on a five-point Likert-type scale with two of the responses being negatively scored. Two of the AMSS questions assume that students still have the option of changing their major, but once BYU students get beyond a certain credit threshold (well before their senior year), it becomes impossible for them to change majors. Because of this and the lack of variance among the responses, these questions were dropped from the analysis:
 \begin{enumerate}
   \item I am strongly considering changing to another major.
@@ -202,9 +202,9 @@ Nuata's AMSS, as enumerated in chapter 1, is graded on a five-point Likert-type 
 
 I created a summary index of academic major satisfaction using the remaining AMSS variables and reverse coded the negatively-scored variables. In this summary index, the least satisfied value was a 4 and the most satisfied was a 20, with a mean of $18.10$ ($\sigma=2.2595$). This data is heavily left-skewed (see Figure~\ref{fig:amss_index_plot}).
 
-\begin{figure}[!hbtp]
+\begin{figure}[p]
   \centering
-  \includegraphics[width=0.5\textwidth]{figures/chapter4/amss_index_plot.jpg}
+  \includegraphics[width=0.85\textwidth]{figures/chapter4/amss_index_plot.jpg}
   \caption{AMSS Index Histogram}
   \label{fig:amss_index_plot}
 \end{figure}
@@ -213,7 +213,9 @@ I then ran a linear regression model for the data and found no statistically sig
 
 % Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
 % Date and time: Sat, Feb 17, 2018 - 05:00:22 PM
-\begin{table}[!htbp] \centering
+\begin{table}[p]
+  \centering
+  \vspace{0.5in}
   \caption{AMSS Correlations}
   \label{tab:amss_corr}
   \begin{tabular}{@{\extracolsep{5pt}}lcc}
@@ -242,14 +244,18 @@ I then ran a linear regression model for the data and found no statistically sig
     \bottomrule
     \textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.05} \\
   \end{tabular}
+  \newline
+  \vspace{0.5in}
 \end{table}
 
-\subsection{Is there a correlation between major GPA and student satisfaction?}
+\subsection{Is There a Correlation Between Major GPA and Student Satisfaction?}
 To determine if there was a correlation between major GPA and student satisfaction, I ran a linear regression model against the data (Table~\ref{tab:satisfaction} and Figure~\ref{fig:major_gpa_amss_plots}), with major GPA being the dependent variable and each major's AMSS index as the independent variables.
 
 % Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
 % Date and time: Tue, Feb 20, 2018 - 08:41:03
-\begin{table}[!htbp] \centering
+\begin{table}[!htbp]
+  \centering
+  \vspace{1in}
   \caption{Major GPA and Student Satisfaction}
   \label{tab:satisfaction}
   \begin{tabular}{@{\extracolsep{5pt}}lcc}
@@ -275,6 +281,8 @@ To determine if there was a correlation between major GPA and student satisfacti
     \bottomrule
     \textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.05} \\
   \end{tabular}
+  \newline
+  \vspace{1in}
 \end{table}
 
 \begin{figure}[!hbtp]
